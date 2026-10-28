@@ -124,7 +124,7 @@ if(fromApi){const i=items.indexOf(fromApi);items[i]={...fromApi,capital:['Køben
 const hash=decodeURIComponent(location.hash.replace('#','')).toUpperCase();
 selected=items.find(c=>c.cca2===hash)||items.find(c=>c.cca2==='DK')||items[0];
 choose(selected);
-el('source').innerHTML='Landefakta: <a href="https://github.com/mledoze/countries" target="_blank" rel="noopener">mledoze/countries</a> (ODbL 1.0; lokal kopi hentet 28. oktober 2026). <a href="https://github.com/mOLTRUP/Test/blob/main/data/README.md" target="_blank" rel="noopener">Datakilde og licens</a>. Kort: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap-bidragsydere</a>. Danmarks indbyggertal: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik, september 2026</a> (opdateret 9. oktober 2026). Øvrige befolkningstal hentes fortrinsvis fra <a href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank" rel="noopener">Verdensbanken (SP.POP.TOTL)</a> med referenceår. Hvor Verdensbanken ikke dækker et land eller område, kan REST Countries levere vejledende tal uden dokumenteret referenceår.';
+el('source').innerHTML='Landefakta: <a href="https://github.com/mledoze/countries" target="_blank" rel="noopener">mledoze/countries</a> (ODbL 1.0; lokal kopi hentet 28. oktober 2026). <a href="https://github.com/mOLTRUP/Test/blob/main/data/README.md" target="_blank" rel="noopener">Datakilde og licens</a>. Kort: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap-bidragsydere</a>. Danmarks indbyggertal: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik, september 2026</a> (opdateret 9. oktober 2026). Øvrige befolkningstal hentes fortrinsvis fra <a href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank" rel="noopener">Verdensbanken (SP.POP.TOTL)</a> med referenceår. De senest hentede Verdensbankstal gemmes i browseren i op til 180 dage, så de kan vises ved midlertidige API-fejl. Hvor Verdensbanken ikke dækker et land eller område, kan REST Countries levere vejledende tal uden dokumenteret referenceår.';
 if(url==='./data/countries.json')enrichPopulation();
 return;
 }catch(e){console.warn('Landeliste kunne ikke indlæses fra',url,e);}}
@@ -132,7 +132,36 @@ el('count').textContent='Landeliste er midlertidigt utilgængelig';
 el('source').innerHTML='Landelisten kunne ikke indlæses. Danmark vises som reserve. Kilde til dansk befolkningstal: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik, september 2026</a>. Prøv igen senere.';
 renderList();
 }
+const populationCacheKey='verdens-lande-worldbank-population-v1';
+function applyPopulation(byCode){
+let updated=0;
+items=items.map(c=>{
+const p=c.cca2==='DK'?undefined:byCode.get(c.cca2);
+if(!p)return c;
+if(c.populationSource==='worldbank'&&Number(c.populationYear)>Number(p.year))return c;
+if(c.populationSource==='worldbank'&&c.populationYear===p.year&&c.population===p.value)return c;
+updated++;
+return {...c,population:p.value,populationYear:p.year,populationSource:'worldbank'};
+});
+if(updated){const current=items.find(c=>c.cca2===selected.cca2)||dk;choose(current);}
+return updated;
+}
+function loadCachedPopulation(){
+try{
+const saved=JSON.parse(localStorage.getItem(populationCacheKey)||'null');
+if(!saved||!Array.isArray(saved.rows)||!Number.isFinite(Date.parse(saved.savedAt)))return;
+if(Date.now()-Date.parse(saved.savedAt)>180*86400000||Date.parse(saved.savedAt)>Date.now()+86400000)return;
+const byCode=new Map();
+for(const row of saved.rows){
+if(!Array.isArray(row)||row.length!==3)continue;
+const [code,value,year]=row;
+if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&Number.isSafeInteger(value)&&value>0&&/^\\d{4}$/.test(String(year)))byCode.set(code,{value,year:String(year)});
+}
+if(byCode.size>=100)applyPopulation(byCode);
+}catch(e){console.info('Lokal befolkningscache er ikke tilgængelig:',e);}
+}
 async function enrichPopulation(){
+loadCachedPopulation();
 const controller=new AbortController();
 const timer=setTimeout(()=>controller.abort(),6500);
 try{
@@ -147,9 +176,11 @@ if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&/^\d{4}$/.test(year)&&Number
 const old=byCode.get(code);
 if(!old||Number(year)>Number(old.year))byCode.set(code,{value,year});
 }}
-let updated=0;
-items=items.map(c=>{const p=c.cca2==='DK'?undefined:byCode.get(c.cca2);if(!p)return c;updated++;return {...c,population:p.value,populationYear:p.year,populationSource:'worldbank'};});
-if(updated){const current=items.find(c=>c.cca2===selected.cca2)||dk;choose(current);}
+const updated=applyPopulation(byCode);
+if(byCode.size>=100){
+try{localStorage.setItem(populationCacheKey,JSON.stringify({savedAt:new Date().toISOString(),rows:Array.from(byCode,([code,p])=>[code,p.value,p.year])}));}
+catch(e){console.info('Befolkningsdata kunne ikke gemmes lokalt:',e);}
+}
 console.info('Daterede befolkningstal fra Verdensbanken:',updated);
 }catch(e){console.info('Verdensbankens befolkningstal kunne ikke indlæses:',e);}
 finally{clearTimeout(timer);}
