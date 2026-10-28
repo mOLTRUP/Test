@@ -143,7 +143,7 @@ if(!Array.isArray(payload)||!Array.isArray(payload[1])||payload[1].length<100)th
 const byCode=new Map();
 for(const row of payload[1]){
 const code=row?.country?.id,year=String(row?.date||''),value=row?.value;
-if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&/^\\d{4}$/.test(year)&&Number.isSafeInteger(value)&&value>0){
+if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&/^\d{4}$/.test(year)&&Number.isSafeInteger(value)&&value>0){
 const old=byCode.get(code);
 if(!old||Number(year)>Number(old.year))byCode.set(code,{value,year});
 }}
