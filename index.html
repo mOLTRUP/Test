@@ -89,7 +89,7 @@ const el=id=>document.getElementById(id);
 const str=(value,empty='Ikke oplyst')=>value===undefined||value===null||value===''?empty:String(value);
 function safeName(c){if(c.cca2==='DK')return'Danmark';try{const s=names.of(c.cca2);if(s&&s!==c.cca2)return s;}catch(e){}return c.name?.common||c.cca2||'Ukendt land';}
 function label(c){return safeName(c);}
-function flag(c){if(typeof c.flag==='string')return c.flag;if(c.flags?.png)return '🌐';if(c.cca2&&/^[A-Z]{2}$/.test(c.cca2)){return Array.from(c.cca2).map(ch=>String.fromCodePoint(ch.charCodeAt(0)+127397)).join('');}return '🌍'}
+function flag(c){if(typeof c.flag==='string')return c.flag;if(c.cca2&&/^[A-Z]{2}$/.test(c.cca2)){return Array.from(c.cca2).map(ch=>String.fromCodePoint(ch.charCodeAt(0)+127397)).join('');}return '🌍'}
 function fmt(n,unit=''){return Number.isFinite(Number(n))&&n!==null&&n!==undefined?numberfmt.format(Number(n))+unit:'Ikke oplyst';}
 function cap(c){return Array.isArray(c.capital)&&c.capital.length?c.capital.join(', '):'Ikke oplyst';}
 function lang(c){return c.languages&&typeof c.languages==='object'?Object.values(c.languages).join(', '):'Ikke oplyst';}
