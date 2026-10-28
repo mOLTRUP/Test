@@ -1,19 +1,125 @@
 <!doctype html>
-<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Danmark – Fakta og kort</title>
+<html lang="da">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Udforsk lande i verden: hovedstæder, indbyggertal, kort, areal, sprog og valuta.">
+<title>Verdens lande – fakta og kort</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#172b4d;font:16px/1.6 system-ui,Arial,sans-serif}
-header{background:linear-gradient(120deg,#a31326,#d7263d);color:white;padding:44px 20px;text-align:center}header h1{font-size:clamp(2.5rem,6vw,4.5rem);margin:0}header p{margin:4px 0}
-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;background:white;padding:16px;box-shadow:0 3px 14px #1222}
-button{font:inherit;border:1px solid #e1e5ed;background:#f7f8fa;color:#172b4d;padding:11px 22px;border-radius:9px;cursor:pointer;font-weight:650}button:hover,button[aria-selected=true]{background:#bd1730;color:white;border-color:#bd1730}
-main{max-width:940px;margin:36px auto;padding:0 18px}.panel{display:none;background:white;border-radius:16px;padding:clamp(22px,5vw,44px);box-shadow:0 10px 32px #192f4b12}.panel.active{display:block}h2{font-size:2rem;margin:0 0 12px}.big{font-size:clamp(2rem,6vw,3.6rem);font-weight:800;color:#bb1731;margin:14px 0}.muted{color:#536477}a{color:#a31326}iframe{width:100%;height:420px;border:0;border-radius:12px}footer{text-align:center;color:#65758a;padding:24px}
-</style></head><body>
-<header><div style="font-size:42px">🇩🇰</div><h1>Danmark</h1><p>Udforsk landet i tal og på kort</p></header>
-<nav aria-label="Hovedmenu"><button aria-selected="true" data-tab="land">Land</button><button aria-selected="false" data-tab="indbyggere">Indbyggere</button><button aria-selected="false" data-tab="kort">Kort</button><button aria-selected="false" data-tab="areal">Areal</button></nav>
-<main>
-<section class="panel active" id="land"><h2>🇩🇰 Land</h2><p>Danmark er et land i Nordeuropa og en del af Kongeriget Danmark. Hovedstaden er <strong>København</strong>, og det officielle sprog er dansk.</p><p>Danmark består blandt andet af halvøen Jylland og mange øer, herunder Sjælland og Fyn. Landet er medlem af EU.</p><p class="muted">Kongeriget Danmark omfatter også Grønland og Færøerne, som har selvstyre.</p></section>
-<section class="panel" id="indbyggere"><h2>👥 Indbyggere</h2><p class="big">Ca. 6,0 millioner</p><p>Danmark har omkring seks millioner indbyggere. Tallet ændrer sig løbende som følge af fødsler, dødsfald og flytninger.</p><p>Se det seneste officielle befolkningstal hos <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik</a>.</p></section>
-<section class="panel" id="kort"><h2>🗺️ Kort over Danmark</h2><p>Zoom ind og flyt rundt på kortet.</p><iframe title="Interaktivt kort over Danmark" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=7.5%2C54.4%2C15.6%2C58.1&amp;layer=mapnik"></iframe><p><a href="https://www.openstreetmap.org/#map=7/56.2/10.0" target="_blank" rel="noopener">Åbn større kort i OpenStreetMap</a></p></section>
-<section class="panel" id="areal"><h2>📐 Areal</h2><p class="big">Ca. 42.950 km²</p><p>Dette er Danmarks landareal, <strong>uden Grønland og Færøerne</strong>. Arealet kan variere lidt mellem opgørelser afhængigt af metode og tidspunkt.</p><p>Læs mere hos <a href="https://www.dst.dk/" target="_blank" rel="noopener">Danmarks Statistik</a>.</p></section>
-</main><footer>Fakta om Danmark · Testhjemmeside</footer>
-<script>document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));}));</script>
+:root{color-scheme:light;--ink:#16243b;--muted:#53647c;--line:#dce4ee;--primary:#a91732;--pale:#fff3f4;--bg:#f3f6fa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink)}
+a{color:#9c1330}a:hover{text-decoration-thickness:2px}
+button,input{font:inherit}button{cursor:pointer}
+.skip{position:absolute;left:-9999px;top:4px;z-index:5;background:#fff;padding:8px}.skip:focus{left:6px}
+header{background:linear-gradient(115deg,#89162a 0%,#c52643 72%,#df6475 100%);color:white;padding:31px 20px 37px}
+.wrap{max-width:1130px;margin:0 auto}header .eyebrow{letter-spacing:.13em;text-transform:uppercase;font-weight:700;font-size:12px;opacity:.92}
+header h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.13;margin:10px 0 8px;letter-spacing:-.035em}
+header p{max-width:650px;margin:0;opacity:.94}
+.page{max-width:1130px;margin:26px auto 0;padding:0 18px 44px}
+.layout{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:22px;align-items:start}
+.sidebar,.content{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 25px #182a4b0b}
+.sidebar{padding:20px;position:sticky;top:14px}
+h2{font-size:1.42rem;line-height:1.3;margin:0 0 8px}
+.muted{color:var(--muted)}.small{font-size:.9rem}
+.searchlabel{font-weight:700;display:block;margin:16px 0 8px}
+input[type=search]{display:block;width:100%;padding:12px 13px;border:1px solid #a9b9cb;border-radius:9px;background:#fff}
+input:focus,button:focus-visible,a:focus-visible{outline:3px solid #f09bac;outline-offset:2px}
+.listhead{display:flex;justify-content:space-between;gap:6px;align-items:center;margin:20px 0 9px;font-size:.88rem;color:var(--muted)}
+#countries{max-height:540px;overflow:auto;display:grid;gap:5px}
+.country{width:100%;border:1px solid transparent;background:transparent;text-align:left;border-radius:9px;padding:10px;display:flex;gap:11px;align-items:center}
+.country:hover,.country:focus-visible{background:#f4f6fa}.country.active{background:var(--pale);color:#89162a;border-color:#f0cbd2;font-weight:750}
+.flag{font-size:1.6rem;line-height:1}.countryname{overflow-wrap:anywhere}
+.content{overflow:hidden}.hero{padding:26px 28px;background:linear-gradient(145deg,#fff,#fff8f9);border-bottom:1px solid var(--line)}
+.hero_top{display:flex;align-items:center;gap:17px}.hero .flag{font-size:3.7rem}
+#countryTitle{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:0}.eyelabel{font-size:.9rem;font-weight:700;color:#8c2b40;text-transform:uppercase;letter-spacing:.06em}
+.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:23px}
+.stat{background:#fff;border:1px solid #eadde2;border-radius:10px;padding:14px}
+.stat strong{font-size:1.25rem;display:block;overflow-wrap:anywhere}.stat span{color:var(--muted);font-size:.85rem}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);padding:12px 18px 0;overflow:auto}
+.tabs button{border:0;border-bottom:3px solid transparent;padding:12px 17px;background:none;white-space:nowrap;font-weight:700;color:#42516b}
+.tabs button[aria-selected=true]{color:var(--primary);border-bottom-color:var(--primary)}
+.panel{padding:28px;min-height:260px}.panel[hidden]{display:none}
+.detailgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.detail{background:#f8fafc;padding:15px;border-radius:10px}.detail span{display:block;font-size:.88rem;color:var(--muted)}.detail strong{display:block;font-size:1.2rem;margin-top:4px;overflow-wrap:anywhere}
+.number{font-size:clamp(2rem,5vw,3rem);line-height:1.1;letter-spacing:-.03em;font-weight:780;color:#a91732;margin:14px 0}
+.map{width:100%;height:380px;border:0;border-radius:12px;background:#edf1f5}
+.sources{background:#f9fafc;padding:18px 28px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+.note{border-left:4px solid #c83d54;background:#fff7f8;padding:12px 14px;border-radius:5px;margin:19px 0}
+footer{text-align:center;color:var(--muted);padding:0 20px 35px;font-size:.88rem}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{position:static}#countries{max-height:225px}.summary{grid-template-columns:1fr 1fr}.hero,.panel{padding:20px}.tabs{padding-left:6px}.tabs button{padding:11px}.detailgrid{grid-template-columns:1fr}.map{height:300px}}
+@media(max-width:390px){.summary{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Spring til landefakta</a>
+<header><div class="wrap"><div class="eyebrow">Et atlas for alle</div><h1>🌍 Verdens lande</h1><p>Find et land, og gå på opdagelse i fakta, befolkning, geografi og kort. Siden begynder med Danmark.</p></div></header>
+<div class="page"><div class="layout">
+<aside class="sidebar" aria-label="Vælg land"><h2>Vælg et land</h2><p class="muted small" style="margin:0">Søg på dansk eller engelsk, eller vælg fra listen.</p>
+<label class="searchlabel" for="search">Søg efter land</label><input id="search" type="search" placeholder="Fx Danmark, Sverige eller Japan" autocomplete="off">
+<div class="listhead"><span id="count" role="status" aria-live="polite">Indlæser lande…</span><button type="button" id="reset" style="padding:3px 7px;border:0;background:none;color:#a91732;text-decoration:underline">Vis alle</button></div>
+<div id="countries" aria-label="Landeliste"></div></aside>
+<main class="content" id="main"><div class="hero"><div class="hero_top"><div class="flag" id="heroFlag" aria-hidden="true">🇩🇰</div><div><div class="eyelabel">Landefakta</div><h2 id="countryTitle">Danmark</h2><div class="muted" id="region">Nordeuropa</div></div></div>
+<div class="summary"><div class="stat"><span>Hovedstad</span><strong id="sCapital">København</strong></div><div class="stat"><span>Indbyggere</span><strong id="sPopulation">Ca. 6 mio.</strong></div><div class="stat"><span>Areal</span><strong id="sArea">Ca. 42.950 km²</strong></div></div></div>
+<nav class="tabs" role="tablist" aria-label="Fakta om landet">
+<button type="button" role="tab" aria-controls="land" id="tab-land" aria-selected="true" tabindex="0" data-tab="land">Land</button>
+<button type="button" role="tab" aria-controls="indbyggere" id="tab-indbyggere" aria-selected="false" tabindex="-1" data-tab="indbyggere">Indbyggere</button>
+<button type="button" role="tab" aria-controls="kort" id="tab-kort" aria-selected="false" tabindex="-1" data-tab="kort">Kort</button>
+<button type="button" role="tab" aria-controls="areal" id="tab-areal" aria-selected="false" tabindex="-1" data-tab="areal">Areal</button>
+</nav>
+<section class="panel" id="land" role="tabpanel" aria-labelledby="tab-land"><h2>Om landet</h2><div class="detailgrid">
+<div class="detail"><span>Officielt navn</span><strong id="official">Kongeriget Danmark</strong></div>
+<div class="detail"><span>Hovedstad</span><strong id="capital">København</strong></div>
+<div class="detail"><span>Sprog</span><strong id="language">Dansk</strong></div>
+<div class="detail"><span>Valuta</span><strong id="currency">Dansk krone (DKK)</strong></div></div><div class="note" id="landnote">Danmark er et land i Nordeuropa. Kongeriget Danmark omfatter også Grønland og Færøerne.</div></section>
+<section class="panel" id="indbyggere" role="tabpanel" aria-labelledby="tab-indbyggere" hidden><h2>Indbyggere</h2><div class="number" id="population">Ca. 6 millioner</div><p>Befolkningstal kan være opgjort på forskellige tidspunkter. Tallene er vejledende og er ikke en live-folketælling.</p><p id="populationExtra">Se det aktuelle officielle tal hos <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik</a>.</p></section>
+<section class="panel" id="kort" role="tabpanel" aria-labelledby="tab-kort" hidden><h2>Kort</h2><p class="muted">Du kan zoome og flytte rundt på kortet.</p><iframe class="map" id="map" title="Kort over Danmark" loading="lazy" referrerpolicy="no-referrer" src="https://www.openstreetmap.org/export/embed.html?bbox=7.5%2C54.4%2C15.6%2C58.1&amp;layer=mapnik"></iframe><p><a id="maplink" href="https://www.openstreetmap.org/#map=7/56.2/10" target="_blank" rel="noopener">Åbn et større kort</a></p><p class="small muted">Kortdata © OpenStreetMap-bidragsydere.</p></section>
+<section class="panel" id="areal" role="tabpanel" aria-labelledby="tab-areal" hidden><h2>Areal</h2><div class="number" id="area">Ca. 42.950 km²</div><p id="areaExtra">For Danmark gælder dette tal landet uden Grønland og Færøerne. Opgørelser kan variere lidt afhængigt af metode.</p></section>
+<div class="sources" id="source">Kilder: <a href="https://www.dst.dk/" target="_blank" rel="noopener">Danmarks Statistik</a>, <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a>. Internationale landefakta indlæses fra offentlige datasæt. Kontroller væsentlige tal i landenes officielle statistik.</div>
+</main>
+</div></div>
+<footer>Verdens lande · Udvikles løbende med fokus på brugervenlighed og kildeangivelse.</footer>
+<script>
+(function(){
+'use strict';
+const numberfmt=new Intl.NumberFormat('da-DK');
+const names=new Intl.DisplayNames(['da'],{type:'region'});
+const regionNames={Europe:'Europa',Asia:'Asien',Africa:'Afrika',Americas:'Amerika',Oceania:'Oceanien',Antarctic:'Antarktis'};
+const dk={cca2:'DK',name:{common:'Denmark',official:'Kingdom of Denmark'},capital:['København'],region:'Europe',population:6000000,area:42952,latlng:[56,10],languages:{dan:'Dansk'},currencies:{DKK:{name:'Dansk krone'}},flag:'🇩🇰',fallback:true};
+let items=[dk],selected=dk,activeTab='land';
+const el=id=>document.getElementById(id);
+const str=(value,empty='Ikke oplyst')=>value===undefined||value===null||value===''?empty:String(value);
+function safeName(c){if(c.cca2==='DK')return'Danmark';try{const s=names.of(c.cca2);if(s&&s!==c.cca2)return s;}catch(e){}return c.name?.common||c.cca2||'Ukendt land';}
+function label(c){return safeName(c);}
+function flag(c){if(typeof c.flag==='string')return c.flag;if(c.flags?.png)return '🌐';if(c.cca2&&/^[A-Z]{2}$/.test(c.cca2)){return Array.from(c.cca2).map(ch=>String.fromCodePoint(ch.charCodeAt(0)+127397)).join('');}return '🌍'}
+function fmt(n,unit=''){return Number.isFinite(Number(n))&&n!==null&&n!==undefined?numberfmt.format(Number(n))+unit:'Ikke oplyst';}
+function cap(c){return Array.isArray(c.capital)&&c.capital.length?c.capital.join(', '):'Ikke oplyst';}
+function lang(c){return c.languages&&typeof c.languages==='object'?Object.values(c.languages).join(', '):'Ikke oplyst';}
+function curr(c){return c.currencies&&typeof c.currencies==='object'?Object.entries(c.currencies).map(([k,v])=>str(v?.name,k)+' ('+k+')').join(', '):'Ikke oplyst';}
+function mapSet(c){let coords=Array.isArray(c.latlng)?c.latlng:[56,10],lat=Number(coords[0]),lon=Number(coords[1]);if(!Number.isFinite(lat)||!Number.isFinite(lon)){lat=56;lon=10}const a=Number(c.area)||50000;const spread=a<2000?1.5:a<30000?3.8:a<300000?7:a<1500000?13:22;const west=Math.max(-180,lon-spread),east=Math.min(180,lon+spread),south=Math.max(-85,lat-spread/2),north=Math.min(85,lat+spread/2);const q=[west,south,east,north].join(',');el('map').src='https://www.openstreetmap.org/export/embed.html?bbox='+encodeURIComponent(q)+'&layer=mapnik';el('map').title='Kort over '+label(c);el('maplink').href='https://www.openstreetmap.org/#map=5/'+encodeURIComponent(lat)+'/'+encodeURIComponent(lon);}
+function choose(c){selected=c;el('heroFlag').textContent=flag(c);el('countryTitle').textContent=label(c);el('region').textContent=regionNames[c.region]||c.region||'Geografisk region ikke oplyst';el('sCapital').textContent=cap(c);el('sPopulation').textContent=fmt(c.population);el('sArea').textContent=fmt(c.area,' km²');el('official').textContent=c.cca2==='DK'?'Kongeriget Danmark':str(c.name?.official);el('capital').textContent=cap(c);el('language').textContent=lang(c);el('currency').textContent=curr(c);
+el('landnote').textContent=c.cca2==='DK'?'Danmark ligger i Nordeuropa. Kongeriget Danmark omfatter også Grønland og Færøerne.':'Fakta vises for den valgte geografiske enhed. Datakilder kan også indeholde selvstyrende områder og territorier.';
+el('population').textContent=fmt(c.population);el('populationExtra').innerHTML=c.cca2==='DK'?'Se det seneste officielle befolkningstal hos <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik</a>.':'Tallet stammer fra et internationalt datasæt. Se det nationale statistikkontor for nyeste officielle opgørelse.';
+el('area').textContent=fmt(c.area,' km²');el('areaExtra').textContent=c.cca2==='DK'?'Danmarks areal er her angivet uden Grønland og Færøerne.':'Arealet stammer fra et internationalt datasæt. Afgrænsninger og opgørelsesmetoder kan variere.';
+mapSet(c);renderList();if(window.history?.replaceState){history.replaceState(null,'','#'+encodeURIComponent(c.cca2||'DK'));}
+}
+function renderList(){const q=el('search').value.trim().toLocaleLowerCase('da');const filtered=items.filter(c=>[label(c),c.name?.common,c.cca2].some(x=>String(x||'').toLocaleLowerCase('da').includes(q))).sort((a,b)=>label(a).localeCompare(label(b),'da'));const list=el('countries');list.replaceChildren();const frag=document.createDocumentFragment();filtered.slice(0,300).forEach(c=>{const btn=document.createElement('button');btn.type='button';btn.className='country'+(selected.cca2===c.cca2?' active':'');btn.setAttribute('aria-current',selected.cca2===c.cca2?'true':'false');const f=document.createElement('span');f.className='flag';f.textContent=flag(c);f.setAttribute('aria-hidden','true');const t=document.createElement('span');t.className='countryname';t.textContent=label(c);btn.append(f,t);btn.addEventListener('click',()=>{choose(c);if(innerWidth<761)el('main').scrollIntoView({behavior:'smooth',block:'start'});});frag.append(btn)});list.append(frag);el('count').textContent=filtered.length+' af '+items.length+' lande/områder'+(filtered.length?'':' – ingen resultater');}
+function tab(id){activeTab=id;document.querySelectorAll('.tabs button').forEach(b=>{const on=b.dataset.tab===id;b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;});document.querySelectorAll('.panel').forEach(p=>{p.hidden=p.id!==id;});}
+document.querySelectorAll('.tabs button').forEach(b=>{b.addEventListener('click',()=>tab(b.dataset.tab));b.addEventListener('keydown',ev=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(ev.key))return;ev.preventDefault();const tabs=Array.from(document.querySelectorAll('.tabs button'));let i=tabs.indexOf(b);i=ev.key==='Home'?0:ev.key==='End'?tabs.length-1:(i+(ev.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tab(tabs[i].dataset.tab);tabs[i].focus();});});
+el('search').addEventListener('input',renderList);
+el('reset').addEventListener('click',()=>{el('search').value='';renderList();el('search').focus();});
+function normalize(c){return{...c,flag:c.flag||undefined,name:c.name||{common:c.cca2},area:Number(c.area)||undefined,population:Number.isFinite(Number(c.population))&&c.population!==undefined?Number(c.population):undefined};}
+async function loadCountries(){
+const sources=[
+'https://restcountries.com/v3.1/all?fields=name,flags,cca2,capital,population,area,region,latlng,languages,currencies',
+'https://raw.githubusercontent.com/mledoze/countries/master/countries.json'
+];
+for(const url of sources){try{const response=await fetch(url,{cache:'default'});if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();if(!Array.isArray(data)||data.length<190)throw Error('Uventet datasæt');items=data.filter(c=>c?.cca2&&c?.name).map(normalize);const fromApi=items.find(c=>c.cca2==='DK');if(fromApi){const i=items.indexOf(fromApi);items[i]={...fromApi,capital:['København'],population:fromApi.population||dk.population};}else items.push(dk);
+const hash=decodeURIComponent(location.hash.replace('#','')).toUpperCase();selected=items.find(c=>c.cca2===hash)||items.find(c=>c.cca2==='DK')||items[0];choose(selected);
+el('source').innerHTML='Internationale landeoplysninger: <a href="'+(url.includes('restcountries')?'https://restcountries.com/':'https://github.com/mledoze/countries')+'" target="_blank" rel="noopener">'+(url.includes('restcountries')?'REST Countries':'mledoze/countries')+'</a>. Kort: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap-bidragsydere</a>. Tal er vejledende og kan være ældre end seneste officielle statistik.';
+return;
+}catch(e){console.warn('Landekilde kunne ikke indlæses:',e);}}
+el('count').textContent='Landeliste er midlertidigt utilgængelig';el('source').textContent='De internationale datakilder kunne ikke hentes. Danmark vises som reserve. Prøv at genindlæse siden senere.';renderList();
+}
+choose(dk);loadCountries();
+})();
+</script>
 </body></html>
