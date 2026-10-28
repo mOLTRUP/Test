@@ -97,7 +97,7 @@ function curr(c){return c.currencies&&typeof c.currencies==='object'?Object.entr
 function mapSet(c){let coords=Array.isArray(c.latlng)?c.latlng:[56,10],lat=Number(coords[0]),lon=Number(coords[1]);if(!Number.isFinite(lat)||!Number.isFinite(lon)){lat=56;lon=10}const a=Number(c.area)||50000;const spread=a<2000?1.5:a<30000?3.8:a<300000?7:a<1500000?13:22;const west=Math.max(-180,lon-spread),east=Math.min(180,lon+spread),south=Math.max(-85,lat-spread/2),north=Math.min(85,lat+spread/2);const q=[west,south,east,north].join(',');el('map').src='https://www.openstreetmap.org/export/embed.html?bbox='+encodeURIComponent(q)+'&layer=mapnik';el('map').title='Kort over '+label(c);el('maplink').href='https://www.openstreetmap.org/#map=5/'+encodeURIComponent(lat)+'/'+encodeURIComponent(lon);}
 function choose(c){selected=c;el('heroFlag').textContent=flag(c);el('countryTitle').textContent=label(c);el('region').textContent=regionNames[c.region]||c.region||'Geografisk region ikke oplyst';el('sCapital').textContent=cap(c);el('sPopulation').textContent=fmt(c.population);el('sArea').textContent=fmt(c.area,' km²');el('official').textContent=c.cca2==='DK'?'Kongeriget Danmark':str(c.name?.official);el('capital').textContent=cap(c);el('language').textContent=lang(c);el('currency').textContent=curr(c);
 el('landnote').textContent=c.cca2==='DK'?'Danmark ligger i Nordeuropa. Kongeriget Danmark omfatter også Grønland og Færøerne.':'Fakta vises for den valgte geografiske enhed. Datakilder kan også indeholde selvstyrende områder og territorier.';
-el('population').textContent=fmt(c.population);el('populationExtra').innerHTML=c.cca2==='DK'?'Opgjort i september 2026 (offentliggjort 9. oktober 2026). Kilde: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik</a>.':'Tallet stammer fra et internationalt datasæt uden angivet referenceår. Det er ikke nødvendigvis det nyeste officielle befolkningstal. Se landets statistikkontor for en dateret opgørelse.';
+el('population').textContent=fmt(c.population);el('populationExtra').innerHTML=c.cca2==='DK'?'Opgjort i september 2026 (offentliggjort 9. oktober 2026). Kilde: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik</a>.':c.populationSource==='worldbank'&&/^\d{4}$/.test(String(c.populationYear))?'Referenceår: '+c.populationYear+'. Kilde: <a href="https://data.worldbank.org/indicator/SP.POP.TOTL?locations='+encodeURIComponent(c.cca2)+'" target="_blank" rel="noopener">Verdensbanken – Population, total</a>. Årlige tal er ikke en aktuel folketælling.':c.populationSource==='restcountries'?'Vejledende tal fra REST Countries uden dokumenteret referenceår. Det er ikke nødvendigvis den nyeste officielle opgørelse.':'Der findes endnu ikke et verificeret befolkningstal for dette land eller område. Se det nationale statistikkontor for officielle tal.';
 el('area').textContent=fmt(c.area,' km²');el('areaExtra').textContent=c.cca2==='DK'?'Danmarks areal er her angivet uden Grønland og Færøerne.':'Arealet stammer fra et internationalt datasæt. Afgrænsninger og opgørelsesmetoder kan variere.';
 mapSet(c);renderList();if(window.history?.replaceState){history.replaceState(null,'','#'+encodeURIComponent(c.cca2||'DK'));}
 }
@@ -124,7 +124,7 @@ if(fromApi){const i=items.indexOf(fromApi);items[i]={...fromApi,capital:['Køben
 const hash=decodeURIComponent(location.hash.replace('#','')).toUpperCase();
 selected=items.find(c=>c.cca2===hash)||items.find(c=>c.cca2==='DK')||items[0];
 choose(selected);
-el('source').innerHTML='Landefakta: <a href="https://github.com/mledoze/countries" target="_blank" rel="noopener">mledoze/countries</a> (ODbL 1.0; lokal kopi hentet 28. oktober 2026). <a href="https://github.com/mOLTRUP/Test/blob/main/data/README.md" target="_blank" rel="noopener">Datakilde og licens</a>. Kort: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap-bidragsydere</a>. Danmarks indbyggertal: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik, september 2026</a> (opdateret 9. oktober 2026). Øvrige befolkningstal vises kun, hvis en ekstern datakilde kan levere dem; de er uden dokumenteret referenceår.';
+el('source').innerHTML='Landefakta: <a href="https://github.com/mledoze/countries" target="_blank" rel="noopener">mledoze/countries</a> (ODbL 1.0; lokal kopi hentet 28. oktober 2026). <a href="https://github.com/mOLTRUP/Test/blob/main/data/README.md" target="_blank" rel="noopener">Datakilde og licens</a>. Kort: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap-bidragsydere</a>. Danmarks indbyggertal: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik, september 2026</a> (opdateret 9. oktober 2026). Øvrige befolkningstal hentes fortrinsvis fra <a href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank" rel="noopener">Verdensbanken (SP.POP.TOTL)</a> med referenceår. Hvor Verdensbanken ikke dækker et land eller område, kan REST Countries levere vejledende tal uden dokumenteret referenceår.';
 if(url==='./data/countries.json')enrichPopulation();
 return;
 }catch(e){console.warn('Landeliste kunne ikke indlæses fra',url,e);}}
@@ -134,19 +134,43 @@ renderList();
 }
 async function enrichPopulation(){
 const controller=new AbortController();
+const timer=setTimeout(()=>controller.abort(),6500);
+try{
+const response=await fetch('https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&mrnev=1&per_page=500',{signal:controller.signal,cache:'default'});
+if(!response.ok)throw Error('HTTP '+response.status);
+const payload=await response.json();
+if(!Array.isArray(payload)||!Array.isArray(payload[1])||payload[1].length<100)throw Error('Uventet svar fra Verdensbanken');
+const byCode=new Map();
+for(const row of payload[1]){
+const code=row?.country?.id,year=String(row?.date||''),value=row?.value;
+if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&/^\\d{4}$/.test(year)&&Number.isSafeInteger(value)&&value>0){
+const old=byCode.get(code);
+if(!old||Number(year)>Number(old.year))byCode.set(code,{value,year});
+}}
+let updated=0;
+items=items.map(c=>{const p=c.cca2==='DK'?undefined:byCode.get(c.cca2);if(!p)return c;updated++;return {...c,population:p.value,populationYear:p.year,populationSource:'worldbank'};});
+if(updated){const current=items.find(c=>c.cca2===selected.cca2)||dk;choose(current);}
+console.info('Daterede befolkningstal fra Verdensbanken:',updated);
+}catch(e){console.info('Verdensbankens befolkningstal kunne ikke indlæses:',e);}
+finally{clearTimeout(timer);}
+await enrichPopulationFallback();
+}
+async function enrichPopulationFallback(){
+const controller=new AbortController();
 const timer=setTimeout(()=>controller.abort(),5500);
 try{
 const response=await fetch('https://restcountries.com/v3.1/all?fields=cca2,population',{signal:controller.signal,cache:'default'});
 if(!response.ok)throw Error('HTTP '+response.status);
 const data=await response.json();
 if(!Array.isArray(data)||data.length<190)throw Error('Uventet befolkningsdatasæt');
-const byCode=new Map(data.filter(c=>c?.cca2&&Number.isFinite(c.population)&&c.population>0).map(c=>[c.cca2,c.population]));
+const byCode=new Map(data.filter(c=>c?.cca2&&Number.isSafeInteger(c.population)&&c.population>0).map(c=>[c.cca2,c.population]));
 let updated=0;
-items=items.map(c=>{const pop=c.cca2!=='DK'?byCode.get(c.cca2):undefined;if(pop===undefined)return c;updated++;return {...c,population:pop};});
+items=items.map(c=>{const pop=c.cca2!=='DK'&&c.populationSource!=='worldbank'?byCode.get(c.cca2):undefined;if(pop===undefined)return c;updated++;return {...c,population:pop,populationSource:'restcountries'};});
 if(updated){const current=items.find(c=>c.cca2===selected.cca2)||dk;choose(current);}
-}catch(e){console.info('Supplerende internationale befolkningstal er ikke tilgængelige:',e);}
+}catch(e){console.info('Supplerende befolkningstal er ikke tilgængelige:',e);}
 finally{clearTimeout(timer);}
 }
+
 choose(dk);loadCountries();
 })();
 </script>
