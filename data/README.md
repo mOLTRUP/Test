@@ -12,7 +12,9 @@ Kildens ophavsmand er Mohammed Le Doze og bidragydere. Databasen er udgivet unde
 
 For Danmark bruges 6.038.638 indbyggere for september 2026 fra [Danmarks Statistik](https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal), senest opdateret 9. oktober 2026.
 
-For andre lande forsøger hjemmesiden at hente vejledende befolkningstal fra en ekstern kilde (REST Countries v3.1). Kilden angiver ikke et pålideligt referenceår for hvert land; hvis den er utilgængelig, vises **Ikke oplyst** frem for et opdigtet tal. Disse tal må ikke bruges som aktuelle officielle befolkningstal.
+For andre lande forsøger hjemmesiden først at hente **seneste tilgængelige ikke-tomme årsopgørelse** fra [Verdensbankens indikator SP.POP.TOTL](https://data.worldbank.org/indicator/SP.POP.TOTL) via [Indicators API v2](https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures). API'et returnerer både indbyggertal og referenceår, som vises på landets fane **Indbyggere**. Verdensbankens data er udgivet under CC BY 4.0 og stammer blandt andet fra FN og nationale statistikmyndigheder. Daterede årsopgørelser er ikke live-tal. Danmark bevarer den nyere nationale månedsopgørelse.
+
+Hvis Verdensbanken er utilgængelig eller mangler et land/område, forsøger siden fortsat at hente et vejledende befolkningstal fra REST Countries v3.1. **Disse reserve-tal har ikke dokumenteret referenceår og mærkes tydeligt som sådan**. Hvis begge kilder mangler tal, vises **Ikke oplyst**. Hjemmesiden må ikke opfinde indbyggertal.
 
 ## Kort
 
