@@ -14,6 +14,8 @@ For Danmark bruges 6.038.638 indbyggere for september 2026 fra [Danmarks Statist
 
 For andre lande forsøger hjemmesiden først at hente **seneste tilgængelige ikke-tomme årsopgørelse** fra [Verdensbankens indikator SP.POP.TOTL](https://data.worldbank.org/indicator/SP.POP.TOTL) via [Indicators API v2](https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures). API'et returnerer både indbyggertal og referenceår, som vises på landets fane **Indbyggere**. Verdensbankens data er udgivet under CC BY 4.0 og stammer blandt andet fra FN og nationale statistikmyndigheder. Daterede årsopgørelser er ikke live-tal. Danmark bevarer den nyere nationale månedsopgørelse.
 
+Når et gyldigt sæt daterede Verdensbankstal er hentet, gemmer hjemmesiden en lille kopi i den besøgendes egen browser (`localStorage`) i op til **180 dage**. Ved senere besøg vises denne kopi med det samme, mens hjemmesiden forsøger at hente nyere tal. Hvis API'et midlertidigt svigter, kan den lokale kopi fortsat bruges. Cachen er **ikke** en fælles GitHub-database og findes kun for besøgende, som tidligere har indlæst Verdensbankstal. Kopien gemmer landekode, indbyggertal, referenceår og hentetidspunkt; Danmarks nyere officielle tal overskrives ikke. Når der ikke findes en brugbar cache, fortsætter siden som hidtil.
+
 Hvis Verdensbanken er utilgængelig eller mangler et land/område, forsøger siden fortsat at hente et vejledende befolkningstal fra REST Countries v3.1. **Disse reserve-tal har ikke dokumenteret referenceår og mærkes tydeligt som sådan**. Hvis begge kilder mangler tal, vises **Ikke oplyst**. Hjemmesiden må ikke opfinde indbyggertal.
 
 ## Kort
