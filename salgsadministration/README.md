@@ -58,6 +58,7 @@ Bemærk, at GitHub Pages skal være aktiveret i **Settings → Pages → Deploy 
 
 - `php -l plugin/salgsadministration.php`
 - `node --check plugin/assets/app.js`
+- `node tests/smoke-node.js` (fiktive data, egen-leads-afgrænsning, landetal og oprettelsesdialog)
 - Accepttest ACC-01...ACC-10: se `TESTPLAN.md`.
 - En afprøvning i rigtig WordPress med mindst 2 sælgere, 2 lande og 1 landechef er **nødvendig** før godkendelse.
 

@@ -20,7 +20,7 @@
 | FUN-10 | BØR | Delvis | HTTPS-link til bilag; ikke filupload |
 | RAP-01 | SKAL | Delvis | UI-filtre på alle dimensioner i pipeline og rapporter; periode er oprettelsesdato, og stort datavolumen kræver server-paginering |
 | RAP-02–03 | SKAL | Kode | Aktive antal, EUR og værdi × sandsynlighed |
-| RAP-04–05 | SKAL | Delvis | Geografi/udfald/konvertering findes; fuld sammenligning på sælger/kontor kræver udbygning |
+| RAP-04–05 | SKAL | Kode | Rapporttabeller pr. sælger, kontor, land og produkt med konvertering og vægtet værdi; validering på WP-staging udestår |
 | RAP-06 | BØR | Kode | CSV eksport, områdeafgrænset på serveren |
 | RAP-07 | BØR | Delvis | Forfald og inaktivitet; leads uden dato afvises, hvis aktive |
 | UI-01–02 | SKAL | Kode | Browser, responsiv formular og validering |

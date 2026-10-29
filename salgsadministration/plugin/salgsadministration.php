@@ -363,9 +363,24 @@ final class SA_Sales {
         if($p['role']==='admin'&&self::role($u)==='admin'&&in_array('administrator',(array)$u->roles,true))return new WP_Error('sa_wp_admin','WordPress-administratorer administreres separat i WordPress.',['status'=>422]);
         return self::persist_user($id,$p);
     }
-    public static function export_csv() {
-        self::log(0,get_current_user_id(),'export_csv',['scope'=>self::role()]);
+    public static function export_csv($request) {
+        self::log(0,get_current_user_id(),'export_csv',['scope'=>self::role(),'filters'=>array_keys($request->get_params())]);
         $leads=self::fetch_leads(10000);
+        $f=$request->get_params();
+        $leads=array_values(array_filter($leads,static function($l)use($f){
+            $q=trim((string)($f['q']??''));
+            if ($q!==''&&!str_contains(wp_strtolower(($l['company']??'').' '.($l['contact']??'').' '.($l['vat']??'')),wp_strtolower($q)))return false;
+            foreach(['country'=>'country','office'=>'office','owner'=>'owner_id','product'=>'products','status'=>'status'] as $param=>$key) {
+                if (empty($f[$param]))continue;
+                if ($param==='product'){if(!in_array($f[$param],$l[$key],true))return false;}
+                elseif ((string)$l[$key] !== (string)$f[$param])return false;
+            }
+            if(isset($f['minprob'])&&$f['minprob']!==''&&(int)$l['probability']<(int)$f['minprob'])return false;
+            $created=substr((string)$l['created_at'],0,10);
+            if (!empty($f['from'])&&$created<(string)$f['from'])return false;
+            if (!empty($f['to'])&&$created>(string)$f['to'])return false;
+            return true;
+        }));
         $cols=['id','company','vat','country','office','contact','phone','email','owner_id','amount_eur','vehicles','probability','products','status','next_followup','reminder_days','outcome_reason','outcome_note','close_date','notes','created_at','updated_at'];
         $f=fopen('php://temp','w+');fwrite($f,"\xEF\xBB\xBF");fputcsv($f,$cols,';','"','');
         foreach($leads as $lead){$row=[];foreach($cols as $col){$v=$lead[$col]??'';if(is_array($v))$v=implode(', ',$v);$v=(string)$v;if(preg_match('/^[=+@\-\t\r]/u',$v))$v="'".$v;$row[]=$v;}fputcsv($f,$row,';','"','');}
