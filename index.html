@@ -130,7 +130,7 @@ if(fromApi){const i=items.indexOf(fromApi);items[i]={...fromApi,capital:['Køben
 const hash=decodeURIComponent(location.hash.replace('#','')).toUpperCase();
 selected=items.find(c=>c.cca2===hash)||items.find(c=>c.cca2==='DK')||items[0];
 choose(selected);
-el('source').innerHTML='Landefakta: <a href="https://github.com/mledoze/countries" target="_blank" rel="noopener">mledoze/countries</a> (ODbL 1.0; lokal kopi hentet 28. oktober 2026). <a href="https://github.com/mOLTRUP/Test/blob/main/data/README.md" target="_blank" rel="noopener">Datakilde og licens</a>. Kort: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap-bidragsydere</a>. Danmarks indbyggertal: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik, september 2026</a> (opdateret 9. oktober 2026). Øvrige befolkningstal hentes fortrinsvis fra <a href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank" rel="noopener">Verdensbanken (SP.POP.TOTL)</a> med referenceår. De senest hentede Verdensbankstal gemmes i browseren i op til 180 dage, så de kan vises ved midlertidige API-fejl. Hvor Verdensbanken ikke dækker et land eller område, kan REST Countries levere vejledende tal uden dokumenteret referenceår.';
+el('source').innerHTML='Landefakta: <a href="https://github.com/mledoze/countries" target="_blank" rel="noopener">mledoze/countries</a> (ODbL 1.0; lokal kopi hentet 28. oktober 2026). <a href="https://github.com/mOLTRUP/Test/blob/main/data/README.md" target="_blank" rel="noopener">Datakilde og licens</a>. Kort: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap-bidragsydere</a>. Danmarks indbyggertal: <a href="https://www.dst.dk/da/Statistik/emner/borgere/befolkning/befolkningstal" target="_blank" rel="noopener">Danmarks Statistik, september 2026</a> (opdateret 9. oktober 2026). Øvrige befolkningstal hentes fortrinsvis fra <a href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank" rel="noopener">Verdensbanken (SP.POP.TOTL)</a> med referenceår. Et fælles dateret befolkningssnapshot på GitHub indlæses først, når det findes. De senest hentede Verdensbankstal gemmes i browseren i op til 180 dage, så de kan vises ved midlertidige API-fejl. Hvor Verdensbanken ikke dækker et land eller område, kan REST Countries levere vejledende tal uden dokumenteret referenceår.';
 enrichPopulation();
 return;
 }catch(e){console.warn('Landeliste kunne ikke indlæses fra',url,e);}}
@@ -166,8 +166,27 @@ if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&Number.isSafeInteger(value)&
 if(byCode.size>=100)applyPopulation(byCode);
 }catch(e){console.info('Lokal befolkningscache er ikke tilgængelig:',e);}
 }
+async function loadSharedPopulation(){
+const controller=new AbortController();
+const timer=setTimeout(()=>controller.abort(),3500);
+try{
+const response=await fetch('./data/population-worldbank.json',{signal:controller.signal,cache:'default'});
+if(!response.ok)return;
+const snapshot=await response.json();
+if(snapshot?.indicator!=='SP.POP.TOTL'||!Array.isArray(snapshot.rows)||snapshot.rows.length<150)return;
+const byCode=new Map();
+for(const row of snapshot.rows){
+if(!Array.isArray(row)||row.length!==3)continue;
+const [code,value,year]=row;
+if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&Number.isSafeInteger(value)&&value>0&&/^\\d{4}$/.test(String(year)))byCode.set(code,{value,year:String(year)});
+}
+if(byCode.size>=150)applyPopulation(byCode);
+}catch(e){console.info('Fælles befolkningssnapshot kunne ikke indlæses:',e);}
+finally{clearTimeout(timer);}
+}
 async function enrichPopulation(){
 loadCachedPopulation();
+await loadSharedPopulation();
 const controller=new AbortController();
 const timer=setTimeout(()=>controller.abort(),6500);
 try{
