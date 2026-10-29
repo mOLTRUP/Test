@@ -230,14 +230,23 @@ final class SA_Sales {
         return array_map(function($x)use($names){return ['id'=>$x['country'],'name'=>$names[$x['country']]??$x['country'],'active'=>(int)$x['active'],'won'=>(int)$x['won'],'lost'=>(int)$x['lost'],'value'=>(float)$x['value'],'weighted'=>(float)$x['weighted']];},$rows);
     }
     private static function seller_summary() {
-        global $wpdb;$t=self::table('leads');
-        $rows=$wpdb->get_results("SELECT country,owner_id,
+        global $wpdb; $t=self::table('leads');
+        $year=(int)current_time('Y');
+        $weeks=max(1, (int)ceil(((int)current_time('z')+1)/7));
+        $weekAgo=wp_date('Y-m-d H:i:s', time()-7*DAY_IN_SECONDS);
+        $rows=$wpdb->get_results($wpdb->prepare("SELECT country,owner_id,
             SUM(CASE WHEN status NOT IN ('won','lost') THEN 1 ELSE 0 END) active,
-            SUM(CASE WHEN status='won' THEN 1 ELSE 0 END) won,
-            SUM(CASE WHEN status='lost' THEN 1 ELSE 0 END) lost,
-            SUM(CASE WHEN created_at>=DATE_SUB(NOW(),INTERVAL 7 DAY) THEN 1 ELSE 0 END) newWeek
-            FROM $t GROUP BY country,owner_id",ARRAY_A) ?: [];
-        return array_map(function($x){$u=get_user_by('id',(int)$x['owner_id']);return ['country'=>$x['country'],'name'=>$u?$u->display_name:'Ukendt','active'=>(int)$x['active'],'won'=>(int)$x['won'],'lost'=>(int)$x['lost'],'newWeek'=>(int)$x['newWeek']];},$rows);
+            SUM(CASE WHEN status='won' AND YEAR(close_date)=%d THEN 1 ELSE 0 END) won,
+            SUM(CASE WHEN status='lost' AND YEAR(close_date)=%d THEN 1 ELSE 0 END) lost,
+            SUM(CASE WHEN created_at>=%s THEN 1 ELSE 0 END) newWeek
+            FROM $t GROUP BY country,owner_id", $year, $year, $weekAgo), ARRAY_A) ?: [];
+        return array_map(function($x)use($weeks){
+            $u=get_user_by('id',(int)$x['owner_id']);
+            return ['country'=>$x['country'],'name'=>$u?$u->display_name:'Ukendt','active'=>(int)$x['active'],
+                'won'=>(int)$x['won'],'lost'=>(int)$x['lost'],'newWeek'=>(int)$x['newWeek'],
+                'wonWeekAverage'=>round((int)$x['won']/$weeks,2),
+                'lostWeekAverage'=>round((int)$x['lost']/$weeks,2)];
+        },$rows);
     }
     public static function bootstrap() {
         return ['actor'=>self::identity(wp_get_current_user(),true), 'users'=>self::users(),
