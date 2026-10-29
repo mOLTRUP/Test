@@ -1,4 +1,10 @@
-# Design- og kravgennemgang – Salgsadministration 1.2.0-beta
+## Revision 1.3 – kurver og mulige designplugins
+
+Krav RAP-05 om mønstre og udvikling vises nu som månedlige kurver baseret på oprettelsesdato og afslutningsdato. Status og aktuel vægtet værdi er stadig øjebliksbilleder, fordi data ikke indeholder historiske snapshots af værdi og sandsynlighed. Landepipeline er globalt aggregeret, men individuelle kurver vises alene for det autoriserede lead-udsnit.
+
+Undersøgte valgfri WordPress-plugins: Kadence Blocks og GenerateBlocks for sidens ramme; Adminify for WP-administrationen; wpDataTables eller Visualizer for separate grafer/tabeller. Da systemet er et uafhængigt plugin, anbefales de ikke som afhængighed i selve salgsadministrationen. Ingen plugins er installeret. 2.000-leads-grænsen, flersprog og WordPress-accepttest er fortsat åbne.
+
+# Design- og kravgennemgang – Salgsadministration 1.3.0-beta
 
 **Dato:** 29. oktober 2026  
 **Grundlag:** *Kravspecifikation for salgsstyringssystem*, version 0.9.1 af 20. oktober 2026 (6 sider), samt GitHub-kildekode til WordPress-plugin og demo.  
