@@ -220,6 +220,7 @@ const improvements=[
 const rows=[
  ['Adgang, leads og opfølgning','Kode','Individuel adgang, serverkontrol, formular, påmindelser og historik'],
  ['Rapporter og landestatistik','Kode / delvis','Filtrering og beregninger findes; kontrol på WP-staging udestår'],
+ ['Store datamængder','Delvis','Visningen henter højst 2.000 leads. Server-side rapportering/paginering skal tilføjes før bred drift'],
  ['Stamdata og udfaldsårsager','Kode','Redigerbare lande, kontorer, produkter samt årsager for vundet og tabt'],
  ['Flersproget brugerflade','Delvis','10 navngivne sprog fra kravspecifikationen; fuld oversættelse og sprog nr. 11 udestår'],
  ['Import fra Excel og CSV','Ikke klar','Importguide og datamapping mangler'],
