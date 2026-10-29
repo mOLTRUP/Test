@@ -14,6 +14,7 @@ final class SA_Sales {
     const ROLES = ['seller'=>'sa_seller', 'office'=>'sa_office', 'manager'=>'sa_manager', 'leadership'=>'sa_leadership', 'admin'=>'sa_administrator'];
     const STATES = ['new','contacted','dialog','offer','negotiation','won','lost'];
     public static function init() {
+        add_action('init', [__CLASS__, 'ensure_office_role']);
         add_action('rest_api_init', [__CLASS__, 'routes']);
         add_action('admin_menu', [__CLASS__, 'menu']);
         add_shortcode('salgsadministration', [__CLASS__, 'shortcode']);
@@ -21,6 +22,14 @@ final class SA_Sales {
         add_action('wp_login_failed', [__CLASS__, 'login_failed']);
         add_filter('wp_authenticate_user', [__CLASS__, 'check_login'], 10, 2);
         add_filter('rest_pre_serve_request', [__CLASS__, 'serve_csv'], 10, 4);
+    }
+    public static function ensure_office_role() {
+        // Existing installations may update the plugin without running the activation hook.
+        if (!get_role(self::ROLES['office'])) {
+            add_role(self::ROLES['office'], 'Salgsadmin – Kontor (læseadgang)', ['read'=>true, 'sa_access'=>true]);
+        } else {
+            get_role(self::ROLES['office'])->add_cap('sa_access');
+        }
     }
     private static function table($part) { global $wpdb; return $wpdb->prefix . 'sa_' . $part; }
     public static function activate() {
