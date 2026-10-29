@@ -18,6 +18,14 @@ Når et gyldigt sæt daterede Verdensbankstal er hentet, gemmer hjemmesiden en l
 
 Hvis Verdensbanken er utilgængelig eller mangler et land/område, forsøger siden fortsat at hente et vejledende befolkningstal fra REST Countries v3.1. **Disse reserve-tal har ikke dokumenteret referenceår og mærkes tydeligt som sådan**. Hvis begge kilder mangler tal, vises **Ikke oplyst**. Hjemmesiden må ikke opfinde indbyggertal.
 
+## Fælles befolkningssnapshot (forslag)
+
+Filen `data/population-worldbank.json` oprettes og opdateres af `scripts/update_population.py` via GitHub Actions-workflowet `.github/workflows/update-population.yml` (mandage kl. 05:15 UTC eller manuelt). Der kræves ingen API-nøgle. Den første fil findes først, når workflowet har kørt med succes.
+
+Scriptet henter de seneste **ikke-tomme** årsopgørelser fra Verdensbankens indikator `SP.POP.TOTL`. Kun gyldige landekoder fra den eksisterende lokale landeliste og positive heltal med et referenceår medtages. Hvis færre end 150 lande kan valideres, eller API-svaret er ufuldstændigt, afbrydes kørslen uden at overskrive eksisterende data. JSON-filen indeholder kilde, kildens opdateringsdato, hentningsdato og landekode, tal og referenceår for hvert land. Verdensbankens indikator er licenseret under CC BY 4.0.
+
+Hjemmesiden indlæser dette fælles snapshot efter browserens cache og inden det aktuelle API-kald. Hvis filen endnu ikke findes eller ikke kan læses, bruges den eksisterende live-API og reserveløsning uændret. **Danmarks officielle månedsopgørelse overskrives aldrig.** Snapshot er en cache af officielle årsdata, ikke en live-folketælling. Det opdateres kun automatisk, hvis GitHub Actions er aktiveret, og workflowet har rettighed til at skrive til repository.
+
 ## Kort
 
 Kort fra [OpenStreetMap](https://www.openstreetmap.org/copyright), © OpenStreetMap-bidragsydere.
