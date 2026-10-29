@@ -22,6 +22,8 @@ jobs:
         run: node --check salgsadministration/plugin/assets/app.js
       - name: Smoke-tests for visuel demo
         run: node salgsadministration/tests/smoke-node.js
+      - name: PHP-rolleniveau og validering (isolerede enhedstests)
+        run: php salgsadministration/tests/unit-php.php
       - name: Kontroller at WordPress ZIP er intakt
         run: |
           ZIP=salgsadministration/downloads/salgsadministration-wordpress-plugin.zip
