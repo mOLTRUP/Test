@@ -25,6 +25,7 @@ class WP_User {
 class FakeDb {
     public string $prefix = 'wp_';
     public mixed $duplicate = null;
+    public function insert($table, $data, $format = []) { return 1; }
     public function get_var($query) { return $this->duplicate; }
     public function prepare($query, ...$args) { return $query; }
 }
