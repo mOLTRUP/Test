@@ -1,0 +1,29 @@
+name: Salgsadministration – visuel kontrol
+on:
+  push:
+    paths:
+      - "salgsadministration/**"
+      - ".github/workflows/salgsadministration-visual.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser for responsive visual review
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Validate seller, office, manager, leadership and admin at desktop and mobile widths
+        run: node salgsadministration/tests/visual-playwright.cjs
+      - name: Save screenshot evidence even when checks fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: salgsadministration-visual-review
+          path: salgsadministration/screenshots/*.png
+          if-no-files-found: warn
+          retention-days: 14
