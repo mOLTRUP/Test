@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Salgsadministration
  * Description: Selvstændig lead- og pipelinestyring med rollebaseret adgang, opfølgning, rapporter og revisionslog.
- * Version: 1.1.0-beta
+ * Version: 1.2.0-beta
  * Requires at least: 6.3
  * Requires PHP: 8.0
  * Text Domain: salgsadministration
@@ -128,8 +128,8 @@ final class SA_Sales {
     public static function shortcode() {
         if (!is_user_logged_in()) return '<p>Log ind for at bruge Salgsadministration. <a href="'.esc_url(wp_login_url(get_permalink())).'">Log ind</a></p>';
         if (!current_user_can('sa_access') || self::disabled(get_current_user_id())) return '<p>Du har ikke adgang til Salgsadministration.</p>';
-        wp_enqueue_style('sa-interface', plugins_url('assets/app.css',__FILE__), [], '1.1.0-beta');
-        wp_enqueue_script('sa-interface', plugins_url('assets/app.js',__FILE__), [], '1.1.0-beta', true);
+        wp_enqueue_style('sa-interface', plugins_url('assets/app.css',__FILE__), [], '1.2.0-beta');
+        wp_enqueue_script('sa-interface', plugins_url('assets/app.js',__FILE__), [], '1.2.0-beta', true);
         wp_add_inline_script('sa-interface','window.SA_CONFIG='.wp_json_encode([
             'mode'=>'wp', 'rest'=>esc_url_raw(rest_url(self::NS.'/')),
             'nonce'=>wp_create_nonce('wp_rest'), 'loginUrl'=>wp_login_url()
