@@ -209,7 +209,7 @@ panel('Hvem kan se og ændre hvad?',`<div class="sa-panel-body"><p>${esc(hint('r
 const renderRelease=()=>{
 const improvements=[
  ['1.2.0-beta','Kompakte dashboardkort og korte tabeller, grafer for pipeline/salgsfaser/produkter/lande og seks måneders salgshistorik'],
- ['1.2.0-beta','Opfølgningslisten tager nu højde for reminder-dage; detaljer i rapporter og stamdata kan foldes ud'],
+ ['1.2.0-beta','Opfølgninger viser nu også klokkeslæt og tager højde for reminder-dage; rapporter og stamdata kan foldes ud'],
  ['1.1.0-beta','Personlige forsider for sælgere, kontoransatte, landechefer, ledelse og administratorer samt forklaringer af salgsfaser og felter'],
  ['1.1.0-beta','Ny kontorrolle med serverbegrænset læseadgang og særskilt kontoroverblik'],
  ['1.0.0-beta.2','Årsager til vundet og tabt kan redigeres som stamdata; API afviser ugyldige årsager'],
