@@ -1,6 +1,15 @@
+## Version 1.3 – kurver i stedet for bjælker (29.10.2026)
+
+- Månedlige SVG-kurver for oprettede, vundne og tabte leads med valg mellem 6 og 12 måneder.
+- Sælger ser nye leads pr. produkt; kontor ser kurver pr. sælger; landechef pr. kontor; ledelse og administrator pr. land.
+- Statusfordeling og vægtet pipeline forbliver aktuelle nøgletal, ikke fabrikerede historiske kurver.
+- Global landepipeline viser de aggregerede totaler og en tydeligt mærket kurve kun for personligt tilgængelige leads.
+- Intet eksternt grafplugin er nødvendigt. Valgfrie designplugins: Kadence Blocks til WordPress-sidens ramme, Adminify til selve WordPress-administrationen. wpDataTables eller Visualizer kan bruges til særskilte datarapporter, men er ikke koblet på brugerfølsomme leads.
+- Plugin-forslagene er vurderet, ikke installeret. For fulde historiske værdikurver mangler pipeline-snapshots i datamodellen.
+
 # Salgsadministration – WordPress + GitHub demo
 
-**Version:** 1.2.0-beta · 29. oktober 2026 · **Status: prototype / ikke produktionsgodkendt**
+**Version:** 1.3.0-beta · 29. oktober 2026 · **Status: prototype / ikke produktionsgodkendt**
 
 Udviklet ud fra `Kravspecifikation_salgsstyringssystem.pdf` v0.9.1 (20.10.2026).
 
