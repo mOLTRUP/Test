@@ -15,6 +15,18 @@ Test må udføres på særskilt WordPress-staging med fiktive leads. Registrér 
 | ACC-09 | Vælg alle 10 navngivne sprog og afklar sprog nr. 11. Gennemgå menu, formularer, validering og valg. | Intet mangler, ingen danske fallback-tekster på andre sprog. **Ikke opfyldt i beta.** |
 | ACC-10 | Deaktiver bruger og afprøv nyt login/REST; log ind som leder. | Login afvises; leads og audit bevares. |
 
+## Ekstra tests for 1.2
+
+| Test | Handling | Forventning |
+|---|---|---|
+| UX-01 | Åbn sælgerens forside ved desktop og mobil. | Viser mindre KPI-kort, salgstrin/produktgrafer og korte tabeller uden fejl. |
+| UX-02 | Skift mellem kontor, landechef og ledelse. | Grafer bruger kun autoriserede leads; aggregeret landepipeline viser ingen personlige oplysninger. |
+| UX-03 | Filtrér rapport efter land, sælger, produkt, status, dato og sandsynlighed. | Grafiske nøgletal og detaljetabeller er baseret på de samme filtrerede leads. |
+| UX-04 | Registrér aktive leads med reminder-dage 0, 2 og 7 før opfølgning. | Forsinkede, aktiverede og senere opfølgninger opdeles korrekt. |
+| UX-05 | Gennemgå diagrammer med nul leads og lange landetitler, kontornavne eller kundelister. | Ingen layoutbrud eller skjult information; søjler har teksttal. |
+| UX-06 | Åbn detaljerede rapporter og administratorens stamdata-sektion. | Sektioner er foldet sammen som standard og kan åbnes med mus/tastatur. |
+| UX-07 | Opret mere end 2.000 autoriserede leads i en staging DB. | Verificér at eksisterende beta har en kendt begrænsning; krav om ny serverbaseret pagination/aggregater registreres før godkendelse. |
+
 ## Ekstra tests for 1.1
 
 | Test | Fremgangsmåde | Forventning |
