@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Salgsadministration
  * Description: Selvstændig lead- og pipelinestyring med rollebaseret adgang, opfølgning, rapporter og revisionslog.
- * Version: 1.0.0-beta.2
+ * Version: 1.1.0-beta
  * Requires at least: 6.3
  * Requires PHP: 8.0
  * Text Domain: salgsadministration
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) { exit; }
 
 final class SA_Sales {
     const NS = 'salgsadmin/v1';
-    const ROLES = ['seller'=>'sa_seller', 'manager'=>'sa_manager', 'leadership'=>'sa_leadership', 'admin'=>'sa_administrator'];
+    const ROLES = ['seller'=>'sa_seller', 'office'=>'sa_office', 'manager'=>'sa_manager', 'leadership'=>'sa_leadership', 'admin'=>'sa_administrator'];
     const STATES = ['new','contacted','dialog','offer','negotiation','won','lost'];
     public static function init() {
         add_action('rest_api_init', [__CLASS__, 'routes']);
@@ -97,7 +97,7 @@ final class SA_Sales {
         if (!$u) $u=wp_get_current_user();
         if (!$u || !$u->exists()) return 'guest';
         if (in_array('administrator', (array)$u->roles, true) || in_array('sa_administrator', (array)$u->roles, true)) return 'admin';
-        foreach (['manager','leadership','seller'] as $name) if (in_array(self::ROLES[$name], (array)$u->roles, true)) return $name;
+        foreach (['manager','office','leadership','seller'] as $name) if (in_array(self::ROLES[$name], (array)$u->roles, true)) return $name;
         return 'guest';
     }
     private static function disabled($id) { return (bool)get_user_meta($id,'sa_disabled',true); }
@@ -119,8 +119,8 @@ final class SA_Sales {
     public static function shortcode() {
         if (!is_user_logged_in()) return '<p>Log ind for at bruge Salgsadministration. <a href="'.esc_url(wp_login_url(get_permalink())).'">Log ind</a></p>';
         if (!current_user_can('sa_access') || self::disabled(get_current_user_id())) return '<p>Du har ikke adgang til Salgsadministration.</p>';
-        wp_enqueue_style('sa-interface', plugins_url('assets/app.css',__FILE__), [], '1.0.0-beta.2');
-        wp_enqueue_script('sa-interface', plugins_url('assets/app.js',__FILE__), [], '1.0.0-beta.2', true);
+        wp_enqueue_style('sa-interface', plugins_url('assets/app.css',__FILE__), [], '1.1.0-beta');
+        wp_enqueue_script('sa-interface', plugins_url('assets/app.js',__FILE__), [], '1.1.0-beta', true);
         wp_add_inline_script('sa-interface','window.SA_CONFIG='.wp_json_encode([
             'mode'=>'wp', 'rest'=>esc_url_raw(rest_url(self::NS.'/')),
             'nonce'=>wp_create_nonce('wp_rest'), 'loginUrl'=>wp_login_url()
@@ -175,9 +175,9 @@ final class SA_Sales {
         $user=$user?:wp_get_current_user();$role=self::role($user);
         if ($role==='admin'||$role==='leadership') return ['1=1',[]];
         if ($role==='seller') return ['owner_id=%d',[(int)$user->ID]];
-        if ($role==='manager') {
+        if ($role==='manager' || $role==='office') {
             $a=self::areas($user->ID);$where=[];$params=[];
-            if ($a['countries']) {$where[]='country IN ('.implode(',',array_fill(0,count($a['countries']),'%s')).')';$params=array_merge($params,$a['countries']);}
+            if ($role==='manager' && $a['countries']) {$where[]='country IN ('.implode(',',array_fill(0,count($a['countries']),'%s')).')';$params=array_merge($params,$a['countries']);}
             if ($a['offices']) {$where[]="CONCAT(country,'|',office) IN (".implode(',',array_fill(0,count($a['offices']),'%s')).')';$params=array_merge($params,$a['offices']);}
             return $where?['('.implode(' OR ',$where).')',$params]:['1=0',[]];
         }
@@ -205,9 +205,9 @@ final class SA_Sales {
         if ($role==='admin'||$role==='leadership') return true;
         if ($role==='seller') return (int)$lead['owner_id']===get_current_user_id();
         $a=self::areas(get_current_user_id());
-        return in_array($lead['country'],$a['countries'],true)||in_array($lead['country'].'|'.$lead['office'],$a['offices'],true);
+        return ($role==='manager' && in_array($lead['country'],$a['countries'],true)) || in_array($lead['country'].'|'.$lead['office'],$a['offices'],true);
     }
-    private static function can_write($lead) { return self::role()!=='leadership' && self::can_read($lead); }
+    private static function can_write($lead) { return in_array(self::role(),['seller','manager','admin'],true) && self::can_read($lead); }
     private static function raw_lead($id) {
         global $wpdb; return $wpdb->get_row($wpdb->prepare('SELECT * FROM '.self::table('leads').' WHERE id=%d',(int)$id),ARRAY_A);
     }
@@ -280,7 +280,7 @@ final class SA_Sales {
             $test=['country'=>$v['country'],'office'=>$v['office'],'owner_id'=>$v['owner_id']];
             if (!self::can_read($test)) return self::forbidden();
         }
-        if (self::role()==='leadership') return self::forbidden();
+        if (in_array(self::role(),['leadership','office'],true)) return self::forbidden();
         if ($before && (int)$before['owner_id']!==$v['owner_id'] && !$v['transfer_reason']) return new WP_Error('sa_transfer','Overførsel kræver en begrundelse.',['status'=>422]);
         if ($is_closed && !in_array($v['outcome_reason'], $lists['outcomeReasons'][$v['status']] ?? [], true))
             return new WP_Error('sa_outcome_invalid','Vælg en gyldig årsag fra listen for vundet eller tabt.',['status'=>422]);
@@ -304,7 +304,7 @@ final class SA_Sales {
         return $v;
     }
     public static function create_lead($r) {
-        if (self::role()==='leadership') return self::forbidden();
+        if (in_array(self::role(),['leadership','office'],true)) return self::forbidden();
         $v=self::validate($r);if (is_wp_error($v))return $v;
         global $wpdb;$v['created_by']=get_current_user_id();$v['updated_by']=$v['created_by'];$v['created_at']=current_time('mysql');$v['updated_at']=$v['created_at'];
         $ok=$wpdb->insert(self::table('leads'),$v);
