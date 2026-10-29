@@ -15,6 +15,16 @@ Test må udføres på særskilt WordPress-staging med fiktive leads. Registrér 
 | ACC-09 | Vælg alle 10 navngivne sprog og afklar sprog nr. 11. Gennemgå menu, formularer, validering og valg. | Intet mangler, ingen danske fallback-tekster på andre sprog. **Ikke opfyldt i beta.** |
 | ACC-10 | Deaktiver bruger og afprøv nyt login/REST; log ind som leder. | Login afvises; leads og audit bevares. |
 
+## Ekstra tests for beta.2
+
+| Test | Fremgangsmåde | Forventning |
+|---|---|---|
+| EXT-01 | Som administrator: ændr årsagslister for vundet og tabt, og gem. | Alle nye valglister vises i formularen, og ugyldige årsager afvises også af API. |
+| EXT-02 | Gennemfør flere afslutninger i indeværende år og åbn landeniveau. | Årets vundet/tabt og gennemsnit pr. forløben uge stemmer med testdata. |
+| EXT-03 | Integrér pluginet via `[salgsadministration]` i et fremmed WordPress-tema. | Resten af WordPress-siden beholder sin egen CSS. |
+| EXT-04 | Hent plugin-ZIP og kontrollér installation, aktivering og afinstallation på staging. | Plugin aktiveres uden PHP-fejl og efterlader ikke forsøg med virkelige kundeoplysninger. |
+| EXT-05 | Vælg fanen Udvikling & kontrol i demoen og WordPress. | Forbedringer, mangler og ikke-godkendte tests står tydeligt i brugerfladen. |
+
 Ekstra sikkerhedstests: omgå JavaScript-filtre, ændr `owner_id` i POST-body, falsk `country`/`office`, manglende nonce, CSV-formelinjekode, direkte REST-kald som uautoriseret rolle, WordPress-administrator under brugerstyring, ugyldigt email/VAT/link og stor datamængde.
 
-**Ingen test er påstået udført på staging i denne levering.**
+**Automatiseret kodekontrol**: PHP- og JS-syntaks, Node-smoketests, ZIP-integritet og CSS-afgrænsning gennemføres i GitHub Actions. **Ingen test er påstået udført på WordPress-staging i denne levering.**
