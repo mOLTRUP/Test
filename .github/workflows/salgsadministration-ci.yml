@@ -22,3 +22,13 @@ jobs:
         run: node --check salgsadministration/plugin/assets/app.js
       - name: Smoke-tests for visuel demo
         run: node salgsadministration/tests/smoke-node.js
+      - name: Kontroller at WordPress ZIP er intakt
+        run: |
+          ZIP=salgsadministration/downloads/salgsadministration-wordpress-plugin.zip
+          unzip -t "$ZIP"
+          unzip -p "$ZIP" salgsadministration/salgsadministration.php | cmp - salgsadministration/plugin/salgsadministration.php
+          unzip -p "$ZIP" salgsadministration/assets/app.js | cmp - salgsadministration/plugin/assets/app.js
+          unzip -p "$ZIP" salgsadministration/assets/app.css | cmp - salgsadministration/plugin/assets/app.css
+      - name: Kontroller at CSS ikke ændrer WordPress globalt
+        run: |
+          grep -q '^#sa-app{' salgsadministration/plugin/assets/app.css
