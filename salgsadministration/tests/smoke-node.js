@@ -1,5 +1,5 @@
 const fs=require('fs'), vm=require('vm'), assert=require('assert');
-const app={innerHTML:'', addEventListener:(type,handler)=>{events['app:'+type]=handler}};
+const app={innerHTML:'', addEventListener:(type,handler)=>{events['app:'+type]=handler},insertAdjacentHTML:(pos,html)=>popup.push(html)};
 const events={};const popup=[];
 const document={getElementById:id=>id==='sa-app'?app:null,addEventListener:(k,fn)=>{const orig=events[k];events[k]=orig?(e=>{orig(e);fn(e)}):fn},body:{insertAdjacentHTML:(pos,html)=>popup.push(html),append:()=>{}},querySelector:()=>null,querySelectorAll:()=>[]};
 const storage=new Map();const localStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
