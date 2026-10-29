@@ -183,7 +183,7 @@ const renderFollowups=()=>{
  let stale=ls.filter(l=>Date.parse(l.updated_at)<Date.now()-30*86400000);
  return intro(t('activity'),'Forsinkede, aktuelle og kommende opfølgninger. Påmindelser tager hensyn til antal dage før opfølgningen.',newButton())+
  `<div class="sa-quick-stats"><div><strong>${due.length}</strong>Forsinkede</div><div><strong>${now.length}</strong>Påmindelse aktiveret</div><div><strong>${next.length}</strong>Senere opfølgning</div><div><strong>${stale.length}</strong>Uden aktivitet i 30 dage</div></div>`+
- `<div class="sa-dash-grid sa-dash-tables">${panel('Forsinkede · '+due.length,table(due))}${panel('Påmindelser · '+now.length,table(now))}</div>`+
+ `<div class="sa-dash-grid sa-dash-tables">${panel('Forsinkede · '+due.length,compactTable(due,10)+(due.length>10?'<details class="sa-expand sa-inline-more"><summary>Vis alle forsinkede</summary>'+table(due)+'</details>':''))}${panel('Påmindelser · '+now.length,compactTable(now,10)+(now.length>10?'<details class="sa-expand sa-inline-more"><summary>Vis alle påmindelser</summary>'+table(now)+'</details>':''))}</div>`+
  `<details class="sa-expand"><summary>Kommende opfølgninger · ${next.length}</summary>${panel('Kommende opfølgninger',table(next))}</details>`+
  `<details class="sa-expand"><summary>Ingen aktivitet i 30 dage · ${stale.length}</summary>${panel('Inaktive leads',table(stale))}</details>`;
 };
