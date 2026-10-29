@@ -1,4 +1,4 @@
-# Kravstatus – foreløbig udviklingsopgørelse (ikke acceptgodkendt)
+# Kravstatus – version 1.0.0-beta.2 (ikke acceptgodkendt)
 
 **Statusnøgle:** Kode = implementeret i beta-kildekode, **ikke** testet i produktions-WordPress; Delvis = dele eller prototype; Mangler = ikke implementeret.
 
@@ -14,13 +14,13 @@
 | ADG-08 | BØR | Kode | Overførsel med årsag, i revisionslog |
 | ADG-09 | BØR | Kode | Aktivt dublet-VAT blokeres på serveren |
 | AGD-10 | BØR | Kode | Aggregeret landepipeline til alle med adgang |
-| DAT-01–17 | SKAL | Kode | Felter, datatyper og validering; datoer og systemmetadata; fritekstnoter overskrives ved redigering |
+| DAT-01–17 | SKAL | Kode | Felter, validering, datoer og metadata; årsager for vundet/tabt vedligeholdes som stamdata. Fritekstnoter overskrives ved redigering |
 | FUN-01–08 | SKAL | Kode | CRUD uden sletning; reminderoversigt, udfald og revisionslog |
 | FUN-09 | BØR | Kode | Overførsel kræver begrundelse |
 | FUN-10 | BØR | Delvis | HTTPS-link til bilag; ikke filupload |
 | RAP-01 | SKAL | Delvis | UI-filtre på alle dimensioner i pipeline og rapporter; periode er oprettelsesdato, og stort datavolumen kræver server-paginering |
 | RAP-02–03 | SKAL | Kode | Aktive antal, EUR og værdi × sandsynlighed |
-| RAP-04–05 | SKAL | Kode | Rapporttabeller pr. sælger, kontor, land og produkt med konvertering og vægtet værdi; validering på WP-staging udestår |
+| RAP-04–05 | SKAL | Kode | Rapporttabeller pr. sælger, kontor, land og produkt; vundet/tabt i år og ugentlige gennemsnit pr. sælger; validering på WP-staging udestår |
 | RAP-06 | BØR | Kode | CSV eksport, områdeafgrænset på serveren |
 | RAP-07 | BØR | Delvis | Forfald og inaktivitet; leads uden dato afvises, hvis aktive |
 | UI-01–02 | SKAL | Kode | Browser, responsiv formular og validering |
@@ -31,6 +31,14 @@
 | Backup | Driftskrav | Mangler | Løses i hosting; kræver dokumenteret gendannelsestest |
 | CSV-import/IMP-0x | Migrering | Mangler | Importassistent og mapping skal specificeres med landecheferne |
 | ACC-01–10 | Accept | Ikke godkendt | Skal gennemføres i faktisk WordPress med repræsentative testdata |
+
+## Udført udviklingskontrol
+
+- PHP-syntaks og JavaScript-syntaks kontrolleres af GitHub Actions ved ændringer.
+- Node-smoketest af visuel demo omfatter egne leads, landeoversigt, formular, udviklingsstatus og årsagslister.
+- Den installerbare plugin-ZIP testes som ZIP og sammenholdes byte-for-byte med PHP/JS/CSS-kilde.
+- CSS er scoped, så pluginet ikke globalt formaterer en anden WordPress-hjemmeside.
+- **Ingen fuld WordPress-integrationstest er gennemført**, og ACC-01–10 er derfor ikke godkendt.
 
 ## Vigtige uklarheder
 
