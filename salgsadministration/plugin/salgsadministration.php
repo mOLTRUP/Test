@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Salgsadministration
  * Description: Selvstændig lead- og pipelinestyring med rollebaseret adgang, opfølgning, rapporter og revisionslog.
- * Version: 1.0.0-beta.1
+ * Version: 1.0.0-beta.2
  * Requires at least: 6.3
  * Requires PHP: 8.0
  * Text Domain: salgsadministration
@@ -82,8 +82,16 @@ final class SA_Sales {
         if (get_option('sa_lists') === false) add_option('sa_lists', [
             'countries'=>[['DK','Danmark'],['DE','Tyskland'],['PL','Polen'],['FR','Frankrig'],['IT','Italien'],['RO','Rumænien'],['BG','Bulgarien'],['SK','Slovakiet'],['LT','Litauen'],['GB','Storbritannien'],['NL','Nederlandene']],
             'offices'=>['DK'=>['Padborg','København'],'DE'=>['Hamborg','Berlin'],'PL'=>['Warszawa','Poznań'],'FR'=>['Paris','Lyon'],'IT'=>['Milano','Rom'],'RO'=>['Bukarest'],'BG'=>['Sofia'],'SK'=>['Bratislava'],'LT'=>['Vilnius'],'GB'=>['London'],'NL'=>['Rotterdam']],
-            'products'=>['Moms','Vejskat','Juridisk hjælp','Færge']
+            'products'=>['Moms','Vejskat','Juridisk hjælp','Færge'],
+            'outcomeReasons'=>['won'=>['Pris','Produktmatch','Relation','Service','Andet'], 'lost'=>['Pris','Konkurrent','Betalingsbetingelser','Depositum/bankgaranti','Intet behov','Timing','Ingen respons','Andet']]
         ], '', false);
+    }
+    private static function lists() {
+        $lists=get_option('sa_lists',[]);
+        if (!is_array($lists)) $lists=[];
+        $defaults=['won'=>['Pris','Produktmatch','Relation','Service','Andet'], 'lost'=>['Pris','Konkurrent','Betalingsbetingelser','Depositum/bankgaranti','Intet behov','Timing','Ingen respons','Andet']];
+        foreach ($defaults as $status=>$reasons) if (empty($lists['outcomeReasons'][$status])) $lists['outcomeReasons'][$status]=$reasons;
+        return $lists;
     }
     private static function role($u=null) {
         if (!$u) $u=wp_get_current_user();
@@ -218,7 +226,7 @@ final class SA_Sales {
             SUM(CASE WHEN status NOT IN ('won','lost') THEN amount_eur ELSE 0 END) value,
             SUM(CASE WHEN status NOT IN ('won','lost') THEN amount_eur*probability/100 ELSE 0 END) weighted
             FROM $t GROUP BY country",$y,$y),ARRAY_A) ?: [];
-        $options=get_option('sa_lists',[]);$names=[];foreach(($options['countries']??[]) as $p) $names[$p[0]]=$p[1];
+        $options=self::lists();$names=[];foreach(($options['countries']??[]) as $p) $names[$p[0]]=$p[1];
         return array_map(function($x)use($names){return ['id'=>$x['country'],'name'=>$names[$x['country']]??$x['country'],'active'=>(int)$x['active'],'won'=>(int)$x['won'],'lost'=>(int)$x['lost'],'value'=>(float)$x['value'],'weighted'=>(float)$x['weighted']];},$rows);
     }
     private static function seller_summary() {
@@ -233,13 +241,13 @@ final class SA_Sales {
     }
     public static function bootstrap() {
         return ['actor'=>self::identity(wp_get_current_user(),true), 'users'=>self::users(),
-            'lists'=>get_option('sa_lists',[]),'leads'=>self::fetch_leads(),
+            'lists'=>self::lists(),'leads'=>self::fetch_leads(),
             'countrySummary'=>self::summary(),'sellerSummary'=>self::seller_summary()];
     }
     private static function is_active($s) {return !in_array($s,['won','lost'],true);}
     private static function valid_date($s,$format) {if (!$s) return false;$dt=DateTimeImmutable::createFromFormat('!'.$format,$s,wp_timezone());return $dt && $dt->format($format)===$s;}
     private static function validate($r,$before=null) {
-        $lists=get_option('sa_lists',[]);$input=$r->get_json_params();if (!is_array($input)) $input=[];
+        $lists=self::lists();$input=$r->get_json_params();if (!is_array($input)) $input=[];
         $v=[];$texts=['company','vat','country','office','contact','phone','email','status','followup_reason','notes','outcome_reason','outcome_note','transfer_reason'];
         foreach($texts as $field) $v[$field]=sanitize_textarea_field((string)($input[$field]??''));
         $v['attachment_url']=esc_url_raw((string)($input['attachment_url']??''));
@@ -265,6 +273,8 @@ final class SA_Sales {
         }
         if (self::role()==='leadership') return self::forbidden();
         if ($before && (int)$before['owner_id']!==$v['owner_id'] && !$v['transfer_reason']) return new WP_Error('sa_transfer','Overførsel kræver en begrundelse.',['status'=>422]);
+        if ($is_closed && !in_array($v['outcome_reason'], $lists['outcomeReasons'][$v['status']] ?? [], true))
+            return new WP_Error('sa_outcome_invalid','Vælg en gyldig årsag fra listen for vundet eller tabt.',['status'=>422]);
         if (!$is_closed) {
             if (!self::valid_date($v['next_followup'],'Y-m-d\TH:i')) return new WP_Error('sa_followup','Aktivt lead kræver en gyldig opfølgningsdato og tid.',['status'=>422]);
             if (substr($v['next_followup'],0,10)<current_time('Y-m-d')&&!$v['followup_reason'])return new WP_Error('sa_followup_past','Tidligere opfølgning kræver en begrundelse.',['status'=>422]);
@@ -321,7 +331,16 @@ final class SA_Sales {
         $offices=[];foreach(($p['offices']??[]) as $c=>$a){$c=strtoupper(sanitize_key($c));$offices[$c]=array_values(array_unique(array_filter(array_map('sanitize_text_field',(array)$a))));}
         $products=array_values(array_unique(array_filter(array_map('sanitize_text_field',(array)($p['products']??[])))));
         if (!$countries||!$products)return new WP_Error('sa_lists','Angiv mindst et land og et produkt.',['status'=>422]);
-        update_option('sa_lists',['countries'=>$countries,'offices'=>$offices,'products'=>$products],false);
+        $inputReasons=$p['outcomeReasons']??[];
+        if (!is_array($inputReasons)) return new WP_Error('sa_lists','Ugyldige årsagslister.',['status'=>422]);
+        $reasons=[];
+        foreach (['won','lost'] as $state) {
+            $items=$inputReasons[$state]??self::lists()['outcomeReasons'][$state];
+            if (!is_array($items)) return new WP_Error('sa_lists','Ugyldig årsagsliste for '.$state,['status'=>422]);
+            $reasons[$state]=array_values(array_unique(array_filter(array_map('sanitize_text_field',$items))));
+            if (!$reasons[$state]) return new WP_Error('sa_lists','Årsagslisten kan ikke være tom.',['status'=>422]);
+        }
+        update_option('sa_lists',['countries'=>$countries,'offices'=>$offices,'products'=>$products,'outcomeReasons'=>$reasons],false);
         self::log(0,get_current_user_id(),'lists_updated',['countries'=>count($countries),'products'=>count($products)]);
         return ['ok'=>true];
     }
@@ -331,7 +350,7 @@ final class SA_Sales {
         $lang=sanitize_key($a['lang']??'da');if(!in_array($lang,['da','pl','en','fr','de','it','ro','bg','sk','lt'],true))$lang='da';
         $countries=array_values(array_unique(array_map('strtoupper',array_map('sanitize_key',(array)($a['countries']??[])))));
         $offices=array_values(array_unique(array_map('sanitize_text_field',(array)($a['offices']??[]))));
-        $available=get_option('sa_lists',[]);$valid=array_column($available['countries']??[],0);
+        $available=self::lists();$valid=array_column($available['countries']??[],0);
         if(array_diff($countries,$valid))return new WP_Error('sa_area','Et tildelt land findes ikke i stamdata.',['status'=>422]);
         foreach($offices as $co){$parts=explode('|',$co,2);if(count($parts)!==2||!in_array($parts[1],$available['offices'][$parts[0]]??[],true))return new WP_Error('sa_area','Ugyldig kontortildeling: '.$co,['status'=>422]);}
         return ['name'=>$name,'email'=>$email,'role'=>$role,'lang'=>$lang,'countries'=>$countries,'offices'=>$offices,'disabled'=>!empty($a['disabled'])];
