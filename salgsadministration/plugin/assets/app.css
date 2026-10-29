@@ -28,3 +28,78 @@
  .sa-help-grid{grid-template-columns:1fr}
  .sa-quicklinks .sa-btn{flex:1 1 44%}
 }
+
+/* 1.2 – kompakt informationshierarki og grafer */
+#sa-app .sa-sidebar{width:232px}
+#sa-app .sa-content{padding:20px 25px 34px;max-width:1540px}
+#sa-app .sa-page-head{margin-bottom:13px;gap:16px}
+#sa-app .sa-page-head h1{font-size:25px;letter-spacing:-.5px;margin-bottom:4px}
+#sa-app .sa-page-head .sa-eyebrow{margin-bottom:5px}
+#sa-app .sa-subtitle{line-height:1.45}
+#sa-app .sa-topbar{height:58px;padding:0 25px}
+#sa-app .sa-demo-banner{padding:8px 12px;margin-bottom:11px;font-size:11px}
+#sa-app .sa-metrics{gap:11px;margin:11px 0 14px}
+#sa-app .sa-metric{padding:13px 15px;min-width:0}
+#sa-app .sa-metric-top{min-height:22px;gap:7px}
+#sa-app .sa-metric-value{font-size:23px;letter-spacing:-.5px;margin:8px 0 4px;white-space:normal;overflow-wrap:anywhere}
+#sa-app .sa-metric-icon{width:29px;height:29px;font-size:15px}
+#sa-app .sa-metric-hint{font-size:10px;line-height:1.35}
+#sa-app .sa-panel{margin-bottom:14px;min-width:0}
+#sa-app .sa-panel-head{padding:13px 16px}
+#sa-app .sa-panel-head h2{font-size:13px}
+#sa-app .sa-panel-body{padding:13px 16px}
+#sa-app .sa-table td{padding:9px 12px;font-size:11px}
+#sa-app .sa-table th{padding:10px 12px;font-size:10px}
+#sa-app .sa-table-wrap{max-width:100%}
+#sa-app .sa-quicklinks{margin:5px 0 14px;gap:7px}
+#sa-app .sa-quicklinks .sa-btn{padding:8px 12px}
+#sa-app .sa-dash-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin:0 0 13px}
+#sa-app .sa-dash-grid>.sa-panel{margin:0;min-width:0}
+#sa-app .sa-bars{display:grid;gap:13px;min-height:115px;padding:5px 0}
+#sa-app .sa-bar-row{display:grid;grid-template-columns:minmax(85px,125px) minmax(50px,1fr) minmax(52px,86px);gap:10px;align-items:center}
+#sa-app .sa-bar-label{font-size:11px;color:#52677c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#sa-app .sa-bar-track{height:10px;border-radius:8px;background:#ecf2f8;overflow:hidden}
+#sa-app .sa-bar-fill{display:block;height:100%;background:#2b81c4;border-radius:8px;min-width:2px}
+#sa-app .sa-bar-fill.sa-bar-win{background:#318b64}
+#sa-app .sa-bar-fill.sa-bar-loss{background:#c56b6b}
+#sa-app .sa-bar-value{text-align:right;font-size:11px;color:#2c4c69;font-weight:700;white-space:nowrap}
+#sa-app .sa-graph-empty{margin:6px 0;font-size:12px}
+#sa-app .sa-trend{padding-top:4px}
+#sa-app .sa-trend-legend{display:flex;gap:15px;flex-wrap:wrap;color:#6d8194;font-size:10px;margin-bottom:11px}
+#sa-app .sa-trend-legend span:before{content:"";display:inline-block;width:9px;height:9px;margin-right:5px;border-radius:2px;background:#2b81c4}
+#sa-app .sa-trend-legend .won:before{background:#318b64}
+#sa-app .sa-trend-legend .lost:before{background:#c56b6b}
+#sa-app .sa-trend-chart{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:11px;height:148px}
+#sa-app .sa-month{min-width:0;display:flex;flex-direction:column;align-items:center;gap:7px}
+#sa-app .sa-month-bars{height:122px;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:3px;border-bottom:1px solid #dae5ef}
+#sa-app .sa-month-bars span{width:17px;max-width:28%;min-height:0;background:#2b81c4;border-radius:3px 3px 0 0}
+#sa-app .sa-month-bars .won{background:#318b64}
+#sa-app .sa-month-bars .lost{background:#c56b6b}
+#sa-app .sa-month small{font-size:9px;color:#718496;text-align:center;white-space:nowrap}
+#sa-app .sa-graph-foot{font-size:10px;color:#8292a3;margin:12px 0 0}
+#sa-app .sa-table-compact{min-width:0;table-layout:fixed}
+#sa-app .sa-table-compact th:nth-child(1){width:34%}
+#sa-app .sa-table-compact th:nth-child(2){width:23%}
+#sa-app .sa-table-compact th:nth-child(3){width:22%}
+#sa-app .sa-table-compact th:nth-child(4){width:21%}
+#sa-app .sa-table-compact td{white-space:normal;word-break:normal;padding:10px 10px}
+#sa-app .sa-table-compact td strong{display:block;overflow:hidden;text-overflow:ellipsis}
+#sa-app .sa-table-compact td small{display:block;color:#8aa0b4;font-size:10px;margin-top:2px}
+#sa-app .sa-quick-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 16px}
+#sa-app .sa-quick-stats>div{background:#fff;border:1px solid #e3eaf1;border-radius:9px;padding:11px 13px;display:flex;flex-direction:column;gap:4px;color:#6f8499;font-size:11px}
+#sa-app .sa-quick-stats strong{font-size:22px;color:#163d61;line-height:1.1}
+#sa-app .sa-expand{background:#fff;border:1px solid #e2eaf2;border-radius:10px;margin:0 0 13px;padding:0;overflow:hidden}
+#sa-app .sa-expand>summary{cursor:pointer;list-style:none;padding:14px 18px;font-size:12px;font-weight:750;color:#245c89;display:flex;align-items:center;justify-content:space-between;gap:10px}
+#sa-app .sa-expand>summary::-webkit-details-marker{display:none}
+#sa-app .sa-expand>summary:after{content:"▾";font-size:14px}
+#sa-app .sa-expand[open]>summary:after{content:"▴"}
+#sa-app .sa-expand[open]>summary{border-bottom:1px solid #ebf0f6}
+#sa-app .sa-expand>.sa-panel{border:0;border-radius:0;box-shadow:none;margin:0}
+#sa-app .sa-expand .sa-explain{margin:12px}
+#sa-app .sa-filters{padding:10px 13px;gap:7px}
+#sa-app .sa-filter{padding:8px 9px;min-width:116px;font-size:11px}
+#sa-app .sa-filter.search{min-width:185px}
+@media(max-width:1160px){#sa-app .sa-bar-row{grid-template-columns:minmax(60px,95px) minmax(30px,1fr) minmax(50px,75px);gap:6px}#sa-app .sa-dash-grid{gap:10px}}
+@media(max-width:950px){#sa-app .sa-sidebar{width:71px}#sa-app .sa-dash-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){#sa-app .sa-dash-grid{grid-template-columns:1fr}#sa-app .sa-quick-stats{grid-template-columns:repeat(2,1fr)}#sa-app .sa-content{padding:14px 13px 28px}#sa-app .sa-page-head h1{font-size:22px}}
+@media(max-width:600px){#sa-app .sa-sidebar{width:100%}#sa-app .sa-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}#sa-app .sa-table-compact{min-width:420px}#sa-app .sa-bar-row{grid-template-columns:minmax(90px,120px) minmax(0,1fr) minmax(55px,90px)}#sa-app .sa-demo-banner{display:block}#sa-app .sa-content{padding:13px 11px 26px}}
