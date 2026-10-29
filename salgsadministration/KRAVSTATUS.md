@@ -1,4 +1,4 @@
-# Kravstatus – version 1.0.0-beta.2 (ikke acceptgodkendt)
+# Kravstatus – version 1.1.0-beta (ikke acceptgodkendt)
 
 **Statusnøgle:** Kode = implementeret i beta-kildekode, **ikke** testet i produktions-WordPress; Delvis = dele eller prototype; Mangler = ikke implementeret.
 
@@ -6,7 +6,7 @@
 |---|---|---|---|
 | ADG-01 | SKAL | Kode | Personligt WP-login; ekstern SSO ikke implementeret |
 | ADG-02 | SKAL | Kode | Sælger SQL-scope + objektkontrol; eksport begrænses tilsvarende |
-| ADG-03 | SKAL | Kode | Tildelte lande og kontorer, kontrol på serveren |
+| ADG-03 | SKAL | Kode | Landechef: tildelte lande/kontorer. Ny kontorrolle: read-only og kun tildelte kontorer; SQL- og objektkontrol |
 | ADG-04 | SKAL | Kode | Ledelse fuld læseadgang, ingen redigering |
 | ADG-05 | SKAL | Kode | Admin brugeroprettelse, tildeling og deaktivering |
 | ADG-06 | SKAL | Delvis | Login success/fail, afvist API-adgang og ændringer i rettigheder; ikke en komplet log over alle HTTP-forespørgsler |
@@ -23,7 +23,7 @@
 | RAP-04–05 | SKAL | Kode | Rapporttabeller pr. sælger, kontor, land og produkt; vundet/tabt i år og ugentlige gennemsnit pr. sælger; validering på WP-staging udestår |
 | RAP-06 | BØR | Kode | CSV eksport, områdeafgrænset på serveren |
 | RAP-07 | BØR | Delvis | Forfald og inaktivitet; leads uden dato afvises, hvis aktive |
-| UI-01–02 | SKAL | Kode | Browser, responsiv formular og validering |
+| UI-01–02 | SKAL | Kode | Browser, responsiv formular, validering, rolleopdelte forsider og forklaring af salgsfaser |
 | UI-03–05 | SKAL | Delvis | 10 sprogvælgere; sekundære tekster mangler fuld oversættelse og verifikation, 11. sprog uafklaret |
 | UI-06 | BØR | Kode | Fritekstnoter oversættes ikke automatisk |
 | UI-07–08 | SKAL | Delvis | Dansk dato og EUR; responsiv mobil; ikke fuld lokaliserings-/tilgængelighedstest |
@@ -31,6 +31,14 @@
 | Backup | Driftskrav | Mangler | Løses i hosting; kræver dokumenteret gendannelsestest |
 | CSV-import/IMP-0x | Migrering | Mangler | Importassistent og mapping skal specificeres med landecheferne |
 | ACC-01–10 | Accept | Ikke godkendt | Skal gennemføres i faktisk WordPress med repræsentative testdata |
+
+## Ny udvikling 1.1
+
+- Separat personlig sælgerforside, kontorforside, landechef- og ledelsesforside samt administratorkontrolpanel.
+- Office-rollen \`sa_office\` har serverafgrænset **læseadgang** til tildelte kontorer, ingen redigering.
+- Kontorvisning med egne leads, pipeline og opfølgning samt klikbare kontorvalg.
+- Introduktion til felter og salgsfaser med særlig forklaring på **Tilbud**, **Forhandling**, **Vundet** og **Tabt** i både hjælpeside og leadformular.
+- Udviklingskontrol tester visning for flere roller samt kontor-adgang via isolerede PHP-tests, men produktions-WordPress er endnu ikke accepttestet.
 
 ## Udført udviklingskontrol
 
