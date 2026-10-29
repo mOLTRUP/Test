@@ -1,0 +1,24 @@
+name: Salgsadministration – kodekontrol
+on:
+  push:
+    paths:
+      - "salgsadministration/**"
+      - ".github/workflows/salgsadministration-ci.yml"
+  pull_request:
+    paths:
+      - "salgsadministration/**"
+      - ".github/workflows/salgsadministration-ci.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  syntax-and-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP-syntaks
+        run: php -l salgsadministration/plugin/salgsadministration.php
+      - name: JavaScript-syntaks
+        run: node --check salgsadministration/plugin/assets/app.js
+      - name: Smoke-tests for visuel demo
+        run: node salgsadministration/tests/smoke-node.js
