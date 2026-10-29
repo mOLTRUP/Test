@@ -1,4 +1,10 @@
-# Kravstatus – version 1.2.0-beta (ikke acceptgodkendt)
+## Ændringer i 1.3
+
+- RAP-05: 6/12-måneders SVG-kurver for faktiske kundeemnehændelser; ingen historisk værdi uden snapshots.
+- UI-08: responsive tidskurver i stedet for vandrette bjælker; test på mobil/desktop i GitHub Actions.
+- 2.000-leads-grænse, eksport, manglende fuld oversættelse og WordPress-accepttest er endnu ikke løst.
+
+# Kravstatus – version 1.3.0-beta (ikke acceptgodkendt)
 
 **Statusnøgle:** Kode = implementeret i beta-kildekode, **ikke** testet i produktions-WordPress; Delvis = dele eller prototype; Mangler = ikke implementeret.
 
