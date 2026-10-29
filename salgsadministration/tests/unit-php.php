@@ -60,12 +60,14 @@ $GLOBALS['users'] = [
     2 => new WP_User(2,['sa_seller'],'Sælger B'),
     3 => new WP_User(3,['sa_manager'],'Landechef'),
     4 => new WP_User(4,['sa_leadership'],'Ledelse'),
-    5 => new WP_User(5,['sa_administrator'],'Admin')
+    5 => new WP_User(5,['sa_administrator'],'Admin'),
+    6 => new WP_User(6,['sa_office'],'Kontor Padborg')
 ];
 $GLOBALS['metadata'] = [
     1 => ['sa_countries'=>['DK'],'sa_offices'=>['DK|Padborg']],
     2 => ['sa_countries'=>['DE'],'sa_offices'=>['DE|Berlin']],
-    3 => ['sa_countries'=>['DK'],'sa_offices'=>['DE|Hamborg']]
+    3 => ['sa_countries'=>['DK'],'sa_offices'=>['DE|Hamborg']],
+    6 => ['sa_countries'=>['DE'],'sa_offices'=>['DK|Padborg']]
 ];
 $GLOBALS['options'] = ['sa_lists'=>[
     'countries'=>[['DK','Danmark'],['DE','Tyskland']],
@@ -105,6 +107,14 @@ check(invokeSA('can_read',$hamburg) === true,'manager sees assigned specific off
 check(invokeSA('can_read',$b) === false,'manager cannot read unauthorized office');
 check(str_contains(invokeSA('scoped_where')[0],' OR '),'manager SQL reflects country/office union');
 
+selectUser(6);
+check(invokeSA('can_read',$a) === true,'office reads specifically assigned office');
+check(invokeSA('can_read',$copenhagen) === false,'office cannot read different office in same country');
+check(invokeSA('can_read',$b) === false,'office cannot gain access via assigned country field');
+check(invokeSA('can_write',$a) === false,'office is read-only');
+[$officeSql, $officeParams]=invokeSA('scoped_where');
+check(str_contains($officeSql,'CONCAT(country') && !str_contains($officeSql,'country IN'),'office SQL restricted to assigned offices only');
+check($officeParams===['DK|Padborg'],'office SQL binds only assigned office');
 selectUser(4);
 check(invokeSA('can_read',$b) === true,'leadership reads globally');
 check(invokeSA('can_write',$b) === false,'leadership remains read-only');
@@ -148,6 +158,8 @@ $GLOBALS['wpdb']->duplicate=42;
 check(invokeSA('validate',new Req($base))->code==='sa_duplicate','duplicate active VAT blocked');
 $GLOBALS['wpdb']->duplicate=null;
 
+selectUser(6);
+check(invokeSA('validate',new Req($base))->code==='sa_forbidden','office cannot create or edit an active lead');
 selectUser(3);
 $transfer=$base;$transfer['owner_id']=2;
 $before=['id'=>99,'owner_id'=>1,'country'=>'DK','office'=>'Padborg'];
