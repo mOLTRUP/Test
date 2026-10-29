@@ -15,6 +15,16 @@ Test må udføres på særskilt WordPress-staging med fiktive leads. Registrér 
 | ACC-09 | Vælg alle 10 navngivne sprog og afklar sprog nr. 11. Gennemgå menu, formularer, validering og valg. | Intet mangler, ingen danske fallback-tekster på andre sprog. **Ikke opfyldt i beta.** |
 | ACC-10 | Deaktiver bruger og afprøv nyt login/REST; log ind som leder. | Login afvises; leads og audit bevares. |
 
+## Ekstra tests for 1.1
+
+| Test | Fremgangsmåde | Forventning |
+|---|---|---|
+| ROLE-01 | Log ind som sælger og åbn forsiden. | Vis egne leads/opfølgninger og ikke andres personlige leaddetaljer. |
+| ROLE-02 | Log ind med WordPress-rollen \`sa_office\` tildelt \`DK|Padborg\`. Prøv \`DK|København\` og \`DE|Berlin\` i REST og UI. | Kontorbrugeren ser alene Padborg-leads; ændringer via POST/PUT afvises på serveren. |
+| ROLE-03 | Log ind som landechef, ledelse og administrator. | Egne specifikke forsider, relevante links, visninger og rettigheder. |
+| HELP-01 | Find et lead med status Tilbud; åbn statushjælp og leadformular. | Betydningen forklares direkte – tilbud er fremlagt, men salget er ikke vundet. |
+| HELP-02 | Åbn fanen Hjælp & forklaringer på mobil. | Status, sandsynlighed, forventet værdi og påmindelser kan læses uden horisontal scrolling. |
+
 ## Ekstra tests for beta.2
 
 | Test | Fremgangsmåde | Forventning |
