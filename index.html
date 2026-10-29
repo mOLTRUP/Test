@@ -114,6 +114,13 @@ function tab(id){activeTab=id;document.querySelectorAll('.tabs button').forEach(
 document.querySelectorAll('.tabs button').forEach(b=>{b.addEventListener('click',()=>tab(b.dataset.tab));b.addEventListener('keydown',ev=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(ev.key))return;ev.preventDefault();const tabs=Array.from(document.querySelectorAll('.tabs button'));let i=tabs.indexOf(b);i=ev.key==='Home'?0:ev.key==='End'?tabs.length-1:(i+(ev.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tab(tabs[i].dataset.tab);tabs[i].focus();});});
 el('search').addEventListener('input',renderList);
 el('reset').addEventListener('click',()=>{el('search').value='';renderList();el('search').focus();});
+// Synkronisér landefakta, når et direkte landelink ændres uden genindlæsning.
+window.addEventListener('hashchange',()=>{
+const code=location.hash.slice(1).toUpperCase();
+if(!/^[A-Z]{2}$/.test(code))return;
+const country=items.find(c=>c.cca2===code);
+if(country&&country.cca2!==selected.cca2)choose(country,false);
+});
 function normalize(c){return{...c,flag:c.flag||undefined,name:c.name||{common:c.cca2},area:Number(c.area)||undefined,population:Number.isFinite(Number(c.population))&&c.population!==undefined?Number(c.population):undefined};}
 async function loadCountries(){
 const sources=[
