@@ -178,7 +178,7 @@ const byCode=new Map();
 for(const row of snapshot.rows){
 if(!Array.isArray(row)||row.length!==3)continue;
 const [code,value,year]=row;
-if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&Number.isSafeInteger(value)&&value>0&&/^\\d{4}$/.test(String(year)))byCode.set(code,{value,year:String(year)});
+if(typeof code==='string'&&/^[A-Z]{2}$/.test(code)&&Number.isSafeInteger(value)&&value>0&&/^\d{4}$/.test(String(year)))byCode.set(code,{value,year:String(year)});
 }
 if(byCode.size>=150)applyPopulation(byCode);
 }catch(e){console.info('Fælles befolkningssnapshot kunne ikke indlæses:',e);}
