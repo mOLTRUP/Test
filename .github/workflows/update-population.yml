@@ -1,0 +1,35 @@
+name: Opdater befolkningstal fra Verdensbanken
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 5 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: worldbank-population-snapshot
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hent repository
+        uses: actions/checkout@v4
+      - name: Opsæt Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Hent og validér daterede befolkningstal
+        run: python scripts/update_population.py
+      - name: Gem kun ændringer
+        run: |
+          if ! git diff --quiet -- data/population-worldbank.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/population-worldbank.json
+            git commit -m "Opdater daterede befolkningstal fra Verdensbanken"
+            git push
+          fi
