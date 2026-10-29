@@ -169,7 +169,12 @@ const renderOffices=()=>{
  `<details class="sa-expand"><summary>Hvad betyder salgsstatus?</summary>${statusExplanation()}</details>`+
  panel('Kontorets leads · '+arr.length,filters()+table(arr));
 };
-const renderCountries=()=>intro(t('countries'),t('summaries'))+panel(t('countryOverview'),countryTable(countryStats()))+sellerSummary();
+const renderCountries=()=>{
+ const stats=countryStats(),rows=stats.filter(c=>c.weighted>0).sort((a,b)=>b.weighted-a.weighted).map(c=>({label:c.name,value:c.weighted,display:euro(c.weighted)}));
+ return intro(t('countries'),'Fælles aggregeret landestatistik. Klik på et land for at se antallet af leads pr. sælger.')+
+ panel('Vægtet pipeline efter land',dashboardRows(rows,'Vægtet pipeline pr. land, aggregeret uden private leaddetaljer'))+
+ panel(t('countryOverview'),countryTable(stats))+sellerSummary();
+};
 const renderFollowups=()=>{
  let ls=filtered(accessible()).filter(l=>!isClosed(l));
  let due=ls.filter(isOverdue).sort((a,b)=>a.next_followup.localeCompare(b.next_followup));
@@ -203,6 +208,8 @@ panel('Hvad betyder felter og indstillinger?',`<div class="sa-panel-body sa-help
 panel('Hvem kan se og ændre hvad?',`<div class="sa-panel-body"><p>${esc(hint('roles'))}</p><p><strong>Eksempel:</strong> Står der <b>Tilbud</b> ud for virksomheden, er salgsprocessen nået til et konkret forslag til kunden. Det betyder ikke, at aftalen er vundet.</p><p>Vigtig forskel: Landepipeline kan vise fælles summer, mens de personlige leadoplysninger stadig er begrænset af brugerens rettigheder.</p></div>`);
 const renderRelease=()=>{
 const improvements=[
+ ['1.2.0-beta','Kompakte dashboardkort og korte tabeller, grafer for pipeline/salgsfaser/produkter/lande og seks måneders salgshistorik'],
+ ['1.2.0-beta','Opfølgningslisten tager nu højde for reminder-dage; detaljer i rapporter og stamdata kan foldes ud'],
  ['1.1.0-beta','Personlige forsider for sælgere, kontoransatte, landechefer, ledelse og administratorer samt forklaringer af salgsfaser og felter'],
  ['1.1.0-beta','Ny kontorrolle med serverbegrænset læseadgang og særskilt kontoroverblik'],
  ['1.0.0-beta.2','Årsager til vundet og tabt kan redigeres som stamdata; API afviser ugyldige årsager'],
@@ -220,7 +227,7 @@ const rows=[
  ['GDPR, backup og driftsgodkendelse','Afventer','Skal fastlægges og testes på den faktiske WordPress-installation'],
  ['Accepttest ACC-01 til ACC-10','Afventer','Programkode er ikke en godkendt funktionstest på en WordPress-server']
 ];
-return intro(t('release'),'Version 1.1.0-beta · 29.10.2026 · status: udviklingsversion')+
+return intro(t('release'),'Version 1.2.0-beta · 29.10.2026 · status: udviklingsversion')+
 panel('Seneste forbedringer',`<div class="sa-panel-body">${improvements.map(([v,n])=>`<div class="sa-info-row"><span><strong>${esc(v)}</strong> · ${esc(n)}</span></div>`).join('')}</div>`)+
 panel('Krav og kontrol',`<div class="sa-table-wrap"><table class="sa-table"><thead><tr><th>Område</th><th>Status</th><th>Bemærkning</th></tr></thead><tbody>${rows.map(([a,b,c])=>`<tr><td><strong>${esc(a)}</strong></td><td>${esc(b)}</td><td>${esc(c)}</td></tr>`).join('')}</tbody></table></div>`)+
 panel('Fortsat test og dokumentation',`<div class="sa-panel-body"><p>Demoen bruger alene fiktive kundedata. Rollevælgeren er til visning og udgør ikke adgangssikkerhed. Brug WordPress-pluginet med login til rigtige data.</p><p>Før drift skal alle acceptkrav kontrolleres med flere brugere i en rigtig WordPress-installation. Først derefter kan krav markeres godkendt.</p><a href="https://github.com/mOLTRUP/Test/tree/main/salgsadministration" target="_blank" rel="noopener noreferrer">Se kildekode, kravstatus og testplan på GitHub ↗</a></div>`);
