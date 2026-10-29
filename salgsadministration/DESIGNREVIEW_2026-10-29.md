@@ -12,7 +12,7 @@
 | RAP-02, RAP-03 | Tal og tabeller viste pipeline og vægtet værdi | Horisontale, tilgængeligt mærkede søjler for pipeline/salgsfaser og vægtet land/kontor/sælger-værdi |
 | RAP-04, RAP-05 | Tabellen over sælgere, kontorer, lande og produkter fyldte meget | Rapporten viser grafer og nøgletal først; detaljerede sammenligninger kan foldes ud |
 | RAP-05 / udvikling | Historik blev ikke illustreret | Seks-måneders graf for *oprettede* leads og *afsluttede* vundne/tabte efter korrekt dato |
-| FUN-04, FUN-05 / DAT-14 | Opfølgninger viste primært dato-sortering | Særskilt opdeling i **forsinkede**, **reminder aktiveret** og **senere** baseret på reminder-dage |
+| FUN-04, FUN-05 / DAT-13, DAT-14 | Opfølgninger viste primært dato-sortering uden klokkeslæt i tabellen | Særskilt opdeling i **forsinkede**, **reminder aktiveret** og **senere** baseret på reminder-dage; HH:mm vises ved opfølgning |
 | Brugerroller og kontorer | Rollefordelte startsider, men mange lange lister | Roller har nu fokuserede grafer: sælger/produkt, kontor/sælger, landechef/kontor, ledelse/land |
 | Administrator | Lange hjælpetekster og stamdata-formular fyldte permanent | Forklaringer og stamdata kan foldes ud efter behov |
 | AGD-10 / landepipeline | Primært tabelvisning | Ekstra aggregeret graf for landenes vægtede pipeline uden private leadoplysninger |
@@ -26,6 +26,7 @@
 - **Produktgraf** tæller leads pr. produkt: ét lead med flere produkter kan tælle med flere steder. Produktgrafen er ikke en additiv fordeling af pipelineværdi.
 - **Udviklingsgraf** bruger `created_at` for nye og `close_date` for vundet/tabt, således månederne ikke sammenblandes.
 - **Konverteringsrate** beregnes som vundet / (vundet + tabt), altså afsluttede leads. Brugere skal kende dette grundlag.
+- **Tidszoner:** Klokkeslæt vises i appen, og browseren afgør, om tiden er passeret. Der er endnu ikke aftalt fælles tidszone på tværs af lande; dette kræver beslutning og test, inden internationale påmindelser kan betragtes som helt færdige.
 - Serverens `bootstrap` henter højst **2.000 leads** for den enkelte indloggede brugers liste. Dermed kan store datasæt medføre ufuldstændige grafer/rapporttabeller. **Dette er en kendt begrænsning og skal løses med server-side filtrering/paginering før bred drift**.
 
 ## Kravstatus (vigtigste)
