@@ -10,7 +10,7 @@ assert(app.innerHTML.includes('Salgsadmin'),'Dashboard should render');
 assert(app.innerHTML.includes('Nordfrakt Logistics'),'Synthetic lead should appear');
 assert(app.innerHTML.includes('Mine leads'),'Personal pipeline menu must appear');
 assert(app.innerHTML.includes('Min personlige salgsforside'),'Seller should land on a personal page');
-assert(app.innerHTML.includes('Egne leads'),'Seller scope is explained');
+assert(app.innerHTML.includes('dine egne leads'),'Seller scope is explained');
 assert(app.innerHTML.includes('Salgsudvikling pr. måned'),'Personal dashboard shows monthly sales curve');
 assert(app.innerHTML.includes('Nye leads fordelt efter produkt'),'Personal dashboard has product development curve');
 assert(app.innerHTML.includes('sa-curve'),'Curves rendered instead of bars');
