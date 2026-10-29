@@ -1,4 +1,4 @@
-# Kravstatus – version 1.1.0-beta (ikke acceptgodkendt)
+# Kravstatus – version 1.2.0-beta (ikke acceptgodkendt)
 
 **Statusnøgle:** Kode = implementeret i beta-kildekode, **ikke** testet i produktions-WordPress; Delvis = dele eller prototype; Mangler = ikke implementeret.
 
@@ -31,6 +31,17 @@
 | Backup | Driftskrav | Mangler | Løses i hosting; kræver dokumenteret gendannelsestest |
 | CSV-import/IMP-0x | Migrering | Mangler | Importassistent og mapping skal specificeres med landecheferne |
 | ACC-01–10 | Accept | Ikke godkendt | Skal gennemføres i faktisk WordPress med repræsentative testdata |
+
+## Gennemgang og forbedringer i 1.2
+
+- RAP-02/RAP-03: salgsfase- og områdediagrammer med vægtet pipelineværdi (EUR × sandsynlighed / 100).
+- RAP-04/RAP-05: grafisk visning af seks måneders aktivitet, udfaldsårsager og diagrammer pr. tilladt land/kontor/sælger. Tabeller findes under udfoldning.
+- FUN-04/FUN-05/DAT-14: opfølgningslisten tager nu højde for det valgte antal reminder-dage og adskiller forfaldne og kommende.
+- AGD-10: aggregeret landegraf for alle uden personlige leaddetaljer.
+- Layout: mindre KPI-kort, kortere oversigter, to-kolonne-sammenstilling, kompakte administrative indstillinger.
+- **Kendt begrænsning:** serverens bootstrap returnerer højst 2.000 leads. Rapporter over større datasæt kræver serverbaseret pagination og aggregering før produktion.
+- **Ikke gennemført:** manuel visuel/krydsenhedsaccepttest, fuld WP-staging-test, 11-sprogsafklaring, komplet import, backup og GDPR.
+- Mere detaljeret sporbarhed: `DESIGNREVIEW_2026-10-29.md`.
 
 ## Ny udvikling 1.1
 
