@@ -1,18 +1,19 @@
 # Salgsadministration – WordPress + GitHub demo
 
-**Version:** 1.0.0-beta.1 · 29. oktober 2026 · **Status: prototype / ikke produktionsgodkendt**
+**Version:** 1.0.0-beta.2 · 29. oktober 2026 · **Status: prototype / ikke produktionsgodkendt**
 
 Udviklet ud fra `Kravspecifikation_salgsstyringssystem.pdf` v0.9.1 (20.10.2026).
 
 ## Oversigt
 
 - `index.html` er en **offentlig statisk GitHub Pages-demo** med 16 **fiktive** leads. Dens rolle-vælger illustrerer forskellige visninger; den **giver ingen reel sikkerhed**. Ændringer lagres kun i den aktuelle browsers `localStorage`, som kan nulstilles.
+- `downloads/salgsadministration-wordpress-plugin.zip` er en **installérbar ZIP-pakke**, bygget fra samme kildefiler som demoen. GitHub-kodekontrollen sammenholder pakkens indhold med kildekoden.
 - `plugin/` er et **selvstændigt WordPress-plugin** med egne MySQL-tabeller, adgangskontrol i alle private REST-endpoints, adgangslog, revisionshistorik, CSV-eksport og en shortcode.
-- Demo og plugin deler brugerflade (`plugin/assets/app.js` og `plugin/assets/app.css`). Ingen reelle kundeoplysninger må lægges på GitHub Pages.
+- Demo og plugin deler brugerflade (`plugin/assets/app.js` og `plugin/assets/app.css`). CSS er isoleret til pluginets app-element, så værtswebsidens generelle styling ikke ændres. Ingen reelle kundeoplysninger må lægges på GitHub Pages.
 
 ## Installér WordPress-versionen
 
-1. Upload ZIP-filen `salgsadministration-wordpress-plugin.zip` i **WordPress → Plugins → Tilføj plugin → Upload plugin**, og aktivér.
+1. Hent [plugin-ZIP](https://github.com/mOLTRUP/Test/raw/refs/heads/main/salgsadministration/downloads/salgsadministration-wordpress-plugin.zip), og upload ZIP-filen `salgsadministration-wordpress-plugin.zip` i **WordPress → Plugins → Tilføj plugin → Upload plugin**, og aktivér.
 2. En WordPress-administrator kan åbne menupunktet **Salgsadministration** eller indsætte shortcoden `[salgsadministration]` på en privat side.
 3. Åbn **Administration** inde i systemet, opret sælgere og landechefer, og tilknyt deres lande/kontorer. En oprettet bruger modtager en WordPress-meddelelse om at sætte sin adgangskode, hvis mailopsætningen fungerer.
 4. Aktivér HTTPS, kontroller e-mail-opsætning, sikker backup og gendannelsestest, gennemgå oversættelser, og gennemfør alle accepttest før drift.
@@ -54,13 +55,23 @@ Demoens offentlige side ligger i undermappen `salgsadministration/index.html`, u
 
 Bemærk, at GitHub Pages skal være aktiveret i **Settings → Pages → Deploy from a branch → main → /(root)**. URL'en er først live, når GitHub har publiceret den.
 
+## Nye forbedringer i beta.2 (29.10.2026)
+
+- Administrator kan redigere separate **årsagslister for vundet og tabt**, og serveren afviser årsager uden for den relevante liste.
+- Landepipeline viser **vundne og tabte i indeværende år**, nyoprettede leads de seneste 7 dage og **ugentlige gennemsnit** for vundet/tabt pr. sælger.
+- En ny synlig fane **Udvikling & kontrol** viser tilføjelser, åbne punkter, status for krav og test på både demo og WordPress.
+- Pluginets CSS er afgrænset til `#sa-app`, så den kan indlejres i et andet WordPress-tema uden globale stilændringer.
+- GitHub Actions tester PHP, JavaScript, demo-flow, ZIP-integritet og CSS-afgrænsning ved ændringer.
+
 ## Tests
 
 - `php -l plugin/salgsadministration.php`
 - `node --check plugin/assets/app.js`
-- `node tests/smoke-node.js` (fiktive data, egen-leads-afgrænsning, landetal og oprettelsesdialog)
+- `node tests/smoke-node.js` (fiktive data, egen-leads-afgrænsning, landetal, oprettelsesdialog, udviklingsstatus og årsagslister)
 - Accepttest ACC-01...ACC-10: se `TESTPLAN.md`.
 - En afprøvning i rigtig WordPress med mindst 2 sælgere, 2 lande og 1 landechef er **nødvendig** før godkendelse.
+
+Den automatiske kontrol køres i [GitHub Actions](https://github.com/mOLTRUP/Test/actions/workflows/salgsadministration-ci.yml). Dette er **kodekontrol**, ikke fuld WordPress-accepttest.
 
 ## Forslag til næste version
 
