@@ -1,6 +1,6 @@
 # Salgsadministration – WordPress + GitHub demo
 
-**Version:** 1.0.0-beta.2 · 29. oktober 2026 · **Status: prototype / ikke produktionsgodkendt**
+**Version:** 1.1.0-beta · 29. oktober 2026 · **Status: prototype / ikke produktionsgodkendt**
 
 Udviklet ud fra `Kravspecifikation_salgsstyringssystem.pdf` v0.9.1 (20.10.2026).
 
@@ -15,7 +15,7 @@ Udviklet ud fra `Kravspecifikation_salgsstyringssystem.pdf` v0.9.1 (20.10.2026).
 
 1. Hent [plugin-ZIP](https://github.com/mOLTRUP/Test/raw/refs/heads/main/salgsadministration/downloads/salgsadministration-wordpress-plugin.zip), og upload ZIP-filen `salgsadministration-wordpress-plugin.zip` i **WordPress → Plugins → Tilføj plugin → Upload plugin**, og aktivér.
 2. En WordPress-administrator kan åbne menupunktet **Salgsadministration** eller indsætte shortcoden `[salgsadministration]` på en privat side.
-3. Åbn **Administration** inde i systemet, opret sælgere og landechefer, og tilknyt deres lande/kontorer. En oprettet bruger modtager en WordPress-meddelelse om at sætte sin adgangskode, hvis mailopsætningen fungerer.
+3. Åbn **Administration** inde i systemet, opret sælgere, kontorbrugere og landechefer, og tilknyt deres lande/kontorer. En oprettet bruger modtager en WordPress-meddelelse om at sætte sin adgangskode, hvis mailopsætningen fungerer.
 4. Aktivér HTTPS, kontroller e-mail-opsætning, sikker backup og gendannelsestest, gennemgå oversættelser, og gennemfør alle accepttest før drift.
 
 En anden WordPress-installation er **ikke** nødvendig. Der er **ingen automatisk synkronisering af brugere eller fælles login** til andre WP-installationer i denne beta. Dette kan tilføjes via en fremtidig, dokumenteret REST/SSO-integration med mapping af eksterne bruger-id'er.
@@ -24,7 +24,7 @@ En anden WordPress-installation er **ikke** nødvendig. Der er **ingen automatis
 
 | Komponent | Funktion |
 |---|---|
-| WordPress-roller | `sa_seller`, `sa_manager`, `sa_leadership`, `sa_administrator` og eksisterende WP-administrator |
+| WordPress-roller | `sa_seller`, `sa_office` (kontor · kun læsning), `sa_manager`, `sa_leadership`, `sa_administrator` og eksisterende WP-administrator |
 | SQL-tabeller | `{prefix}sa_leads` og `{prefix}sa_audit` |
 | Brugerområder | User meta: `sa_countries`, `sa_offices` (`LAND|KONTOR`), `sa_lang`, `sa_disabled` |
 | REST API | `/wp-json/salgsadmin/v1/...` med autentifikation, nonce og `permission_callback` |
@@ -55,7 +55,18 @@ Demoens offentlige side ligger i undermappen `salgsadministration/index.html`, u
 
 Bemærk, at GitHub Pages skal være aktiveret i **Settings → Pages → Deploy from a branch → main → /(root)**. URL'en er først live, når GitHub har publiceret den.
 
-## Nye forbedringer i beta.2 (29.10.2026)
+## Rolleopdelt brugeroplevelse i 1.1 (29.10.2026)
+
+- **Sælger**: Personlig forside, egne aktive leads, opfølgninger, tydelig statusforklaring og hurtig adgang til egne leads.
+- **Kontor**: Ny WordPress-rolle `sa_office`; læseadgang **kun** til de eksplicit tildelte kontorer og en selvstændig kontorforside. SQL-scope, objektkontrol og API-afvisning af skrivning håndhæves på serveren. Angiv kontorer i brugeradministrationen i formatet `DK|Padborg`. En kontorrolle giver ikke rettighed til alle kontorer i samme land.
+- **Landechef**: Forside med tildelte lande og kontorer, områdeopfølgninger, områdepipeline samt adgang til at redigere i eget område.
+- **Ledelse**: Samlede nøgletal, lande- og kontoroverblik, rapporter og global læseadgang.
+- **Administrator**: Kontrolpanel med antal brugere, lande, kontorer og leads samt genveje til adgangsadministration og stamdata.
+- **Hjælp & forklaringer**: Statusser, felter, pipeline, sandsynlighed, opfølgning og roller forklares på selve siden. `Tilbud` betyder et konkret tilbud eller forslag til kunden, **ikke en vundet aftale**.
+- **Integration til værtswebside**: Dialoger er nu også inde i den isolerede plugin-rod, så WordPress-temaets layout ikke ændres af pluginet.
+- **Bemærk**: Nye overskrifter og hjælp er gennemarbejdet på dansk, delvist engelsk. Den eksisterende mangelfulde dækning af alle 10 navngivne sprog udestår. WordPress-staging og juridisk driftsgodkendelse mangler fortsat.
+
+## Tidligere forbedringer i beta.2 (29.10.2026)
 
 - Administrator kan redigere separate **årsagslister for vundet og tabt**, og serveren afviser årsager uden for den relevante liste.
 - Landepipeline viser **vundne og tabte i indeværende år**, nyoprettede leads de seneste 7 dage og **ugentlige gennemsnit** for vundet/tabt pr. sælger.
@@ -66,8 +77,9 @@ Bemærk, at GitHub Pages skal være aktiveret i **Settings → Pages → Deploy 
 ## Tests
 
 - `php -l plugin/salgsadministration.php`
+- `php tests/unit-php.php` (enhedstest med WordPress-stubs: roller, serverafgrænsning og validering)
 - `node --check plugin/assets/app.js`
-- `node tests/smoke-node.js` (fiktive data, egen-leads-afgrænsning, landetal, oprettelsesdialog, udviklingsstatus og årsagslister)
+- `node tests/smoke-node.js` (fiktive data, rolleforsider, sælger-/kontorafgrænsning, statusforklaringer, ændringsoversigt og årsagslister)
 - Accepttest ACC-01...ACC-10: se `TESTPLAN.md`.
 - En afprøvning i rigtig WordPress med mindst 2 sælgere, 2 lande og 1 landechef er **nødvendig** før godkendelse.
 
