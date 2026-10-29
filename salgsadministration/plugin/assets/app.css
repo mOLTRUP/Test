@@ -103,3 +103,40 @@
 @media(max-width:950px){#sa-app .sa-sidebar{width:71px}#sa-app .sa-dash-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){#sa-app .sa-dash-grid{grid-template-columns:1fr}#sa-app .sa-quick-stats{grid-template-columns:repeat(2,1fr)}#sa-app .sa-content{padding:14px 13px 28px}#sa-app .sa-page-head h1{font-size:22px}}
 @media(max-width:600px){#sa-app .sa-sidebar{width:100%}#sa-app .sa-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}#sa-app .sa-table-compact{min-width:420px}#sa-app .sa-bar-row{grid-template-columns:minmax(90px,120px) minmax(0,1fr) minmax(55px,90px)}#sa-app .sa-demo-banner{display:block}#sa-app .sa-content{padding:13px 11px 26px}}
+
+/* Version 1.3 – tidstro kurver og roligere dashboard */
+#sa-app .sa-dash-grid{align-items:stretch}
+#sa-app .sa-dash-grid>.sa-panel{display:flex;flex-direction:column}
+#sa-app .sa-dash-grid>.sa-panel>.sa-curve{flex:1}
+#sa-app .sa-curve{padding:15px 17px 12px;min-width:0;background:linear-gradient(180deg,#fff 2%,#fbfdff 100%)}
+#sa-app .sa-curve svg{display:block;width:100%;height:auto;max-height:268px;overflow:visible}
+#sa-app .sa-curve-legend{min-height:26px;display:flex;flex-wrap:wrap;gap:8px 17px;align-items:center;margin-bottom:5px}
+#sa-app .sa-line-key{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-size:11px;color:#47627b;font-weight:650}
+#sa-app .sa-line-key i{display:inline-block;width:19px;height:3px;border-radius:4px}
+#sa-app .sa-curve svg circle{transition:r .15s ease,fill .15s ease}
+#sa-app .sa-curve svg circle:hover{r:6;fill:#fff}
+#sa-app .sa-period-control{display:flex;align-items:center;justify-content:flex-end;gap:11px;margin:0 0 12px;min-height:32px}
+#sa-app .sa-period-control label{font-size:11px;color:#6d8198;font-weight:600}
+#sa-app .sa-period-control select{border:1px solid #d7e4ef;border-radius:9px;padding:7px 11px;font-size:12px;font-weight:700;color:#24557f;background:#fff;cursor:pointer}
+#sa-app .sa-snapshot{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:9px;padding:15px}
+#sa-app .sa-snapshot-item{border-radius:9px;padding:10px 11px;border:1px solid #e8eef5;background:#fafcff;display:flex;align-items:center;justify-content:space-between;gap:6px}
+#sa-app .sa-snapshot-item strong{font-size:18px;font-weight:800;color:#254e72}
+#sa-app .sa-snapshot-item .sa-status{font-size:10px}
+#sa-app .sa-rank-list{padding:9px 16px}
+#sa-app .sa-rank-item{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #edf2f8;font-size:12px}
+#sa-app .sa-rank-item:last-child{border-bottom:0}
+#sa-app .sa-rank-item span{color:#64778b;overflow:hidden;text-overflow:ellipsis}
+#sa-app .sa-rank-item strong{color:#284a6c;white-space:nowrap;font-size:12px}
+#sa-app .sa-dash-bottom .sa-panel{background:#fff}
+#sa-app .sa-dash-bottom .sa-panel-head{background:#fafcff}
+#sa-app .sa-graph-foot{font-size:10px;color:#8697a8;line-height:1.5;margin:8px 0 0;max-width:95%}
+#sa-app .sa-graph-empty{font-size:12px;color:#899aab;padding:5px}
+#sa-app .sa-dash-grid>.sa-panel .sa-panel-head{flex-shrink:0}
+#sa-app .sa-sidebar{background:#112a44}
+#sa-app .sa-nav button{border-radius:9px}
+#sa-app .sa-nav button[aria-current=page]{background:#224e72}
+#sa-app .sa-panel{box-shadow:0 5px 20px rgba(26,54,85,.028)}
+#sa-app .sa-metrics .sa-metric{box-shadow:0 5px 15px rgba(26,54,85,.028)}
+@media(max-width:970px){#sa-app .sa-curve{padding:12px 10px}#sa-app .sa-curve svg{max-height:240px}}
+@media(max-width:760px){#sa-app .sa-curve svg{max-height:240px}#sa-app .sa-snapshot{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:440px){#sa-app .sa-line-key{font-size:10px}#sa-app .sa-curve-legend{gap:7px 12px}#sa-app .sa-period-control{justify-content:flex-start}#sa-app .sa-snapshot{gap:5px;padding:10px}#sa-app .sa-rank-list{padding:8px 12px}}
