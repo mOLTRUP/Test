@@ -1,6 +1,6 @@
 # Salgsadministration – WordPress + GitHub demo
 
-**Version:** 1.1.0-beta · 29. oktober 2026 · **Status: prototype / ikke produktionsgodkendt**
+**Version:** 1.2.0-beta · 29. oktober 2026 · **Status: prototype / ikke produktionsgodkendt**
 
 Udviklet ud fra `Kravspecifikation_salgsstyringssystem.pdf` v0.9.1 (20.10.2026).
 
@@ -54,6 +54,21 @@ Demoens offentlige side ligger i undermappen `salgsadministration/index.html`, u
 `https://moltrup.github.io/Test/salgsadministration/`
 
 Bemærk, at GitHub Pages skal være aktiveret i **Settings → Pages → Deploy from a branch → main → /(root)**. URL'en er først live, når GitHub har publiceret den.
+
+## Nyt i version 1.2 – grafer og kompakt layout
+
+- Mindre KPI-kort, reduceret luft mellem sektioner og **to-kolonne-visning** af grafer og relevante tabeller.
+- Horisontale salgsfase-grafer, som viser antallet af aktive og afsluttede leads på hver fase.
+- **Sælgers forside:** produkttyper med antal aktive leads, statusfordeling og korte opfølgnings-/leadtabeller.
+- **Kontorets forside:** vægtet pipeline fordelt på sælger og salgsfase, kun for de kontorer brugeren har adgang til.
+- **Landechef:** vægtet pipeline pr. kontor inden for de tildelte områder.
+- **Ledelse:** vægtet pipeline pr. land, graf for oprettede/vundne/tabte de seneste 6 måneder og synlige opfølgningsopgaver.
+- **Landepipeline:** aggregeret graf over landenes vægtede værdi uden individuelle leaddetaljer fra andres pipeline.
+- **Rapporter:** grafisk overblik, genberegning efter filtre og detaljetabeller, som brugeren kan folde ud.
+- **Opfølgninger:** forfaldne, aktiverede påmindelser og fremtidige aktiviteter opdeles efter `reminder_days` i stedet for kun at vise næste dato.
+- **Administrator:** lange forklaringer og vedligeholdelse af valglister er foldet sammen som standard.
+- Alle diagrammer er bygget i den fælles JavaScript/CSS-grænseflade **uden eksterne chart-biblioteker** og med tekstlige værdier ved hver søjle.
+- Se `DESIGNREVIEW_2026-10-29.md` for prioriteret kravsammenligning og kendte mangler (især grænsen på 2.000 indlæste leads).
 
 ## Rolleopdelt brugeroplevelse i 1.1 (29.10.2026)
 
