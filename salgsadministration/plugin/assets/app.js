@@ -96,31 +96,69 @@ const filtered=(arr)=>arr.filter(l=>{if(query&&!`${l.company} ${l.contact} ${l.v
 const sum=(arr,fn)=>arr.reduce((n,l)=>n+fn(l),0);
 const metrics=(arr)=>{let act=arr.filter(l=>!isClosed(l));return `<div class="sa-metrics">${[[t('total'),act.length,'▤','Lead-kort'],[t('value'),euro(sum(act,l=>+l.amount_eur)),'€','Total pipeline'],[t('weighted'),euro(sum(act,l=>+l.amount_eur*l.probability/100)),'↗','Værdi × sandsynlighed'],[t('overdue'),act.filter(isOverdue).length,'◷',t('attention')]].map(([label,val,s,hint])=>`<div class="sa-metric"><div class="sa-metric-top"><span>${esc(label)}</span><span class="sa-metric-icon">${s}</span></div><div class="sa-metric-value">${esc(val)}</div><div class="sa-metric-hint">${esc(hint)}</div></div>`).join('')}</div>`};
 /* Kompakte datagrafer uden eksterne biblioteker; baseres kun på tilladte leads. */
-const dashboardRows=(rows,caption='')=>{
- const data=(rows||[]).filter(r=>Number(r.value)>0).slice(0,6),max=Math.max(1,...data.map(r=>Number(r.value)||0));
- return `<div class="sa-bars" role="img" aria-label="${esc(caption||'Grafisk fordeling')}">${data.length?data.map(r=>`<div class="sa-bar-row"><span class="sa-bar-label" title="${esc(r.label)}">${esc(r.label)}</span><div class="sa-bar-track"><span class="sa-bar-fill ${esc(r.tone||'')}" style="width:${Math.max(3,100*Number(r.value)/max).toFixed(1)}%"></span></div><strong class="sa-bar-value">${esc(r.display??r.value)}</strong></div>`).join(''):`<p class="sa-muted sa-graph-empty">Ingen relevante data i denne visning.</p>`}</div>`;
+/* Salgskurver over tid. Kun faktiske hændelser: oprettelser og afslutninger.
+   Historisk vægtet pipeline kan ikke beregnes uden lagrede snapshots. */
+let chartMonths=6;
+const monthBuckets=()=>{
+ const now=new Date();
+ return Array.from({length:chartMonths},(_,i)=>{
+  const d=new Date(now.getFullYear(),now.getMonth()-chartMonths+1+i,1);
+  return {id:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),label:d.toLocaleDateString(language==='da'?'da-DK':'en-GB',{month:'short',year:'2-digit'})};
+ });
 };
-const stageGraph=arr=>dashboardRows(Object.keys(statuses).map(st=>({label:t(statuses[st]),value:arr.filter(l=>l.status===st).length,tone:st==='won'?'sa-bar-win':st==='lost'?'sa-bar-loss':''})), 'Antal kundeemner pr. salgsfase');
-const groupGraph=(arr,key='country',weighted=true)=>{
+const periods=()=>`<div class="sa-period-control"><label for="sa-chart-period">Vis udvikling for</label><select id="sa-chart-period" aria-label="Vælg antal måneder til kurver"><option value="6" ${chartMonths===6?'selected':''}>6 måneder</option><option value="12" ${chartMonths===12?'selected':''}>12 måneder</option></select></div>`;
+const lineChart=(months,lines,desc)=>{
+ const W=640,H=252,L=44,R=18,T=18,B=42,axisW=W-L-R,axisH=H-T-B;
+ const usable=(lines||[]).filter(x=>x.values?.some(v=>Number(v)>0));
+ const max=Math.max(1,...usable.flatMap(l=>l.values.map(v=>Number(v)||0))),ceil=Math.max(1,Math.ceil(max/4)*4);
+ const px=i=>L+axisW*(months.length<=1?0:i/(months.length-1));
+ const py=n=>T+axisH*(1-Math.max(0,Number(n)||0)/ceil);
+ const curve=values=>{
+   if(!values.length)return '';
+   let d='M '+px(0).toFixed(2)+' '+py(values[0]).toFixed(2);
+   for(let i=1;i<values.length;i++){const x0=px(i-1),x1=px(i),ym=py(values[i-1]),yn=py(values[i]),mid=(x0+x1)/2;
+      d+=' C '+mid.toFixed(2)+' '+ym.toFixed(2)+' '+mid.toFixed(2)+' '+yn.toFixed(2)+' '+x1.toFixed(2)+' '+yn.toFixed(2);
+   }
+   return d;
+ };
+ const colors=['#1f78bf','#1f9f80','#dc8b43','#8d65c4','#d46a73'];
+ const grid=Array.from({length:5},(_,i)=>{const n=ceil*i/4,y=py(n);return `<g><line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="#e5edf4" stroke-width="1"/><text x="${L-9}" y="${y+4}" text-anchor="end" font-size="11" fill="#8698a8">${n.toLocaleString('da-DK',{maximumFractionDigits:1})}</text></g>`}).join('');
+ const series=usable.map((l,j)=>{
+   const color=colors[j%colors.length],points=l.values.map((v,i)=>`<circle cx="${px(i).toFixed(2)}" cy="${py(v).toFixed(2)}" r="4" fill="#fff" stroke="${color}" stroke-width="2"><title>${esc(l.label)} · ${esc(months[i].label)}: ${Number(v)||0} leads</title></circle>`).join('');
+   return `<g><path d="${curve(l.values)}" fill="none" stroke="${color}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>${points}</g>`;
+ }).join('');
+ const labels=months.map((m,i)=>(months.length>6&&i%2===1&&i!==months.length-1)?'':`<text x="${px(i)}" y="${H-15}" fill="#6b8094" font-size="11" text-anchor="middle">${esc(m.label)}</text>`).join('');
+ const legend=usable.map((l,j)=>`<span class="sa-line-key"><i style="background:${colors[j%colors.length]}"></i>${esc(l.label)}</span>`).join('');
+ const zero=usable.length===0?'<p class="sa-graph-empty">Ingen hændelser i denne periode.</p>':'';
+ const alt=months.map((m,i)=>m.label+': '+usable.map(l=>l.label+' '+(Number(l.values[i])||0)).join(', ')).join(' · ');
+ return `<div class="sa-curve"><div class="sa-curve-legend">${legend||'<span class="sa-muted">Ingen registrerede hændelser</span>'}</div><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(desc)}" preserveAspectRatio="xMidYMid meet"><title>${esc(desc)}</title><desc>${esc(alt||'Ingen registreringer i perioden')}</desc>${grid}${labels}${series}</svg>${zero}<p class="sa-graph-foot">${esc(desc)}. Baseret på oprettelses- og afslutningsdatoer; ikke historiske værdiestimater.</p></div>`;
+};
+const timeline=arr=>{
+ const months=monthBuckets(),defs=[['Oprettede','created_at',null],['Vundne','close_date','won'],['Tabte','close_date','lost']];
+ return lineChart(months,defs.map(([label,date,status])=>({label,values:months.map(m=>arr.filter(l=>(!status||l.status===status)&&String(l[date]||'').slice(0,7)===m.id).length)})),'Oprettede, vundne og tabte leads pr. måned');
+};
+const timelineGroup=(arr,by)=>{
+ const months=monthBuckets(),group=new Map(),name=l=>by==='product'?(l.products||[]):by==='owner'?[displayName(l.owner_id)]:by==='office'?[cn(l.country)+' / '+l.office]:[cn(l.country)];
+ arr.forEach(l=>name(l).forEach(k=>group.set(k,(group.get(k)||0)+1)));
+ const keys=[...group].sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k])=>k);
+ const lines=keys.map(label=>({label,values:months.map(m=>arr.filter(l=>String(l.created_at||'').slice(0,7)===m.id&&name(l).includes(label)).length)}));
+ return lineChart(months,lines,'Nye leads pr. måned, opdelt efter '+({product:'produkt',owner:'sælger',office:'kontor',country:'land'}[by]||by));
+};
+const stageGraph=arr=>`<div class="sa-snapshot" aria-label="Aktuelle salgsfaser">${Object.keys(statuses).map(st=>`<div class="sa-snapshot-item" title="${esc(statusInfo(st))}"><span>${badge(st)}</span><strong>${arr.filter(l=>l.status===st).length}</strong></div>`).join('')}</div>`;
+const groupGraph=(arr,key='country')=>{
  const map=new Map();
  arr.filter(l=>!isClosed(l)).forEach(l=>{
-   const id=key==='owner'?String(l.owner_id):key==='office'?officeCode(l):l.country;
-   const name=key==='owner'?displayName(l.owner_id):key==='office'?cn(l.country)+' / '+l.office:cn(l.country);
-   const n=weighted?Number(l.amount_eur||0)*Number(l.probability||0)/100:1;
-   const prev=map.get(id)||{label:name,value:0};prev.value+=n;map.set(id,prev);
+  const id=key==='owner'?displayName(l.owner_id):key==='office'?cn(l.country)+' / '+l.office:cn(l.country);
+  map.set(id,(map.get(id)||0)+Number(l.amount_eur||0)*Number(l.probability||0)/100);
  });
- return dashboardRows([...map.values()].sort((a,b)=>b.value-a.value).slice(0,6).map(x=>({...x,display:weighted?euro(x.value):String(x.value)})),weighted?'Vægtet pipeline pr. område':'Antal aktive kundeemner pr. område');
+ return `<div class="sa-rank-list">${[...map.entries()].sort((a,b)=>b[1]-a[1]).slice(0,5).map(([label,value])=>`<div class="sa-rank-item"><span>${esc(label)}</span><strong>${esc(euro(value))}</strong></div>`).join('')||'<p class="sa-muted">Ingen aktive salgsmuligheder.</p>'}</div>`;
 };
 const productGraph=arr=>{
  const map=new Map();arr.filter(l=>!isClosed(l)).forEach(l=>(l.products||[]).forEach(p=>map.set(p,(map.get(p)||0)+1)));
- return dashboardRows([...map.entries()].sort((a,b)=>b[1]-a[1]).map(([label,value])=>({label,value})), 'Antal åbne leads pr. produkt; et lead kan stå under flere produkter');
+ return `<div class="sa-rank-list">${[...map.entries()].sort((a,b)=>b[1]-a[1]).map(([label,value])=>`<div class="sa-rank-item"><span>${esc(label)}</span><strong>${value} leads</strong></div>`).join('')||'<p class="sa-muted">Ingen produkter på åbne leads.</p>'}</div>`;
 };
-const trendGraph=arr=>{
- const now=new Date(),months=Array.from({length:6},(_,i)=>{let d=new Date(now.getFullYear(),now.getMonth()-5+i,1);return {id:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),label:d.toLocaleDateString(language==='da'?'da-DK':'en-GB',{month:'short',year:'2-digit'})}});
- const series=months.map(m=>({...m,created:arr.filter(l=>(l.created_at||'').slice(0,7)===m.id).length,won:arr.filter(l=>l.status==='won'&&(l.close_date||'').slice(0,7)===m.id).length,lost:arr.filter(l=>l.status==='lost'&&(l.close_date||'').slice(0,7)===m.id).length}));
- const max=Math.max(1,...series.flatMap(x=>[x.created,x.won,x.lost]));
- return `<div class="sa-trend" role="img" aria-label="Seneste seks måneder: oprettede, vundne og tabte leads"><div class="sa-trend-legend"><span class="new">Oprettede</span><span class="won">Vundne</span><span class="lost">Tabte</span></div><div class="sa-trend-chart">${series.map(m=>`<div class="sa-month"><div class="sa-month-bars"><span class="new" style="height:${(100*m.created/max).toFixed(1)}%" title="${m.created} oprettede"></span><span class="won" style="height:${(100*m.won/max).toFixed(1)}%" title="${m.won} vundne"></span><span class="lost" style="height:${(100*m.lost/max).toFixed(1)}%" title="${m.lost} tabte"></span></div><small>${esc(m.label)}</small></div>`).join('')}</div><p class="sa-graph-foot">Oprettelser efter oprettelsesdato; vundne og tabte efter afslutningsdato.</p></div>`;
-};
+const dashboardRows=(rows,caption='')=>`<div class="sa-rank-list" aria-label="${esc(caption)}">${(rows||[]).slice(0,8).map(r=>`<div class="sa-rank-item"><span>${esc(r.label)}</span><strong>${esc(r.display??r.value)}</strong></div>`).join('')||'<p class="sa-muted">Ingen registreringer.</p>'}</div>`;
+const trendGraph=arr=>timeline(arr);
 const reminderDue=l=>{
  if(isClosed(l)||!l.next_followup)return false;
  const when=new Date(String(l.next_followup).slice(0,10)+'T12:00:00');if(Number.isNaN(+when))return false;
@@ -138,20 +176,19 @@ const countryStats=()=>{if(!DEMO&&remote?.countrySummary)return remote.countrySu
 const officeOptions=()=>{const u=me(),ls=getLists(),offices=Object.entries(ls.offices||{}).flatMap(([country,names])=>names.map(office=>({id:country+'|'+office,country,office})));if(u.role==='admin'||u.role==='leadership')return offices;if(u.role==='manager')return offices.filter(o=>(u.countries||[]).includes(o.country)||(u.offices||[]).includes(o.id));if(u.role==='office')return offices.filter(o=>(u.offices||[]).includes(o.id));return offices.filter(o=>accessible().some(l=>officeCode(l)===o.id))};
 const overviewLinks=(links)=>`<div class="sa-quicklinks">${links.map(([v,label])=>navButton(v,label)).join('')}</div>`;
 const renderOverview=()=>{
- const u=me(),arr=accessible(),act=arr.filter(l=>!isClosed(l)),attention=attentionQueue(act),next=act.filter(l=>l.next_followup&&!reminderDue(l)).sort((a,b)=>a.next_followup.localeCompare(b.next_followup)),last=[...arr].sort((a,b)=>(b.updated_at||'').localeCompare(a.updated_at||'')).slice(0,5);
- const topActions=attention.length?attention:next;
- const core=(rightType='country')=>`<div class="sa-dash-grid">${panel('Pipeline efter salgsfase',stageGraph(arr))}${panel(rightType==='product'?'Interesse fordelt på produkter':rightType==='owner'?'Vægtet pipeline pr. sælger':rightType==='office'?'Vægtet pipeline pr. kontor':'Vægtet pipeline pr. land',rightType==='product'?productGraph(arr):groupGraph(arr,rightType))}</div>`;
- const activity=()=>`<div class="sa-dash-grid sa-dash-tables">${panel('Handling og påmindelse · '+attention.length,compactTable(topActions))}${panel('Senest ændrede kundeemner',compactTable(last))}</div>`;
- if(u.role==='seller')return intro('Min personlige salgsforside','Egne leads, sandsynlighed og de næste handlinger samlet ét sted.',newButton())+metrics(arr)+overviewLinks([['mine','Alle mine leads'],['followups','Mine opfølgninger']])+core('product')+activity();
- if(u.role==='office')return intro('Kontorets forside','Leads og salgsudvikling for dine tildelte kontorer. Du har læseadgang.')+metrics(arr)+overviewLinks([['offices','Vælg kontor'],['reports','Kontorets rapporter']])+core('owner')+activity();
- if(u.role==='manager')return intro('Landechefens forside','Salgsaktivitet og næste handlinger i dine tildelte lande og kontorer.',newButton())+metrics(arr)+overviewLinks([['offices','Mine kontorer'],['reports','Områdets rapporter']])+core('office')+activity();
- if(u.role==='leadership')return intro('Ledelsens dashboard','Salgsresultater, geografisk fordeling og pipelineudvikling på tværs af lande.')+metrics(arr)+overviewLinks([['countries','Landepipeline'],['reports','Detaljerede rapporter']])+core('country')+`<div class="sa-dash-grid">${panel('Udvikling de seneste 6 måneder',trendGraph(arr))}${panel('Kommende opfølgninger',compactTable(topActions))}</div>`;
- const lists=getLists(),counts=[['Brugere',getUsers().length,'Konti og roller'],['Lande',(lists.countries||[]).length,'Registrerede lande'],['Kontorer',officeOptions().length,'Registrerede kontorer'],['Aktive leads',act.length,'I hele systemet']];
- return intro('Administratorens kontrolpanel','Brugere, adgang, systemstatus og et samlet salgsbillede.')+
+ const u=me(),arr=accessible(),active=arr.filter(l=>!isClosed(l)),attention=attentionQueue(active),next=active.filter(l=>l.next_followup&&!reminderDue(l)).sort((a,b)=>a.next_followup.localeCompare(b.next_followup)),last=[...arr].sort((a,b)=>(b.updated_at||'').localeCompare(a.updated_at||'')).slice(0,5),action=attention.length?attention:next;
+ const curvePair=(type)=>`<div class="sa-dash-grid">${panel('Salgsudvikling pr. måned',trendGraph(arr))}${panel('Nye leads fordelt efter '+({product:'produkt',owner:'sælger',office:'kontor',country:'land'}[type]||type),timelineGroup(arr,type))}</div>`;
+ const details=(type)=>`<div class="sa-dash-grid sa-dash-bottom">${panel('Status lige nu',stageGraph(arr))}${panel(type==='product'?'Aktuel produktinteresse':type==='owner'?'Aktuel vægtet pipeline pr. sælger':type==='office'?'Aktuel vægtet pipeline pr. kontor':'Aktuel vægtet pipeline pr. land',type==='product'?productGraph(arr):groupGraph(arr,type))}</div>`;
+ const activity=()=>`<div class="sa-dash-grid sa-dash-tables">${panel('Påmindelser og handlinger · '+attention.length,compactTable(action))}${panel('Senest ændrede kundeemner',compactTable(last))}</div>`;
+ if(u.role==='seller')return intro('Min personlige salgsforside','Kurver viser udviklingen i dine egne leads. Aktuelle tal vises særskilt.',newButton())+metrics(arr)+overviewLinks([['mine','Alle mine leads'],['followups','Mine opfølgninger']])+periods()+curvePair('product')+details('product')+activity();
+ if(u.role==='office')return intro('Kontorets forside','Salgsudvikling for dine tildelte kontorer. Du har læseadgang.')+metrics(arr)+overviewLinks([['offices','Vælg kontor'],['reports','Kontorets rapporter']])+periods()+curvePair('owner')+details('owner')+activity();
+ if(u.role==='manager')return intro('Landechefens forside','Følg udvikling og opfølgning for dine tildelte lande og kontorer.',newButton())+metrics(arr)+overviewLinks([['offices','Mine kontorer'],['reports','Områdets rapporter']])+periods()+curvePair('office')+details('office')+activity();
+ if(u.role==='leadership')return intro('Ledelsens dashboard','Sammenlign salgsudviklingen over tid; pipelineværdi er et aktuelt nøgletal.')+metrics(arr)+overviewLinks([['countries','Landepipeline'],['reports','Detaljerede rapporter']])+periods()+curvePair('country')+details('country')+panel('Kommende handlinger',compactTable(action));
+ const lists=getLists(),counts=[['Brugere',getUsers().length,'Konti og roller'],['Lande',(lists.countries||[]).length,'Registrerede lande'],['Kontorer',officeOptions().length,'Registrerede kontorer'],['Aktive leads',active.length,'I hele systemet']];
+ return intro('Administratorens kontrolpanel','Brugere, adgang og udviklingskurver samlet ét sted.')+
  `<div class="sa-metrics">${counts.map(([label,count,ex])=>`<div class="sa-metric"><div class="sa-metric-top">${esc(label)}</div><div class="sa-metric-value">${count}</div><div class="sa-metric-hint">${esc(ex)}</div></div>`).join('')}</div>`+
  overviewLinks([['admin','Brugere og stamdata'],['release','Udvikling & kontrol'],['reports','Salgsrapporter']])+
- `<div class="sa-dash-grid">${panel('Pipeline fordelt på salgsfaser',stageGraph(arr))}${panel('Vægtet pipeline pr. land',groupGraph(arr,'country'))}</div>`+
- panel('Opfølgninger der kræver opmærksomhed · '+attention.length,compactTable(topActions,6));
+ periods()+curvePair('country')+details('country')+panel('Opfølgninger der kræver opmærksomhed · '+attention.length,compactTable(action,6));
 };
 const filters=()=>{const ls=getLists();return `<div class="sa-filters"><input class="sa-filter search" id="sa-search" value="${esc(query)}" placeholder="⌕ ${esc(t('search'))}" aria-label="${esc(t('search'))}">${[['country',[["",t('allCountries')],...ls.countries]],['office',[["",t('office')],...Object.entries(ls.offices).flatMap(([c,arr])=>arr.map(o=>[o,cn(c)+' / '+o]))]],['owner',[["",t('allOwners')],...getUsers().filter(u=>['seller','manager'].includes(u.role)).map(u=>[String(u.id),u.name])]],['product',[["",t('allProducts')],...ls.products.map(p=>[p,p])]],['status',[["",t('allStatuses')],...Object.keys(statuses).map(s=>[s,t(statuses[s])])]],['minprob',[["",t('probabilityMin')],...[0,10,20,30,40,50,60,70,80,90,100].map(v=>[String(v),v+'%'])]]].map(([k,opts])=>`<select class="sa-filter ${k==='minprob'?'prob':''}" data-filter="${k}">${opts.map(([v,label])=>`<option value="${esc(v)}" ${filter[k]===v?'selected':''}>${esc(label)}</option>`).join('')}</select>`).join('')}<input class="sa-filter" type="date" data-filter="from" value="${esc(filter.from)}" title="${esc(t('since'))}"><input class="sa-filter" type="date" data-filter="to" value="${esc(filter.to)}" title="${esc(t('until'))}"></div>`};
 const renderMine=()=>{let arr=filtered(accessible());return intro(menuTitle('mine'),t('pipeline'),newButton()+btn(t('export'),'export'))+metrics(arr)+statusExplanation()+panel(t('pipeline')+' · '+arr.length,filters()+table(arr))};
@@ -162,17 +199,18 @@ return panel(cn(tabCountry)+' · '+t('owner'),`<div class="sa-table-wrap"><table
 const renderOffices=()=>{
  const offices=officeOptions();if(!offices.some(o=>o.id===selectedOffice))selectedOffice=offices[0]?.id||'';
  const arr=filtered(accessible()).filter(l=>officeCode(l)===selectedOffice),due=attentionQueue(arr);
- return intro('Kontoroverblik','Vælg kontor for at se pipeline, salgsfaser, opfølgninger og sælgere.',me().role==='office'?'':newButton())+
- `<div class="sa-office-tabs" role="group" aria-label="Vælg kontor">${offices.map(o=>`<button type="button" data-office="${esc(o.id)}" class="sa-btn ${o.id===selectedOffice?'primary':''}" aria-pressed="${o.id===selectedOffice}">${esc(cn(o.country)+' / '+o.office)}</button>`).join('')||'<span class="sa-muted">Ingen kontorer tildelt. Administratoren skal tildele mindst ét kontor.</span>'}</div>`+
- metrics(arr)+`<div class="sa-dash-grid">${panel('Fordeling på salgsfaser',stageGraph(arr))}${panel('Vægtet pipeline pr. sælger',groupGraph(arr,'owner'))}</div>`+
+ return intro('Kontoroverblik','Vælg kontor, og følg både salgsudvikling og aktuelle leads.',me().role==='office'?'':newButton())+
+ `<div class="sa-office-tabs" role="group" aria-label="Vælg kontor">${offices.map(o=>`<button type="button" data-office="${esc(o.id)}" class="sa-btn ${o.id===selectedOffice?'primary':''}" aria-pressed="${o.id===selectedOffice}">${esc(cn(o.country)+' / '+o.office)}</button>`).join('')||'<span class="sa-muted">Ingen kontorer tildelt.</span>'}</div>`+
+ metrics(arr)+periods()+`<div class="sa-dash-grid">${panel('Salgsudvikling pr. måned',trendGraph(arr))}${panel('Nye leads pr. sælger over tid',timelineGroup(arr,'owner'))}</div>`+
+ `<div class="sa-dash-grid sa-dash-bottom">${panel('Status lige nu',stageGraph(arr))}${panel('Aktuel vægtet pipeline pr. sælger',groupGraph(arr,'owner'))}</div>`+
  panel('Opfølgninger der kræver handling · '+due.length,compactTable(due,5))+
  `<details class="sa-expand"><summary>Hvad betyder salgsstatus?</summary>${statusExplanation()}</details>`+
  panel('Kontorets leads · '+arr.length,filters()+table(arr));
 };
 const renderCountries=()=>{
  const stats=countryStats(),rows=stats.filter(c=>c.weighted>0).sort((a,b)=>b.weighted-a.weighted).map(c=>({label:c.name,value:c.weighted,display:euro(c.weighted)}));
- return intro(t('countries'),'Fælles aggregeret landestatistik. Klik på et land for at se antallet af leads pr. sælger.')+
- panel('Vægtet pipeline efter land',dashboardRows(rows,'Vægtet pipeline pr. land, aggregeret uden private leaddetaljer'))+
+ return intro(t('countries'),'Landenes aktuelle, samlede nøgletal. Kurver nedenfor dækker kun leads, du selv har læseadgang til.')+
+ `<div class="sa-dash-grid">${panel('Udvikling i mine tilgængelige leads',trendGraph(accessible()))}${panel('Aktuel vægtet værdi efter land (fælles sum)',dashboardRows(rows,'Aktuel vægtet pipeline pr. land'))}</div>`+
  panel(t('countryOverview'),countryTable(stats))+sellerSummary();
 };
 const renderFollowups=()=>{
@@ -191,13 +229,14 @@ const reportBreakdown=(leads)=>{const dims=[['owner',t('owner'),l=>displayName(l
 const renderReports=()=>{
  const ls=filtered(accessible()),closed=ls.filter(isClosed),won=closed.filter(l=>l.status==='won'),lost=closed.filter(l=>l.status==='lost');
  const reasonMap=new Map();closed.forEach(l=>{if(l.outcome_reason)reasonMap.set(l.outcome_reason,(reasonMap.get(l.outcome_reason)||0)+1)});
- const reasonGraph=dashboardRows([...reasonMap.entries()].sort((a,b)=>b[1]-a[1]).map(([label,value])=>({label,value})),'Antal afsluttede leads pr. udfaldsårsag');
- return intro(t('reports'),'Filtrér før du sammenligner. Grafer, nøgletal og tabeller viser samme filtrerede datagrundlag.',btn(t('export'),'export'))+
- panel('Filtrér rapportdata',filters())+
- metrics(ls)+
- `<div class="sa-dash-grid">${panel('Pipeline efter salgsfase',stageGraph(ls))}${panel('Vægtet pipeline pr. land',groupGraph(ls,'country'))}</div>`+
- `<div class="sa-dash-grid">${panel('Aktivitet de seneste 6 måneder',trendGraph(ls))}${panel('Årsager til vundet og tabt',reasonGraph)}</div>`+
- `<div class="sa-quick-stats"><div><strong>${closed.length?Math.round(won.length/closed.length*100):0}%</strong>Konverteringsrate af afsluttede</div><div><strong>${won.length}</strong>Vundne leads</div><div><strong>${lost.length}</strong>Tabte leads</div><div><strong>${ls.length}</strong>Leads i filtreret grundlag</div></div>`+
+ const reasons=dashboardRows([...reasonMap.entries()].sort((a,b)=>b[1]-a[1]).map(([label,value])=>({label,value})),'Antal afsluttede leads pr. udfaldsårsag');
+ const choose=me().role==='seller'?'product':me().role==='office'?'owner':me().role==='manager'?'office':'country';
+ return intro(t('reports'),'Kurver viser hændelser over tid; vægtede værdier og salgsstatus er aktuelle tal.',btn(t('export'),'export'))+
+ panel('Filtrér rapportdata',filters())+metrics(ls)+periods()+
+ `<div class="sa-dash-grid">${panel('Oprettede, vundne og tabte over tid',trendGraph(ls))}${panel('Nye leads efter '+({product:'produkt',owner:'sælger',office:'kontor',country:'land'}[choose]),timelineGroup(ls,choose))}</div>`+
+ `<div class="sa-dash-grid sa-dash-bottom">${panel('Aktuelle salgsfaser',stageGraph(ls))}${panel('Aktuel vægtet pipeline pr. land',groupGraph(ls,'country'))}</div>`+
+ `<div class="sa-dash-grid sa-dash-bottom">${panel('Årsager til vundet og tabt',reasons)}${panel('Produktinteresse på aktive leads',productGraph(ls))}</div>`+
+ `<div class="sa-quick-stats"><div><strong>${closed.length?Math.round(won.length/closed.length*100):0}%</strong>Konvertering af afsluttede</div><div><strong>${won.length}</strong>Vundne</div><div><strong>${lost.length}</strong>Tabte</div><div><strong>${ls.length}</strong>Filtrerede leads</div></div>`+
  `<details class="sa-expand"><summary>Detaljeret sammenligning efter sælger, kontor, land og produkt</summary>${reportBreakdown(ls)}</details>`+
  `<details class="sa-expand"><summary>Vis alle ${ls.length} leads bag rapporten</summary>${panel('Underliggende data',table(ls))}</details>`;
 };
@@ -208,6 +247,8 @@ panel('Hvad betyder felter og indstillinger?',`<div class="sa-panel-body sa-help
 panel('Hvem kan se og ændre hvad?',`<div class="sa-panel-body"><p>${esc(hint('roles'))}</p><p><strong>Eksempel:</strong> Står der <b>Tilbud</b> ud for virksomheden, er salgsprocessen nået til et konkret forslag til kunden. Det betyder ikke, at aftalen er vundet.</p><p>Vigtig forskel: Landepipeline kan vise fælles summer, mens de personlige leadoplysninger stadig er begrænset af brugerens rettigheder.</p></div>`);
 const renderRelease=()=>{
 const improvements=[
+ ['1.3.0-beta','Kurvediagrammer i stedet for bjælker: månedlig udvikling, 6/12-måneders valg og sammenligning mellem sælgere/kontorer/lande'],
+ ['1.3.0-beta','Status og vægtet pipeline vises som aktuelle tal, da historiske pipeline-snapshots endnu ikke findes'],
  ['1.2.0-beta','Kompakte dashboardkort og korte tabeller, grafer for pipeline/salgsfaser/produkter/lande og seks måneders salgshistorik'],
  ['1.2.0-beta','Opfølgninger viser nu også klokkeslæt og tager højde for reminder-dage; rapporter og stamdata kan foldes ud'],
  ['1.1.0-beta','Personlige forsider for sælgere, kontoransatte, landechefer, ledelse og administratorer samt forklaringer af salgsfaser og felter'],
@@ -228,7 +269,7 @@ const rows=[
  ['GDPR, backup og driftsgodkendelse','Afventer','Skal fastlægges og testes på den faktiske WordPress-installation'],
  ['Accepttest ACC-01 til ACC-10','Afventer','Programkode er ikke en godkendt funktionstest på en WordPress-server']
 ];
-return intro(t('release'),'Version 1.2.0-beta · 29.10.2026 · status: udviklingsversion')+
+return intro(t('release'),'Version 1.3.0-beta · 29.10.2026 · status: udviklingsversion')+
 panel('Seneste forbedringer',`<div class="sa-panel-body">${improvements.map(([v,n])=>`<div class="sa-info-row"><span><strong>${esc(v)}</strong> · ${esc(n)}</span></div>`).join('')}</div>`)+
 panel('Krav og kontrol',`<div class="sa-table-wrap"><table class="sa-table"><thead><tr><th>Område</th><th>Status</th><th>Bemærkning</th></tr></thead><tbody>${rows.map(([a,b,c])=>`<tr><td><strong>${esc(a)}</strong></td><td>${esc(b)}</td><td>${esc(c)}</td></tr>`).join('')}</tbody></table></div>`)+
 panel('Fortsat test og dokumentation',`<div class="sa-panel-body"><p>Demoen bruger alene fiktive kundedata. Rollevælgeren er til visning og udgør ikke adgangssikkerhed. Brug WordPress-pluginet med login til rigtige data.</p><p>Før drift skal alle acceptkrav kontrolleres med flere brugere i en rigtig WordPress-installation. Først derefter kan krav markeres godkendt.</p><a href="https://github.com/mOLTRUP/Test/tree/main/salgsadministration" target="_blank" rel="noopener noreferrer">Se kildekode, kravstatus og testplan på GitHub ↗</a></div>`);
@@ -248,7 +289,7 @@ const saveSettings=async e=>{e.preventDefault();let f=e.target;let countries=f.e
 const exportCSV=async()=>{try{if(!DEMO){const res=await fetch(CFG.rest.replace(/\/$/,'')+'/export?'+new URLSearchParams({...filter,q:query}).toString(),{credentials:'same-origin',headers:{'X-WP-Nonce':CFG.nonce}});if(!res.ok)throw new Error('Eksport nægtet');const blob=await res.blob();download(blob,'salgsadministration.csv');return}let ls=filtered(accessible()),headers=['id','company','vat','country','office','contact','phone','email','owner_id','amount_eur','vehicles','probability','products','status','next_followup','reminder_days','outcome_reason','outcome_note','close_date','notes','created_at','updated_at'];let q=v=>'"'+String(v??'').replace(/^[=+@\-\t\r]/,"'").replace(/"/g,'""')+'"';let csv='\ufeff'+headers.join(';')+'\r\n'+ls.map(l=>headers.map(k=>q(Array.isArray(l[k])?l[k].join(', '):l[k])).join(';')).join('\r\n');download(new Blob([csv],{type:'text/csv;charset=utf-8'}),'salgsadministration-demo.csv')}catch(ex){flash(ex.message)}};
 const download=(blob,name)=>{const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),4000)};
 document.addEventListener('click',e=>{const navBtn=e.target.closest('[data-nav]');if(navBtn){const next=navBtn.dataset.nav;if(!(navByRole[me().role]||navByRole.seller).includes(next))return;view=next;query='';filter={country:'',office:'',owner:'',product:'',status:'',minprob:'',from:'',to:''};draw();return}const officeBtn=e.target.closest('[data-office]');if(officeBtn){if(officeOptions().some(o=>o.id===officeBtn.dataset.office)){selectedOffice=officeBtn.dataset.office;draw()}return}const act=e.target.closest('[data-act]')?.dataset.act;if(act){if(act==='new')formLead();if(act==='close-modal')closeModal();if(act==='export')exportCSV();if(act==='new-user')userForm();return}const tr=e.target.closest('tr[data-id]');if(tr)formLead(tr.dataset.id);const country=e.target.closest('tr[data-country]');if(country){tabCountry=country.dataset.country;draw()}const usr=e.target.closest('tr[data-user]');if(usr&&me().role==='admin')userForm(usr.dataset.user)});
-document.addEventListener('change',e=>{const x=e.target;if(x.id==='sa-role'&&DEMO){demo.actorId=Number(x.value);language=demo.users.find(u=>u.id===demo.actorId)?.lang||'da';view='overview';selectedOffice='';saved();draw()}if(x.id==='sa-lang'){language=x.value;saved();if(!DEMO)api('preferences','PUT',{lang:language}).catch(()=>{});draw()}if(x.dataset.filter!==undefined){filter[x.dataset.filter]=x.value;draw()}if(x.name==='status'&&x.closest('#sa-lead-form')){const statusHelp=document.getElementById('sa-status-help');if(statusHelp)statusHelp.textContent='ⓘ '+statusInfo(x.value);const out=document.getElementById('f-outcome');if(out){const old=out.value;const choices=getLists().outcomeReasons[x.value]||[];out.innerHTML='<option value="">'+esc(t('choose'))+'</option>'+choices.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');if(choices.includes(old))out.value=old}if(['won','lost'].includes(x.value)){const closed=document.getElementById('f-closeDate');if(closed&&!closed.value)closed.value=today()}}if(x.name==='country'&&x.closest('#sa-lead-form')){const off=document.getElementById('f-office');off.innerHTML=(getLists().offices[x.value]||[]).map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join('')}});
+document.addEventListener('change',e=>{const x=e.target;if(x.id==='sa-role'&&DEMO){demo.actorId=Number(x.value);language=demo.users.find(u=>u.id===demo.actorId)?.lang||'da';view='overview';selectedOffice='';saved();draw()}if(x.id==='sa-chart-period'){chartMonths=Number(x.value)===12?12:6;draw();return}if(x.id==='sa-lang'){language=x.value;saved();if(!DEMO)api('preferences','PUT',{lang:language}).catch(()=>{});draw()}if(x.dataset.filter!==undefined){filter[x.dataset.filter]=x.value;draw()}if(x.name==='status'&&x.closest('#sa-lead-form')){const statusHelp=document.getElementById('sa-status-help');if(statusHelp)statusHelp.textContent='ⓘ '+statusInfo(x.value);const out=document.getElementById('f-outcome');if(out){const old=out.value;const choices=getLists().outcomeReasons[x.value]||[];out.innerHTML='<option value="">'+esc(t('choose'))+'</option>'+choices.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');if(choices.includes(old))out.value=old}if(['won','lost'].includes(x.value)){const closed=document.getElementById('f-closeDate');if(closed&&!closed.value)closed.value=today()}}if(x.name==='country'&&x.closest('#sa-lead-form')){const off=document.getElementById('f-office');off.innerHTML=(getLists().offices[x.value]||[]).map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join('')}});
 app?.addEventListener('input',e=>{if(e.target.id==='sa-search'){query=e.target.value;const start=e.target.selectionStart;draw();const el=document.getElementById('sa-search');if(el){el.focus();el.setSelectionRange(start,start)}}});
 document.addEventListener('submit',e=>{if(e.target.id==='sa-lead-form')saveLead(e);if(e.target.id==='sa-user-form')saveUser(e);if(e.target.id==='sa-settings')saveSettings(e)});
 document.addEventListener('click',e=>{if(e.target.id==='sa-modal')closeModal()});
