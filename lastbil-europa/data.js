@@ -522,6 +522,62 @@ window.TRUCK_DB = {
       "url": "https://www.bta.bg/bg/news/1052259-api-pri-ofitsialni-praznitsi-prez-2026-g-v-pikovite-chasove-shte-se-ogranichav",
       "checked": "2026-10-30",
       "kind": "Officiel myndighedsudmelding via nationalt nyhedsbureau; original bekendtgørelse bør kontrolleres"
+    },
+    {
+      "id": "AT03",
+      "title": "Østrig: vinterdæk for lastbiler over 3,5 ton",
+      "publisher": "Østrigs føderale myndighedsportal",
+      "url": "https://www.oesterreich.gv.at/en/themen/mobilitaet/kfz/10/2/Seite.063100",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "AT04",
+      "title": "Østrig: pligt til at medbringe snekæder for lastbiler",
+      "publisher": "Østrigs føderale myndighedsportal",
+      "url": "https://www.oesterreich.gv.at/en/themen/mobilitaet/kfz/10/2/Seite.063200",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "NO02",
+      "title": "Norge: vinterdæk og mønsterdybde for tunge køretøjer",
+      "publisher": "Statens vegvesen",
+      "url": "https://www.vegvesen.no/en/vehicles/professional-transport/tyres-and-chains/tyres-on-heavy-vehicles/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "NO03",
+      "title": "Norge: snekæder til tunge køretøjer",
+      "publisher": "Statens vegvesen",
+      "url": "https://www.vegvesen.no/en/vehicles/professional-transport/tyres-and-chains/snow-chains-on-heavy-vehicles/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "SE02",
+      "title": "Sverige: vinterdæk for tunge lastbiler og påhængskøretøjer",
+      "publisher": "Transportstyrelsen",
+      "url": "https://www.transportstyrelsen.se/sv/vagtrafik/Fordon/Fordonsregler/Dack/vinterdack/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "SE03",
+      "title": "Sverige: vintervægt for toakslede lastbiler med påhæng",
+      "publisher": "Transportstyrelsen",
+      "url": "https://www.transportstyrelsen.se/sv/vagtrafik/Yrkestrafik/Gods-och-buss/Matt-och-vikt/viktbestammelser/sarskilda-bestammelse-for-tvaaxlade-lastbilar-med-slap/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "PL05",
+      "title": "Polen: ny bekendtgørelse om uddannelse og eksamen af erhvervschauffører (2026/1355)",
+      "publisher": "Polens lovtidende (ELI)",
+      "url": "https://eli.gov.pl/eli/DU/2026/1355/ogl",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
     }
   ],
   "topics": [
@@ -1919,6 +1975,127 @@ window.TRUCK_DB = {
       "weight": "over12",
       "urgency": "Vigtig",
       "validFrom": "2027-04-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R075",
+      "country": "AT",
+      "topic": "Sikkerhed",
+      "title": "Østrig: vinterdæk på tunge lastbiler 1. november–15. april",
+      "summary": "Lastbiler med tilladt totalvægt over 3,5 ton skal have vinterdæk på alle hjul på mindst én trækkende aksel i perioden 1. november–15. april.",
+      "condition": "Kravet gælder også uden sne eller is på vejbanen. Vinterdæk skal være mærket med godkendt vintermærkning. Visse special- og udrykningskøretøjer er undtaget. Sæson 2026/27 starter 1. november 2026.",
+      "refs": [
+        "AT03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R076",
+      "country": "AT",
+      "topic": "Sikkerhed",
+      "title": "Østrig: medbring snekæder 1. november–15. april",
+      "summary": "Lastbiler over 3,5 ton skal medbringe snekæder, der kan monteres på mindst to trækkende hjul, fra 1. november til 15. april.",
+      "condition": "Kæder anvendes kun ved behov og på passende snedækket eller iset vej. Der er særlige undtagelser, bl.a. for køretøjer, der konstruktivt ikke kan bruge kæder. Sæson 2026/27 starter 1. november 2026.",
+      "refs": [
+        "AT04"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R077",
+      "country": "NO",
+      "topic": "Sikkerhed",
+      "title": "Norge: mindst 5 mm dækmønster i vintersæsonen",
+      "summary": "For køretøjer og påhængskøretøjer med tilladt totalvægt over 3,5 ton kræves mindst 5 mm dækmønster fra 1. november til første søndag efter påskemandag. I Nordland, Troms og Finnmark gælder perioden 16. oktober–30. april.",
+      "condition": "Uden for perioden er minimum 1,6 mm. Kravet er geografisk og sæsonmæssigt forskelligt; 2026/27-sæsonen i Nordnorge begyndte 16. oktober 2026. Særlige regler gælder autocampere.",
+      "refs": [
+        "NO02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-10-16",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R078",
+      "country": "NO",
+      "topic": "Sikkerhed",
+      "title": "Norge: vinterdæk obligatoriske 15. november–31. marts",
+      "summary": "Lastbiler og påhængskøretøjer, der hver især vejer over 3,5 ton i tilladt totalvægt, skal have vinterdæk 15. november–31. marts.",
+      "condition": "3PMSF/alpesymbol på drivaksler og forreste styreaksler på lastbilen; M+S eller 3PMSF på øvrige aksler og påhængskøretøjer. Kravet gælder sæson 2026/27 fra 15. november 2026. Særregler for autocampere.",
+      "refs": [
+        "NO02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-15",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R079",
+      "country": "NO",
+      "topic": "Sikkerhed",
+      "title": "Norge: krav om snekæder og antal ved vogntog",
+      "summary": "Over 3,5 ton skal lastbiler medbringe snekæder i perioden med 5 mm mønsterdybdekrav, uanset føre; ellers når sne eller is kan forventes. En enkelt lastbil skal normalt have mindst tre kæder.",
+      "condition": "Vogntog med trækkende køretøj og trailer over 3,5 ton hver kræver normalt mindst syv kæder ved tvillinghjul på drivakslen, eller fem ved enkelthjul/dobbeltkæder. Særlige regler for automatkæder og autocampere. Nordnorge fra 16. oktober 2026; resten fra 1. november 2026.",
+      "refs": [
+        "NO03",
+        "NO02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-10-16",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R080",
+      "country": "SE",
+      "topic": "Sikkerhed",
+      "title": "Sverige: vinterdæk på tunge lastbiler 10. november–10. april",
+      "summary": "Tunge lastbiler og tilkoblede påhængskøretøjer skal have vinterdæk eller tilsvarende udstyr fra 10. november til og med 10. april, uanset vinterføre.",
+      "condition": "På tunge lastbiler mindst 5 mm dækmønster i perioden, mens tilkoblet påhængskøretøj skal have mindst 1,6 mm. 3PMSF/POR/pigdæk accepteres, og M+S er tilladt på visse ikke-styrende/ikke-drivende aksler. Reglen blev udvidet i 2025 og gælder også sæson 2026/27.",
+      "refs": [
+        "SE02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-10",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R081",
+      "country": "SE",
+      "topic": "Vaegt",
+      "title": "Sverige: særligt vinterkrav til vægtfordeling for toakslede lastbiler med påhæng",
+      "summary": "Fra 10. november til 10. april gælder en særregel for tunge toakslede lastbiler med én drivaksel og et eller flere påhængskøretøjer.",
+      "condition": "Enten skal mindst 25 % af vogntogets samlede bruttovægt belaste drivakslen, ELLER påhængskøretøjernes samlede bruttovægt må højst være 1,5 gange lastbilens bruttovægt. Kun ét af kravene behøver være opfyldt. Gælder ikke toakslede lastbiler med flere drivaksler.",
+      "refs": [
+        "SE03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-10",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R082",
+      "country": "PL",
+      "topic": "Chauffoer",
+      "title": "Polen: ny bekendtgørelse om erhvervschaufførers uddannelse og eksamen fra 3. november 2026",
+      "summary": "En ny polsk bekendtgørelse af 7. oktober 2026 om uddannelse og eksamination af chauffører, der udfører vejtransport, træder i kraft 3. november 2026 (Dz.U. 2026 poz. 1355).",
+      "condition": "Relevant for polske uddannelses- og eksamensforløb for erhvervschauffører; dette opslag beskriver kun bekendtgørelsens emne og ikrafttræden, ikke ændrede individuelle uddannelseskrav. Kontrollér den fulde bekendtgørelse og overgangsbestemmelser før anvendelse.",
+      "refs": [
+        "PL05"
+      ],
+      "weight": "over3.5",
+      "urgency": "Vigtig",
+      "validFrom": "2026-11-03",
       "checked": "2026-10-30"
     }
   ]
