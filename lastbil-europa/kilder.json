@@ -577,6 +577,38 @@
       "url": "https://eli.gov.pl/eli/DU/2026/1355/ogl",
       "checked": "2026-10-30",
       "kind": "Officiel kilde"
+    },
+    {
+      "id": "FR03",
+      "title": "Frankrig: vinterudstyr i bjergområder 2026–2027",
+      "publisher": "Service Public / franske premierministers juridiske informationstjeneste",
+      "url": "https://www.service-public.gouv.fr/particuliers/actualites/A14389",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde – sæson 2026/27"
+    },
+    {
+      "id": "FR04",
+      "title": "Frankrig: Code de la route artikel D314-8 – vinterudstyr N2/N3",
+      "publisher": "Légifrance / Frankrigs lovdatabase",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042442012",
+      "checked": "2026-10-30",
+      "kind": "Officiel lovkilde"
+    },
+    {
+      "id": "SI02",
+      "title": "Slovenien: vinterudstyr, kæder, dækmønster og sneforhold",
+      "publisher": "Sloveniens politi",
+      "url": "https://www.policija.si/eng/prevention/traffic-safety/winter-in-road-traffic-provisions-on-winter-equipment",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "SI03",
+      "title": "Slovenien: vinterrestriktioner og særlige tilladelser",
+      "publisher": "SPOT / Sloveniens offentlige erhvervsportal",
+      "url": "https://spot.gov.si/sl/dejavnosti-in-poklici/dovoljenja/dovoljenje-za-opravljanje-prevozov-v-casu-prepovedi-prometa/",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
     }
   ]
 }
