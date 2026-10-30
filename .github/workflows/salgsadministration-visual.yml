@@ -19,6 +19,8 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Validate seller, office, manager, leadership and admin at desktop and mobile widths
         run: node salgsadministration/tests/visual-playwright.cjs
+      - name: Test new sales design proposal (roles, country overview, leads, Kanban, mobile)
+        run: node salgsadministration/tests/design-udspil-playwright.cjs
       - name: Save screenshot evidence even when checks fail
         if: always()
         uses: actions/upload-artifact@v4
