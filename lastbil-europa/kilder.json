@@ -457,6 +457,38 @@
       "url": "https://www.imt-ip.pt/noticias/novas-regras-para-veiculos-pesados-na-vci-entram-em-vigor-a-15-de-setembro/",
       "checked": "2026-10-30",
       "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK06",
+      "title": "Storbritannien: HGV levy-satser fra april 2026",
+      "publisher": "UK Department for Transport",
+      "url": "https://www.gov.uk/guidance/how-to-use-the-hgv-levy-service",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK07",
+      "title": "Storbritannien: takografundtagelser fra juni 2026",
+      "publisher": "DVSA / GOV.UK",
+      "url": "https://www.gov.uk/government/publications/approved-tachograph-centre-special-notice-02-26/approved-tachograph-centre-special-notice-02-26",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "PL03",
+      "title": "Polen: ændring af undtagelser til lastbilforbud 2026",
+      "publisher": "Polens lovtidende / Ministerstwo Infrastruktury",
+      "url": "https://eli.gov.pl/eli/DU/2026/1110/ogl",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "HU03",
+      "title": "Ungarn: officielt nationalt transitvejnet",
+      "publisher": "Hungarian National Access Point",
+      "url": "https://napportal.kozut.hu/en/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
     }
   ]
 }
