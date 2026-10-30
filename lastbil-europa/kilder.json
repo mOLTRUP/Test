@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "checkedAt": "2026-10-30",
+  "checkedAt": "2026-10-31",
   "sources": [
     {
       "id": "EU01",
@@ -640,6 +640,30 @@
       "publisher": "Ministrstvo za infrastrukturo / GOV.SI",
       "url": "https://www.gov.si/novice/2025-02-20-obvestilo-prevoznikom-o-uporabi-digitalnega-sistema-cemt-s-1-1-2026/",
       "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "NL03",
+      "title": "Nederlandene: midlertidig 22,3 % reduktion af lastbilkilometerafgift 2026",
+      "publisher": "Netherlands Enterprise Agency / Business.gov.nl",
+      "url": "https://business.gov.nl/amendments/temporary-reduction-in-truck-toll/",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "NL04",
+      "title": "Nederlandene: nulemissionszoner og overgangsordninger for lastbiler",
+      "publisher": "Netherlands Enterprise Agency / Business.gov.nl",
+      "url": "https://business.gov.nl/sustainable-business/sustainable-business-operations/zero-emission-zones-in-the-netherlands/",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "NL05",
+      "title": "Nederlandene: miljøzoner og Euro 6-krav for diesellastbiler",
+      "publisher": "Netherlands Enterprise Agency / Business.gov.nl",
+      "url": "https://business.gov.nl/regulations/environmental-zone/",
+      "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
     }
   ]
