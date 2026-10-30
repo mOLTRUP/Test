@@ -458,6 +458,38 @@ window.TRUCK_DB = {
       "url": "https://www.imt-ip.pt/noticias/novas-regras-para-veiculos-pesados-na-vci-entram-em-vigor-a-15-de-setembro/",
       "checked": "2026-10-30",
       "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK06",
+      "title": "Storbritannien: HGV levy-satser fra april 2026",
+      "publisher": "UK Department for Transport",
+      "url": "https://www.gov.uk/guidance/how-to-use-the-hgv-levy-service",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK07",
+      "title": "Storbritannien: takografundtagelser fra juni 2026",
+      "publisher": "DVSA / GOV.UK",
+      "url": "https://www.gov.uk/government/publications/approved-tachograph-centre-special-notice-02-26/approved-tachograph-centre-special-notice-02-26",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "PL03",
+      "title": "Polen: ændring af undtagelser til lastbilforbud 2026",
+      "publisher": "Polens lovtidende / Ministerstwo Infrastruktury",
+      "url": "https://eli.gov.pl/eli/DU/2026/1110/ogl",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "HU03",
+      "title": "Ungarn: officielt nationalt transitvejnet",
+      "publisher": "Hungarian National Access Point",
+      "url": "https://napportal.kozut.hu/en/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
     }
   ],
   "topics": [
@@ -1717,6 +1749,98 @@ window.TRUCK_DB = {
       "weight": "over3.5",
       "urgency": "Kritisk",
       "validFrom": "2026-09-15",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R066",
+      "country": "UK",
+      "topic": "Afgifter",
+      "title": "HGV levy: nye britiske satser fra 1. april 2026",
+      "summary": "Dagsafgiften for udenlandsk registrerede Euro 6-lastbiler er £3,22 (12.000–31.000 kg), £7,74 (31.001–38.000 kg) eller £9,67 (38.001 kg og derover). Euro 5 eller ældre har højere satser.",
+      "condition": "Gælder køretøjer fra 12 ton på britiske hovedveje (A-/M-veje). Betal før kørsel i landet. Afgift afhænger af tilladt vægt, Euroklasse og betalingsperiode. Øvrige vejafgifter kan forekomme.",
+      "refs": [
+        "UK06"
+      ],
+      "weight": "over12",
+      "urgency": "Kritisk",
+      "validFrom": "2026-04-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R067",
+      "country": "UK",
+      "topic": "Takograf",
+      "title": "Takografundtagelse for nulemissionskøretøjer 3,5–4,25 ton",
+      "summary": "Fra 1. juni 2026 er visse nulemissions-godskøretøjer over 3,5 ton og højst 4,25 ton undtaget fra britiske takografregler.",
+      "condition": "Omfatter England, Skotland og Wales under de anførte betingelser. En særskilt undtagelse for alternative brændstoffer op til 7,5 ton kræver højst 100 km fra virksomhedens base og udelukkende kørsel i Storbritannien. Kørsel mellem Storbritannien og Nordirland kan fortsat kræve takograf.",
+      "refs": [
+        "UK07"
+      ],
+      "weight": "over3.5",
+      "urgency": "Vigtig",
+      "validFrom": "2026-06-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R068",
+      "country": "UK",
+      "topic": "Adgang",
+      "title": "ECMT-tilladelser administreres digitalt i 2026",
+      "summary": "Britisk udstedte ECMT-tilladelser kan tilgås digitalt; operatøren skal registrere køretøjs- og rejseoplysninger i online-systemet, og chaufføren kan vise tilladelsen digitalt eller på papir.",
+      "condition": "Kun for transporter, hvor ECMT-tilladelse er påkrævet. Digital logbog og relevante tekniske certifikater kræves. ECMT-tilladelser gælder ikke til cabotage.",
+      "refs": [
+        "UK03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Vigtig",
+      "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R069",
+      "country": "PL",
+      "topic": "Forbud",
+      "title": "Udvidede undtagelser fra polske lastbilforbud fra 21. august 2026",
+      "summary": "En ændringsbekendtgørelse udvider undtagelserne fra periodiske kørselsforbud for lastbiler over 12 ton til bl.a. bestemte militære transporter samt køretøjer til køreundervisning og statslige prøver.",
+      "condition": "Kun de udtrykkeligt omfattede transporter og anvendelser er undtaget. Almindelig godstransport er fortsat underlagt relevante ferie- og helligdagsforbud.",
+      "refs": [
+        "PL03",
+        "PL01"
+      ],
+      "weight": "over12",
+      "urgency": "Vigtig",
+      "validFrom": "2026-08-21",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R070",
+      "country": "BG",
+      "topic": "Forbud",
+      "title": "Bulgarien: midlertidige helligdagsrestriktioner over 12 ton",
+      "summary": "Bulgarien har midlertidige kørselsrestriktioner for lastbiler over 12 ton i forbindelse med helligdage. Restriktionerne er knyttet til udvalgte tidspunkter og strækninger, ikke et generelt landsdækkende weekendforbud.",
+      "condition": "Kontrollér den konkrete dato, retning, vejstrækning og undtagelser. Den britiske myndighedsvejledning henviser til en særskilt bulgarsk restriktionsoversigt for 2026.",
+      "refs": [
+        "UK02"
+      ],
+      "weight": "over12",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R071",
+      "country": "HU",
+      "topic": "Forbud",
+      "title": "Ungarn: transitvejnet skal kontrolleres før gennemkørsel",
+      "summary": "Ungarn har indført ændringer i, hvilke veje tunge lastbiler må benytte ved transit. Gennemkørende transport skal planlægges efter det tilladte transitvejnet.",
+      "condition": "Gælder relevant transitkørsel, ikke nødvendigvis lokal distribution. Kontroller altid ruten i Ungarns officielle National Access Point; denne oversigt er ikke vejsegmentbaseret.",
+      "refs": [
+        "HU03",
+        "UK02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
       "checked": "2026-10-30"
     }
   ]
