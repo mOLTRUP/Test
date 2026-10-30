@@ -489,6 +489,38 @@
       "url": "https://napportal.kozut.hu/en/",
       "checked": "2026-10-30",
       "kind": "Officiel kilde"
+    },
+    {
+      "id": "PL04",
+      "title": "Polen: kørselsforbud 31. oktober og 1. november 2026",
+      "publisher": "Wojewódzki Inspektorat Transportu Drogowego i Radom / Gov.pl",
+      "url": "https://www.gov.pl/web/witd-radom/zakazy-jazdy-dla-pojazdow-ciezarowych-w-okresie-wszystkich-swietych",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK08",
+      "title": "Storbritannien: midlertidig £1-registreringsafgift for HGV 2026–27",
+      "publisher": "DVLA / GOV.UK",
+      "url": "https://www.gov.uk/guidance/temporary-1-vehicle-tax-for-most-heavy-goods-vehicles-hgv",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK09",
+      "title": "Storbritannien: Budget 2026, foreslået HGV levy og VED for 2027–28",
+      "publisher": "HM Revenue & Customs / GOV.UK",
+      "url": "https://www.gov.uk/government/publications/budget-2026-overview-of-tax-legislation-and-rates-ootlar/budget-2026-overview-of-tax-legislation-and-rates-ootlar",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde – lovforslag/finanslovsudmelding"
+    },
+    {
+      "id": "BG01",
+      "title": "Bulgarien: vejmyndighedens helligdagsrestriktioner 2026 gengivet af BTA",
+      "publisher": "Bulgarsk vejmyndighed API, offentliggjort via Bulgariens nyhedsbureau BTA",
+      "url": "https://www.bta.bg/bg/news/1052259-api-pri-ofitsialni-praznitsi-prez-2026-g-v-pikovite-chasove-shte-se-ogranichav",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedsudmelding via nationalt nyhedsbureau; original bekendtgørelse bør kontrolleres"
     }
   ]
 }
