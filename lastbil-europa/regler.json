@@ -848,6 +848,141 @@
       "urgency": "Kritisk",
       "validFrom": "",
       "checked": "2026-10-30"
+    },
+    {
+      "id": "R057",
+      "country": "PL",
+      "topic": "Afgifter",
+      "title": "Polen: e-TOLL over 3,5 ton",
+      "summary": "Godskøretøjer og vogntog med tilladt totalvægt over 3,5 ton skal være registreret i e-TOLL og betale på afgiftsbelagte motorveje og udvalgte nationale veje. Fra 1. februar 2026 blev ca. 645 km tilføjet.",
+      "condition": "Brug aktiv og registreret lokationsenhed/app/OBU; kontrollér vejnet, betalingssaldo og satser. Undtagelser kan gælde.",
+      "refs": [
+        "PL02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-02-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R058",
+      "country": "HU",
+      "topic": "Afgifter",
+      "title": "Ungarn: HU-GO over 3,5 ton",
+      "summary": "Afstandsbaseret elektronisk vejafgift gælder godskøretøjer over 3,5 ton på afgiftsbelagte motorveje, motortrafikveje og hovedveje.",
+      "condition": "Betal med korrekt registreret OBU eller gyldig rutebillet; vejnet og takster blev ændret i 2026.",
+      "refs": [
+        "HU01"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R059",
+      "country": "HU",
+      "topic": "Afgifter",
+      "title": "Ungarn: rutebillet gyldig 300 minutter",
+      "summary": "Fra 1. maj 2026 er en HU-GO-rutebillet (route ticket) gyldig i 300 minutter i stedet for 120 minutter.",
+      "condition": "Betaling og bekræftelse skal være fuldført, før den planlagte afgiftsbelagte rute benyttes.",
+      "refs": [
+        "HU02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-05-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R060",
+      "country": "EE",
+      "topic": "Afgifter",
+      "title": "Estland: tidsbaseret vejafgift over 3,5 ton",
+      "summary": "Estland kræver tidsbaseret vejafgift for godskøretøjer over 3,5 ton på offentlige veje, også for udenlandske køretøjer.",
+      "condition": "Betal e-vignet før indkørsel. Afgiften er tidsbaseret og ikke en kilometerafgift; kontrollér undtagelser.",
+      "refs": [
+        "EE01"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R061",
+      "country": "LV",
+      "topic": "Afgifter",
+      "title": "Letland: vignet for godskøretøjer",
+      "summary": "På udvalgte stats- og regionalveje kræver Letland vejvignet for godskøretøjer med tilladt totalvægt over 3.000 kg og visse vogntog over 3.500 kg.",
+      "condition": "Særlige vejstrækninger og indkørsler i byområder kan være undtaget; kontrollér gældende vægtopgørelse og betaling.",
+      "refs": [
+        "LV01"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R062",
+      "country": "LT",
+      "topic": "Afgifter",
+      "title": "Litauen: e-vignet før afgiftsvej",
+      "summary": "Godskøretøjer i kategorier N1, N2 og N3 skal have en gyldig elektronisk vignet, før de kører på litauiske betalingsveje.",
+      "condition": "Kravet kan dermed omfatte køretøjer under 3,5 ton; se opdateret vejkort og takster på den officielle portal.",
+      "refs": [
+        "LT01"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R063",
+      "country": "HR",
+      "topic": "Afgifter",
+      "title": "Kroatien: motorvejsafgift efter klasse",
+      "summary": "Kroatien opkræver motorvejsafgifter efter vejstrækning og køretøjskategori. Motorvejsture har sædvanligvis betalingsregistrering ved ind- og udkørsel.",
+      "condition": "Kontrollér konkret motorvejsselskab, antal aksler, højde/vægt og betalingsform før afgang.",
+      "refs": [
+        "HR01"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R064",
+      "country": "ES",
+      "topic": "Forbud",
+      "title": "Spanien: tids- og rutespecifikke lastbilforbud",
+      "summary": "DGT fastsætter 2026-restriktioner på bestemte dage og strækninger for godskøretøjer over 7,5 ton, ADR-transporter og specialtransporter.",
+      "condition": "DGT-reglerne omfatter ikke Catalonien, Baskerlandet og Navarra, som har egne trafikmyndigheder. Kontrollér 2026-kalenderen for hele ruten.",
+      "refs": [
+        "ES01"
+      ],
+      "weight": "over7.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R065",
+      "country": "PT",
+      "topic": "Forbud",
+      "title": "Portugal: Porto VCI-restriktion fra 15. september 2026",
+      "summary": "På hverdage kl. 07–21 begrænses brug af Portos VCI for tunge godskøretøjer over 3,5 ton med tre eller flere aksler og specificeret køretøjshøjde.",
+      "condition": "Der er undtagelse for lokal læsning/losning i Porto eller Vila Nova de Gaia efter forhåndsregistrering. Berørte køretøjer kan benytte A41/CREP uden afgift.",
+      "refs": [
+        "PT01"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-09-15",
+      "checked": "2026-10-30"
     }
   ]
 }
