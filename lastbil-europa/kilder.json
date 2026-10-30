@@ -609,6 +609,38 @@
       "url": "https://spot.gov.si/sl/dejavnosti-in-poklici/dovoljenja/dovoljenje-za-opravljanje-prevozov-v-casu-prepovedi-prometa/",
       "checked": "2026-10-30",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "CZ02",
+      "title": "Tjekkiet: vinterdæk og 6 mm dækmønster over 3,5 ton",
+      "publisher": "Policie České republiky – Karlovy Vary",
+      "url": "https://policie.gov.cz/karlovarsky-kraj/povinnost-uziti-zimnich-pneumatik",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "CZ03",
+      "title": "Tjekkiet: vinterdæk på drivende aksler over 3,5 ton",
+      "publisher": "Policie České republiky",
+      "url": "https://policie.gov.cz/clanek/upozornujeme-ridice-na-blizici-se-zimni-obdobi.aspx",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "SI04",
+      "title": "Slovenien: tidsbestemt vejlukning R1-203 Predel–Bovec ved Kluže 2026",
+      "publisher": "Direkcija Republike Slovenije za infrastrukturo / GOV.SI",
+      "url": "https://www.gov.si/novice/2026-09-25-spremenjen-prometni-rezim-na-regionalni-cesti-pri-trdnjavi-kluze/",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "SI05",
+      "title": "Slovenien: digital CEMT-tilladelse og medbragte dokumenter fra 2026",
+      "publisher": "Ministrstvo za infrastrukturo / GOV.SI",
+      "url": "https://www.gov.si/novice/2025-02-20-obvestilo-prevoznikom-o-uporabi-digitalnega-sistema-cemt-s-1-1-2026/",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
     }
   ]
 }
