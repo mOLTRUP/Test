@@ -55,3 +55,6 @@ Uafhængigt testprojekt i `mOLTRUP/Test/lastbil-europa/`, uden ændringer i øvr
 ## Kildeopdatering 30. oktober 2026
 
 Tilføjet R066–R071 (6 opslag) om britiske afgiftssatser, britiske takografundtagelser, digitale ECMT-tilladelser, polske undtagelser, bulgarske helligdagsforbud og ungarsk transitvejnet. Fire nye officielle kilder (UK06, UK07, PL03, HU03); eksisterende UK02 og UK03 er genbrugt. Uoplyst ikrafttrædelsesdato betyder, at præcis juridisk startdato ikke er fastslået.
+
+### Opdatering 30. oktober 2026 – vintersæson og chaufføruddannelse
+Tilføjet otte kildeunderbyggede opslag R075–R082 og syv officielle kilder AT03–AT04, NO02–NO03, SE02–SE03 og PL05. Omfatter vinterdæk og snekæder i Østrig og Norge, svenske vinterdæk- og vægtfordelingskrav samt polsk uddannelsesbekendtgørelse med ikrafttræden 3. november 2026. Regler med 2026/27-sæsonstart angiver start på den relevante sæson, ikke nødvendigvis den oprindelige lovs vedtagelsesdato. Kortet har endnu ikke verificerede vejsegment-geometrier for disse regler.
