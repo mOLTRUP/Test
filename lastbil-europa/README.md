@@ -1,6 +1,6 @@
 # Lastbil Europa – interaktivt regelsæt for tung vejgodstransport
 
-**Researchversion 1.0, gennemgået 30. oktober 2026.**
+**Researchversion 1.0, senest opdateret 31. oktober 2026.**
 
 Søgbar dansk prototype for lastbilkørsel i Europa: EU-fælles regler og et indledende udvalg af verificerede nationale regler om køretider, takografer, vejafgifter, kørselsforbud, adgang til markedet, cabotage, udstationering, ADR, særtransport, dokumenter og sikkerhed.
 
@@ -32,7 +32,7 @@ Et opslag er en **kort sammenfatning** af en regel, ikke den fulde lovtekst. `co
 
 `checked` dokumenterer kun, at kilden blev gennemgået i forbindelse med opbygning 30. oktober 2026. Det er **ikke** en garanti for, at forholdene fortsat gælder på enhver senere køredato.
 
-**Dækningsgrad:** 74 opslag / 65 kilder / 44 lande, heraf 24 lande med mindst ét specifikt nationalt opslag. Lande uden opslag kan stadig have mange restriktioner.
+**Dækningsgrad:** 92 opslag / 83 kilder / 44 lande, heraf 24 lande med mindst ét specifikt nationalt opslag. Lande uden opslag kan stadig have mange restriktioner.
 
 ## Vigtige afgrænsninger
 
@@ -64,3 +64,6 @@ Tilføjet fire opslag R083–R086 og fire officielle kilder FR03–FR04 og SI02�
 
 ### Opdatering 30. oktober 2026 – Tjekkiet og Slovenien (vejlukning/CEMT)
 Tilføjet tre dokumenterede opslag R087–R089 og fire officielle myndighedskilder CZ02–CZ03, SI04–SI05. Tjekkiet: vinterdæk ved vinterføre 1. november–31. marts for køretøjer over 3,5 ton med mindst 6 mm mønsterdybde; datoen er sæsonstart, ikke ny lov. Slovenien: midlertidig, tidsbestemt fuld vejlukning R1-203 km 12,600–12,750 ved Kluže 5. oktober–24. december 2026 kl. 08.00–14.30, med mulig ændring efter vejrforhold; samt digital CEMT-dokumentation fra 1. januar 2026. Vejlukningen er ikke indtegnet som præcis geometri på kortet. Kontroller altid live vejmeldinger og omkørslens egnethed for tunge lastbiler. Kilder kontrolleret 30. oktober 2026.
+
+### Opdatering 31. oktober 2026 – Nederlandene
+Tilføjet R090–R092 og officielle kilder NL03–NL05. Kilometerafgiften er reduceret 22,3 % fra 1. september til 31. december 2026. Nulemissionszoner og Euro 6-overgangsordninger for lastbiler samt Euro 6-krav i lilla miljøzoner er registreret. Kommunale zonegrænser er ikke indtegnet på Europakortet; gyldighed og undtagelser afhænger af den enkelte kommune. Eksisterende regler og kilder er bevaret. Kilder kontrolleret 31. oktober 2026.
