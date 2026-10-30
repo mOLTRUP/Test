@@ -610,6 +610,38 @@ window.TRUCK_DB = {
       "url": "https://spot.gov.si/sl/dejavnosti-in-poklici/dovoljenja/dovoljenje-za-opravljanje-prevozov-v-casu-prepovedi-prometa/",
       "checked": "2026-10-30",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "CZ02",
+      "title": "Tjekkiet: vinterdæk og 6 mm dækmønster over 3,5 ton",
+      "publisher": "Policie České republiky – Karlovy Vary",
+      "url": "https://policie.gov.cz/karlovarsky-kraj/povinnost-uziti-zimnich-pneumatik",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "CZ03",
+      "title": "Tjekkiet: vinterdæk på drivende aksler over 3,5 ton",
+      "publisher": "Policie České republiky",
+      "url": "https://policie.gov.cz/clanek/upozornujeme-ridice-na-blizici-se-zimni-obdobi.aspx",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "SI04",
+      "title": "Slovenien: tidsbestemt vejlukning R1-203 Predel–Bovec ved Kluže 2026",
+      "publisher": "Direkcija Republike Slovenije za infrastrukturo / GOV.SI",
+      "url": "https://www.gov.si/novice/2026-09-25-spremenjen-prometni-rezim-na-regionalni-cesti-pri-trdnjavi-kluze/",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "SI05",
+      "title": "Slovenien: digital CEMT-tilladelse og medbragte dokumenter fra 2026",
+      "publisher": "Ministrstvo za infrastrukturo / GOV.SI",
+      "url": "https://www.gov.si/novice/2025-02-20-obvestilo-prevoznikom-o-uporabi-digitalnega-sistema-cemt-s-1-1-2026/",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
     }
   ],
   "topics": [
@@ -2191,6 +2223,52 @@ window.TRUCK_DB = {
       "weight": "over3.5",
       "urgency": "Kritisk",
       "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R087",
+      "country": "CZ",
+      "topic": "Sikkerhed",
+      "title": "Tjekkiet: vinterdæk over 3,5 ton ved vinterføre 1. november–31. marts",
+      "summary": "Fra 1. november til 31. marts kræves vinterdæk ved sne, is, rimfrost eller når sådant føre kan forventes under kørslen. På køretøjer over 3,5 ton kræves mindst 6 mm mønsterdybde på vinterdækkene.",
+      "condition": "For tunge køretøjer skal de permanent drivende akslers hjul have vinterdæk. På strækninger skiltet 'Zimní výbava' gælder pligten i den angivne periode også uden aktuelt vinterføre. Kontroller lokale skilte og vejforhold. 1. november 2026 er start på vintersæsonen, ikke lovens oprindelige ikrafttræden.",
+      "refs": [
+        "CZ02",
+        "CZ03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R088",
+      "country": "SI",
+      "topic": "Forbud",
+      "title": "Slovenien: R1-203 Predel–Bovec ved Kluže lukket i dagtimerne til 24. december 2026",
+      "summary": "R1-203, afsnit 1002 Predel–Bovec, km 12,600–12,750 ved Kluže er planlagt helt lukket 5. oktober–24. december 2026 kl. 08.00–14.30, også lørdage, på grund af sikring af klippeskråninger.",
+      "condition": "Efter kl. 14.30 og på søndage er der planlagt delvis spærring med trafiklys. Myndigheden angiver omkørsel via Bovec–Vršič–Kranjska Gora–Rateče–Predel, men omkørslens egnethed for tung lastbil, vinterføre og aktuelle ændringer skal kontrolleres særskilt. Hvis Vršič ikke kan passeres, kan arbejdet og spærringen blive ændret. Midlertidig restriktion, ikke et generelt lastbilforbud; kontroller live trafikinfo.",
+      "refs": [
+        "SI04"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-10-05",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R089",
+      "country": "SI",
+      "topic": "Adgang",
+      "title": "Slovenien: digitale CEMT-tilladelser og dokumentkrav fra 1. januar 2026",
+      "summary": "Slovenien anvender fra 1. januar 2026 det digitale CEMT/ECMT-tilladelsessystem for transportører, der udfører internationale transporter under CEMT-ordningen.",
+      "condition": "For CEMT-transporter skal transportøren kunne fremvise gyldig CEMT-tilladelse, kørselsjournal og relevant køretøjscertifikat. Dokumenter kan efter den slovenske myndighedsvejledning opbevares digitalt eller udskrives på hvidt papir. Certifikater skal være korrekt udfyldt og underskrevet; ordningen gælder kun transporter, som kræver CEMT-tilladelse, ikke al EU-kørsel.",
+      "refs": [
+        "SI05"
+      ],
+      "weight": "all",
+      "urgency": "Vigtig",
+      "validFrom": "2026-01-01",
       "checked": "2026-10-30"
     }
   ]
