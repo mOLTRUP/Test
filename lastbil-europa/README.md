@@ -10,6 +10,7 @@ Søgbar dansk prototype for lastbilkørsel i Europa: EU-fælles regler og et ind
 
 - **Overblik:** kategorier, statistikker og nye kontrolpunkter.
 - **Alle regler:** fri søgning, land, kategori og kritiske betingelser.
+- **Europakort:** zoom til vejnavne med OpenStreetMap/Leaflet og søgning via Nominatim; kortet er ikke lastbilnavigation og viser ikke geografisk afgrænsede forbud.
 - **Landeoversigt:** landekort viser antal *nationalt verificerede* opslag; grå streg betyder ikke gennemgået.
 - **Rute-tjek:** brugeren vælger selv afgangs-, transit- og destinationslande; der beregnes ikke en rute.
 - **Kilderegister:** kilder til hvert opslag åbnes direkte, og alt kan eksporteres til JSON/CSV.
@@ -18,7 +19,7 @@ Søgbar dansk prototype for lastbilkørsel i Europa: EU-fælles regler og et ind
 
 | Fil | Funktion |
 | --- | --- |
-| `index.html` | Hele brugergrænsefladen; ingen ekstern JS-afhængighed |
+| `index.html` | Hele brugergrænsefladen; kortvisning bruger Leaflet fra CDN |
 | `data.js` | Strukturerede registreringer, kilder, lande og kategorier, der indlæses af browseren |
 | `regler.json` | Maskinlæsbar kopi af alle regler |
 | `kilder.json` | Maskinlæsbar kildeoversigt med url, udgiver og kontroltidspunkt |
@@ -50,3 +51,7 @@ Et opslag er en **kort sammenfatning** af en regel, ikke den fulde lovtekst. `co
 5. Gennemgå altid eksisterende registre efter lovændringer; ændr ikke data ud fra antagelser.
 
 Uafhængigt testprojekt i `mOLTRUP/Test/lastbil-europa/`, uden ændringer i øvrige projekter.
+
+## Kildeopdatering 30. oktober 2026
+
+Tilføjet R066–R071 (6 opslag) om britiske afgiftssatser, britiske takografundtagelser, digitale ECMT-tilladelser, polske undtagelser, bulgarske helligdagsforbud og ungarsk transitvejnet. Fire nye officielle kilder (UK06, UK07, PL03, HU03); eksisterende UK02 og UK03 er genbrugt. Uoplyst ikrafttrædelsesdato betyder, at præcis juridisk startdato ikke er fastslået.
