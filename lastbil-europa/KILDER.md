@@ -63,3 +63,11 @@ Senest gennemgået: **30. oktober 2026**. Dette er en registrering af kilder og 
 - **UK07 · Storbritannien: takografundtagelser fra juni 2026** — DVSA / GOV.UK. [https://www.gov.uk/government/publications/approved-tachograph-centre-special-notice-02-26/approved-tachograph-centre-special-notice-02-26](https://www.gov.uk/government/publications/approved-tachograph-centre-special-notice-02-26/approved-tachograph-centre-special-notice-02-26)
 - **PL03 · Polen: ændring af undtagelser til lastbilforbud 2026** — Polens lovtidende / Ministerstwo Infrastruktury. [https://eli.gov.pl/eli/DU/2026/1110/ogl](https://eli.gov.pl/eli/DU/2026/1110/ogl)
 - **HU03 · Ungarn: officielt nationalt transitvejnet** — Hungarian National Access Point. [https://napportal.kozut.hu/en/](https://napportal.kozut.hu/en/)
+
+- **PL04 · Polen: kørselsforbud 31. oktober og 1. november 2026** — Wojewódzki Inspektorat Transportu Drogowego i Radom / Gov.pl. [https://www.gov.pl/web/witd-radom/zakazy-jazdy-dla-pojazdow-ciezarowych-w-okresie-wszystkich-swietych](https://www.gov.pl/web/witd-radom/zakazy-jazdy-dla-pojazdow-ciezarowych-w-okresie-wszystkich-swietych)
+
+- **UK08 · Storbritannien: midlertidig £1-registreringsafgift for HGV 2026–27** — DVLA / GOV.UK. [https://www.gov.uk/guidance/temporary-1-vehicle-tax-for-most-heavy-goods-vehicles-hgv](https://www.gov.uk/guidance/temporary-1-vehicle-tax-for-most-heavy-goods-vehicles-hgv)
+
+- **UK09 · Storbritannien: Budget 2026, foreslået HGV levy og VED for 2027–28** — HM Revenue & Customs / GOV.UK. [https://www.gov.uk/government/publications/budget-2026-overview-of-tax-legislation-and-rates-ootlar/budget-2026-overview-of-tax-legislation-and-rates-ootlar](https://www.gov.uk/government/publications/budget-2026-overview-of-tax-legislation-and-rates-ootlar/budget-2026-overview-of-tax-legislation-and-rates-ootlar)
+
+- **BG01 · Bulgarien: vejmyndighedens helligdagsrestriktioner 2026 gengivet af BTA** — Bulgarsk vejmyndighed API, offentliggjort via Bulgariens nyhedsbureau BTA. [https://www.bta.bg/bg/news/1052259-api-pri-ofitsialni-praznitsi-prez-2026-g-v-pikovite-chasove-shte-se-ogranichav](https://www.bta.bg/bg/news/1052259-api-pri-ofitsialni-praznitsi-prez-2026-g-v-pikovite-chasove-shte-se-ogranichav)
