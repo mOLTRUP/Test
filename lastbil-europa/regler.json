@@ -1305,6 +1305,52 @@
       "urgency": "Kritisk",
       "validFrom": "",
       "checked": "2026-10-30"
+    },
+    {
+      "id": "R087",
+      "country": "CZ",
+      "topic": "Sikkerhed",
+      "title": "Tjekkiet: vinterdæk over 3,5 ton ved vinterføre 1. november–31. marts",
+      "summary": "Fra 1. november til 31. marts kræves vinterdæk ved sne, is, rimfrost eller når sådant føre kan forventes under kørslen. På køretøjer over 3,5 ton kræves mindst 6 mm mønsterdybde på vinterdækkene.",
+      "condition": "For tunge køretøjer skal de permanent drivende akslers hjul have vinterdæk. På strækninger skiltet 'Zimní výbava' gælder pligten i den angivne periode også uden aktuelt vinterføre. Kontroller lokale skilte og vejforhold. 1. november 2026 er start på vintersæsonen, ikke lovens oprindelige ikrafttræden.",
+      "refs": [
+        "CZ02",
+        "CZ03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R088",
+      "country": "SI",
+      "topic": "Forbud",
+      "title": "Slovenien: R1-203 Predel–Bovec ved Kluže lukket i dagtimerne til 24. december 2026",
+      "summary": "R1-203, afsnit 1002 Predel–Bovec, km 12,600–12,750 ved Kluže er planlagt helt lukket 5. oktober–24. december 2026 kl. 08.00–14.30, også lørdage, på grund af sikring af klippeskråninger.",
+      "condition": "Efter kl. 14.30 og på søndage er der planlagt delvis spærring med trafiklys. Myndigheden angiver omkørsel via Bovec–Vršič–Kranjska Gora–Rateče–Predel, men omkørslens egnethed for tung lastbil, vinterføre og aktuelle ændringer skal kontrolleres særskilt. Hvis Vršič ikke kan passeres, kan arbejdet og spærringen blive ændret. Midlertidig restriktion, ikke et generelt lastbilforbud; kontroller live trafikinfo.",
+      "refs": [
+        "SI04"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-10-05",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R089",
+      "country": "SI",
+      "topic": "Adgang",
+      "title": "Slovenien: digitale CEMT-tilladelser og dokumentkrav fra 1. januar 2026",
+      "summary": "Slovenien anvender fra 1. januar 2026 det digitale CEMT/ECMT-tilladelsessystem for transportører, der udfører internationale transporter under CEMT-ordningen.",
+      "condition": "For CEMT-transporter skal transportøren kunne fremvise gyldig CEMT-tilladelse, kørselsjournal og relevant køretøjscertifikat. Dokumenter kan efter den slovenske myndighedsvejledning opbevares digitalt eller udskrives på hvidt papir. Certifikater skal være korrekt udfyldt og underskrevet; ordningen gælder kun transporter, som kræver CEMT-tilladelse, ikke al EU-kørsel.",
+      "refs": [
+        "SI05"
+      ],
+      "weight": "all",
+      "urgency": "Vigtig",
+      "validFrom": "2026-01-01",
+      "checked": "2026-10-30"
     }
   ]
 }
