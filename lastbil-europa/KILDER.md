@@ -1,6 +1,6 @@
 # Kilderegister – Lastbil Europa
 
-Senest gennemgået: **30. oktober 2026**. Dette er en linkregistrering af kilder og en opsummering af hver kildes anvendelse – ikke kopier af myndighedernes lovtekster. Kilder kan ændres uden varsel. Felterne kan maskinlæses fra `kilder.json`.
+Senest gennemgået: **30. oktober 2026**. Dette er en registrering af kilder og deres anvendelse – ikke kopier af lovtekster. Kilder kan ændres uden varsel. Maskinlæsbar liste: `kilder.json`.
 
 - **EU01 · EU: køre- og hviletid (dansk)** — EU / Your Europe. [https://europa.eu/youreurope/citizens/work/work-abroad/rules-working-road-transport/index_da.htm](https://europa.eu/youreurope/citizens/work/work-abroad/rules-working-road-transport/index_da.htm)
 - **EU02 · EU: arbejdstid for vejtransport** — EU / Your Europe. [https://europa.eu/youreurope/business/hiring-managing-staff/transport-sector-workers/road-transportation-workers/index_en.htm](https://europa.eu/youreurope/business/hiring-managing-staff/transport-sector-workers/road-transportation-workers/index_en.htm)
@@ -50,3 +50,12 @@ Senest gennemgået: **30. oktober 2026**. Dette er en linkregistrering af kilder
 - **SI01 · Slovenien: distancebaseret motorvejsafgift** — GOV.SI / Slovenien. [https://www.gov.si/en/topics/tolls/](https://www.gov.si/en/topics/tolls/)
 - **EU20 · EU: mobilitetspakke 2026, varebiler over 2,5 t** — European Labour Authority. [https://www.ela.europa.eu/en/news/driving-and-rest-rules-and-compulsory-tachographs-apply-light-commercial-vehicles-cross-border](https://www.ela.europa.eu/en/news/driving-and-rest-rules-and-compulsory-tachographs-apply-light-commercial-vehicles-cross-border)
 - **EU21 · EU: gældende vægt og dimensioner (96/53/EF)** — EUR-Lex. [https://eur-lex.europa.eu/legal-content/da/TXT/?uri=CELEX%3A31996L0053](https://eur-lex.europa.eu/legal-content/da/TXT/?uri=CELEX%3A31996L0053)
+- **PL02 · Polen: e-TOLL udvidet fra 1. februar 2026** — Polens skatteforvaltning e-TOLL. [https://etoll.gov.pl/en/news/changes-to-the-e-toll-as-of-1-february-2026/](https://etoll.gov.pl/en/news/changes-to-the-e-toll-as-of-1-february-2026/)
+- **HU01 · Ungarn: HU-GO vejafgifter i 2026** — HU-GO, national afgiftsoperatør. [https://www.hu-go.hu/articles/article/changes-to-the-e-toll-system-in-2026](https://www.hu-go.hu/articles/article/changes-to-the-e-toll-system-in-2026)
+- **HU02 · Ungarn: gyldighed af rutebillet fra 1. maj 2026** — HU-GO, national afgiftsoperatør. [https://www.hu-go.hu/articles/article/changes-to-the-e-toll-system-from-1-may-2026-1](https://www.hu-go.hu/articles/article/changes-to-the-e-toll-system-from-1-may-2026-1)
+- **EE01 · Estland: road user charge over 3,5 ton** — Transpordiamet, Estland. [https://www.transpordiamet.ee/en/roads-waterways-airspace/estonian-road-network/road-user-charge](https://www.transpordiamet.ee/en/roads-waterways-airspace/estonian-road-network/road-user-charge)
+- **LV01 · Letland: vejvignet og vægtgrænser 2026** — Latvijas Valsts ceļi. [https://lvceli.lv/en/road-network/construction-and-maintenance/control-of-tolls-vignettes/](https://lvceli.lv/en/road-network/construction-and-maintenance/control-of-tolls-vignettes/)
+- **LT01 · Litauen: e-vignet for godskøretøjer N1–N3** — Via Lietuva, Litauen. [https://lakd.lt/en/user-charge-vignettes](https://lakd.lt/en/user-charge-vignettes)
+- **HR01 · Kroatien: motorvejsafgifter og køretøjsklasser** — GOV.HR, Kroatien. [https://gov.hr/en/tolls-515/514](https://gov.hr/en/tolls-515/514)
+- **ES01 · Spanien: 2026 forbud for lastbiltrafik over 7,5 ton** — DGT, Spanien. [https://www.dgt.es/conoce-el-estado-del-trafico/restricciones-a-la-circulacion/](https://www.dgt.es/conoce-el-estado-del-trafico/restricciones-a-la-circulacion/)
+- **PT01 · Portugal: Porto VCI forbud for tunge lastbiler 2026** — Instituto da Mobilidade e dos Transportes. [https://www.imt-ip.pt/noticias/novas-regras-para-veiculos-pesados-na-vci-entram-em-vigor-a-15-de-setembro/](https://www.imt-ip.pt/noticias/novas-regras-para-veiculos-pesados-na-vci-entram-em-vigor-a-15-de-setembro/)
