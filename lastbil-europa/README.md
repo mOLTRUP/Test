@@ -32,7 +32,7 @@ Et opslag er en **kort sammenfatning** af en regel, ikke den fulde lovtekst. `co
 
 `checked` dokumenterer kun, at kilden blev gennemgået i forbindelse med opbygning 30. oktober 2026. Det er **ikke** en garanti for, at forholdene fortsat gælder på enhver senere køredato.
 
-**Dækningsgrad:** 65 opslag / 57 kilder / 44 lande, heraf 23 lande med mindst ét specifikt nationalt opslag. Lande uden opslag kan stadig have mange restriktioner.
+**Dækningsgrad:** 74 opslag / 65 kilder / 44 lande, heraf 24 lande med mindst ét specifikt nationalt opslag. Lande uden opslag kan stadig have mange restriktioner.
 
 ## Vigtige afgrænsninger
 
