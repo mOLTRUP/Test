@@ -385,6 +385,78 @@
       "url": "https://eur-lex.europa.eu/legal-content/da/TXT/?uri=CELEX%3A31996L0053",
       "checked": "2026-10-30",
       "kind": "Officiel kilde"
+    },
+    {
+      "id": "PL02",
+      "title": "Polen: e-TOLL udvidet fra 1. februar 2026",
+      "publisher": "Polens skatteforvaltning e-TOLL",
+      "url": "https://etoll.gov.pl/en/news/changes-to-the-e-toll-as-of-1-february-2026/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "HU01",
+      "title": "Ungarn: HU-GO vejafgifter i 2026",
+      "publisher": "HU-GO, national afgiftsoperatør",
+      "url": "https://www.hu-go.hu/articles/article/changes-to-the-e-toll-system-in-2026",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "HU02",
+      "title": "Ungarn: gyldighed af rutebillet fra 1. maj 2026",
+      "publisher": "HU-GO, national afgiftsoperatør",
+      "url": "https://www.hu-go.hu/articles/article/changes-to-the-e-toll-system-from-1-may-2026-1",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EE01",
+      "title": "Estland: road user charge over 3,5 ton",
+      "publisher": "Transpordiamet, Estland",
+      "url": "https://www.transpordiamet.ee/en/roads-waterways-airspace/estonian-road-network/road-user-charge",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "LV01",
+      "title": "Letland: vejvignet og vægtgrænser 2026",
+      "publisher": "Latvijas Valsts ceļi",
+      "url": "https://lvceli.lv/en/road-network/construction-and-maintenance/control-of-tolls-vignettes/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "LT01",
+      "title": "Litauen: e-vignet for godskøretøjer N1–N3",
+      "publisher": "Via Lietuva, Litauen",
+      "url": "https://lakd.lt/en/user-charge-vignettes",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "HR01",
+      "title": "Kroatien: motorvejsafgifter og køretøjsklasser",
+      "publisher": "GOV.HR, Kroatien",
+      "url": "https://gov.hr/en/tolls-515/514",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "ES01",
+      "title": "Spanien: 2026 forbud for lastbiltrafik over 7,5 ton",
+      "publisher": "DGT, Spanien",
+      "url": "https://www.dgt.es/conoce-el-estado-del-trafico/restricciones-a-la-circulacion/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "PT01",
+      "title": "Portugal: Porto VCI forbud for tunge lastbiler 2026",
+      "publisher": "Instituto da Mobilidade e dos Transportes",
+      "url": "https://www.imt-ip.pt/noticias/novas-regras-para-veiculos-pesados-na-vci-entram-em-vigor-a-15-de-setembro/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
     }
   ]
 }
