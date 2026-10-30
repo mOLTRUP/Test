@@ -578,6 +578,38 @@ window.TRUCK_DB = {
       "url": "https://eli.gov.pl/eli/DU/2026/1355/ogl",
       "checked": "2026-10-30",
       "kind": "Officiel kilde"
+    },
+    {
+      "id": "FR03",
+      "title": "Frankrig: vinterudstyr i bjergområder 2026–2027",
+      "publisher": "Service Public / franske premierministers juridiske informationstjeneste",
+      "url": "https://www.service-public.gouv.fr/particuliers/actualites/A14389",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde – sæson 2026/27"
+    },
+    {
+      "id": "FR04",
+      "title": "Frankrig: Code de la route artikel D314-8 – vinterudstyr N2/N3",
+      "publisher": "Légifrance / Frankrigs lovdatabase",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042442012",
+      "checked": "2026-10-30",
+      "kind": "Officiel lovkilde"
+    },
+    {
+      "id": "SI02",
+      "title": "Slovenien: vinterudstyr, kæder, dækmønster og sneforhold",
+      "publisher": "Sloveniens politi",
+      "url": "https://www.policija.si/eng/prevention/traffic-safety/winter-in-road-traffic-provisions-on-winter-equipment",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "SI03",
+      "title": "Slovenien: vinterrestriktioner og særlige tilladelser",
+      "publisher": "SPOT / Sloveniens offentlige erhvervsportal",
+      "url": "https://spot.gov.si/sl/dejavnosti-in-poklici/dovoljenja/dovoljenje-za-opravljanje-prevozov-v-casu-prepovedi-prometa/",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
     }
   ],
   "topics": [
@@ -2096,6 +2128,69 @@ window.TRUCK_DB = {
       "weight": "over3.5",
       "urgency": "Vigtig",
       "validFrom": "2026-11-03",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R083",
+      "country": "FR",
+      "topic": "Sikkerhed",
+      "title": "Frankrig: vinterudstyr for lastbil uden påhæng i bjergzoner",
+      "summary": "Fra 1. november til 31. marts skal tunge lastbiler uden trailer eller sættevogn i de lokalt udpegede franske bjergzoner enten medbringe aftagelige skridsikringsmidler til mindst to trækkende hjul eller have godkendte 3PMSF-vinterdæk på mindst to styrende og to trækkende hjul.",
+      "condition": "Gælder N2/N3 uden påhæng i zoner fastsat ved præfektbeslutning og markeret med relevant skiltning; ikke et generelt nationalt vinterdækkrav. Pig-/særligt skridsikringsudstyr kan være undtaget. Kun 3PMSF-vinterdæk tæller som alternativ til kæder. Sæsonen 2026/27: 1. november 2026–31. marts 2027. Kontrollér den konkrete kommune og vej.",
+      "refs": [
+        "FR03",
+        "FR04"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R084",
+      "country": "FR",
+      "topic": "Sikkerhed",
+      "title": "Frankrig: snekæder kræves til tunge vogntog i bjergzoner",
+      "summary": "Tunge lastbiler med trailer eller sættevogn skal medbringe aftagelige skridsikringsmidler, der kan udstyre mindst to trækkende hjul, i udpegede bjergzoner fra 1. november til 31. marts – også når vogntoget har vinterdæk.",
+      "condition": "Gælder N2/N3 med trailer eller sættevogn i præfektudpegede og skiltede zoner. Sæsonen 2026/27: 1. november 2026–31. marts 2027. Godkendte alternative aftagelige skridsikringsmidler kan være tilladt; særlige undtagelser kan gælde for køretøjer med fastmonteret udstyr. Kontrollér den lokale afgrænsning.",
+      "refs": [
+        "FR03",
+        "FR04"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R085",
+      "country": "SI",
+      "topic": "Sikkerhed",
+      "title": "Slovenien: vinterudstyr for tunge lastbiler 15. november–15. marts",
+      "summary": "Køretøjer og påhængskøretøjer over 3,5 ton skal have foreskrevet vinterudstyr fra 15. november til 15. marts og desuden ved vinterføre uden for perioden. For tunge køretøjer kræves vinterdæk på drivhjulene eller sommerdæk med passende snekæder til drivhjulene; medbring også skovl.",
+      "condition": "Dækmønster på dæk, der tæller som vinterudstyr, mindst 3 mm. Slovensk politi angiver M+S-mærkning for vinterdæk. Særlige regler for kystområder og firehjulstræk. Sæsonen 2026/27 starter 15. november 2026. Vinterføre kan udløse kravet tidligere.",
+      "refs": [
+        "SI02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-11-15",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R086",
+      "country": "SI",
+      "topic": "Forbud",
+      "title": "Slovenien: vinterføre kan stoppe vogntog uden for motorveje",
+      "summary": "Ved vinterføre er kørsel med lastbiler med påhæng, ADR-transporter og særtransporter som udgangspunkt forbudt på slovenske veje bortset fra motorveje og motortrafikveje. Vejoperatøren kan også begrænse disse transporter på motorveje og motortrafikveje.",
+      "condition": "Aktiveres af faktiske vinterforhold (sne, is eller glat føre), ikke alene kalenderdato. Følg skiltning, politi og aktuelle trafikmeldinger. Eventuelle undtagelser og tilladelser kræver særskilt myndighedsgrundlag; dette opslag er ikke en live-trafikmelding.",
+      "refs": [
+        "SI02",
+        "SI03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
       "checked": "2026-10-30"
     }
   ]
