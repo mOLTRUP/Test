@@ -1,6 +1,6 @@
 window.TRUCK_DB = {
   "version": "1.0",
-  "checkedAt": "2026-10-30",
+  "checkedAt": "2026-10-31",
   "disclaimer": "Researchbaseret oversigt – ikke juridisk rådgivning, live trafikdata eller garanti for, at alle nationale eller regionale krav er med. Kontroller altid primærkilder inden kørsel.",
   "sources": [
     {
@@ -641,6 +641,30 @@ window.TRUCK_DB = {
       "publisher": "Ministrstvo za infrastrukturo / GOV.SI",
       "url": "https://www.gov.si/novice/2025-02-20-obvestilo-prevoznikom-o-uporabi-digitalnega-sistema-cemt-s-1-1-2026/",
       "checked": "2026-10-30",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "NL03",
+      "title": "Nederlandene: midlertidig 22,3 % reduktion af lastbilkilometerafgift 2026",
+      "publisher": "Netherlands Enterprise Agency / Business.gov.nl",
+      "url": "https://business.gov.nl/amendments/temporary-reduction-in-truck-toll/",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "NL04",
+      "title": "Nederlandene: nulemissionszoner og overgangsordninger for lastbiler",
+      "publisher": "Netherlands Enterprise Agency / Business.gov.nl",
+      "url": "https://business.gov.nl/sustainable-business/sustainable-business-operations/zero-emission-zones-in-the-netherlands/",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "NL05",
+      "title": "Nederlandene: miljøzoner og Euro 6-krav for diesellastbiler",
+      "publisher": "Netherlands Enterprise Agency / Business.gov.nl",
+      "url": "https://business.gov.nl/regulations/environmental-zone/",
+      "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
     }
   ],
@@ -2270,6 +2294,52 @@ window.TRUCK_DB = {
       "urgency": "Vigtig",
       "validFrom": "2026-01-01",
       "checked": "2026-10-30"
+    },
+    {
+      "id": "R090",
+      "country": "NL",
+      "topic": "Afgifter",
+      "title": "Nederlandene: 22,3 % rabat på kilometerafgift til 31. december 2026",
+      "summary": "Den hollandske kilometerafgift for lastbiler er midlertidigt nedsat med 22,3 % fra 1. september til og med 31. december 2026. Rabatten gælder afgiftspligtige lastbiler i alle kategorier.",
+      "condition": "Gælder kun den hollandske lastbilkilometerafgift i den angivne periode; betal fortsat via godkendt OBU/udbyder. Fra 1. januar 2027 skal de til den tid gældende officielle takster kontrolleres.",
+      "refs": [
+        "NL03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Vigtig",
+      "validFrom": "2026-09-01",
+      "validTo": "2026-12-31",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R091",
+      "country": "NL",
+      "topic": "Miljoe",
+      "title": "Nederlandene: nulemissionszoner i byer og Euro 6-overgang for lastbiler",
+      "summary": "Kommunale nulemissionszoner indføres gradvist fra 2025 til 2030. Som hovedregel skal nyere lastbiler i zonerne være emissionsfri. Euro 6-distributionslastbiler først indregistreret 2017–2019 har overgang til 1. januar 2028; Euro 6-distributionslastbiler fra 2020–2024 og Euro 6-trækkere fra 2017–2024 til 1. januar 2030.",
+      "condition": "Reglerne gælder kun i kommuner med en etableret nulemissionszone. Kontroller den konkrete zones startdato, grænse, første registreringsdato, køretøjstype og eventuelle dispensationer hos myndighederne før indkørsel. Den foreslåede forlængelse for Euro 6-varebiler til 2029 er ikke medregnet som gældende regel.",
+      "refs": [
+        "NL04"
+      ],
+      "weight": "all",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R092",
+      "country": "NL",
+      "topic": "Miljoe",
+      "title": "Nederlandene: diesel-lastbiler skal opfylde Euro 6 i lilla miljøzoner",
+      "summary": "I hollandske miljøzoner markeret med lilla skiltning er diesellastbiler kun tilladt ved emissionsklasse Euro 6 eller højere.",
+      "condition": "Gælder kun skiltede kommunale miljøzoner, ikke alle hollandske veje. Kontroller den enkelte zones afgrænsning og eventuelle fritagelser; miljøzoner og nulemissionszoner er forskellige ordninger.",
+      "refs": [
+        "NL05"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-31"
     }
   ]
 };
