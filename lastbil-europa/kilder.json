@@ -1,0 +1,390 @@
+{
+  "version": "1.0",
+  "checkedAt": "2026-10-30",
+  "sources": [
+    {
+      "id": "EU01",
+      "title": "EU: køre- og hviletid (dansk)",
+      "publisher": "EU / Your Europe",
+      "url": "https://europa.eu/youreurope/citizens/work/work-abroad/rules-working-road-transport/index_da.htm",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU02",
+      "title": "EU: arbejdstid for vejtransport",
+      "publisher": "EU / Your Europe",
+      "url": "https://europa.eu/youreurope/business/hiring-managing-staff/transport-sector-workers/road-transportation-workers/index_en.htm",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU03",
+      "title": "EU: smart takograf version 2 (2025)",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://transport.ec.europa.eu/news-events/news/stronger-and-more-unified-enforcement-eu-rules-international-road-transport-smart-tachograph-2025-08-19_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU04",
+      "title": "EU: takograf, 56 dage og overgangsregler",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://transport.ec.europa.eu/transport-modes/road/mobility-package-i/tachographs/questions-and-answers-tachograph-provisions-mobility-package-1_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU05",
+      "title": "EU: cabotage, 3/7/4-reglen",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://transport.ec.europa.eu/transport-modes/road/mobility-package-i/market-rules/rules-cabotage-applicable-21-february-2022_da",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU06",
+      "title": "EU: udstationerede chauffører",
+      "publisher": "EU / Your Europe",
+      "url": "https://europa.eu/youreurope/business/hiring-managing-staff/cross-border-posted-workers/drivers/index_en.htm",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU07",
+      "title": "EU: adgang til transporthvervet",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://transport.ec.europa.eu/transport-modes/road/rules-governing-access-profession_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU08",
+      "title": "EU: vejadgang og returpligt 8 uger (ophævet)",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://transport.ec.europa.eu/transport-modes/road/mobility-package-i/market-rules_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU09",
+      "title": "EU: vægt og dimensioner",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://transport.ec.europa.eu/transport-modes/road/weights-and-dimensions_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU10",
+      "title": "EU: vejbaneafgifter og CO₂",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://transport.ec.europa.eu/transport-modes/road/road-charging_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU11",
+      "title": "EU: eFTI 2027",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://transport.ec.europa.eu/transport-themes/logistics-and-multimodal-transport/efti-regulation_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU12",
+      "title": "EU: told og transit (NCTS/TIR)",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://taxation-customs.ec.europa.eu/customs/customs-procedures-import-and-export/customs-transit_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU13",
+      "title": "UNECE: CMR / e-CMR",
+      "publisher": "UNECE",
+      "url": "https://unece.org/trade/documents/2023/10/executive-guide-e-cmr",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU14",
+      "title": "UNECE: ADR 2025",
+      "publisher": "UNECE",
+      "url": "https://unece.org/adr-2025-files",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU15",
+      "title": "EU: lastsikring og særtransport",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://road-safety.transport.ec.europa.eu/eu-road-safety-policy/priorities/safe-vehicles/cargo-securing-and-abnormal-loads_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU16",
+      "title": "EU: køretøjskontrol / roadworthiness",
+      "publisher": "Europa-Kommissionen",
+      "url": "https://road-safety.transport.ec.europa.eu/eu-road-safety-policy/priorities/safe-vehicles/vehicle-inspection/tougher-vehicle-testing-rules-save-live_en",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU17",
+      "title": "EU: uddannelse og chaufførkompetence (EU 2022/2561)",
+      "publisher": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu/EN/legal-content/summary/drivers-of-road-vehicles-for-the-carriage-of-goods-or-passengers-qualification-and-training.html",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU18",
+      "title": "EU: sikker lastbilparkering 2025-rapport",
+      "publisher": "Europa-Kommissionen / EUR-Lex",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A52025DC0703",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU19",
+      "title": "EU: regler for internationale chauffører i andre lande (AETR)",
+      "publisher": "EU / Your Europe",
+      "url": "https://europa.eu/youreurope/citizens/work/work-abroad/rules-working-road-transport/index_en.htm",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "DE01",
+      "title": "Tyskland: søn- og helligdagskørselsforbud",
+      "publisher": "Tysk forbundsportal",
+      "url": "https://verwaltung.bund.de/leistungsverzeichnis/EN/leistung/99108058006000/herausgeber/MV-105760631/region/130000000000",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "DE02",
+      "title": "Tyskland: ferieforbud i juli/august",
+      "publisher": "BGL / brancheforening",
+      "url": "https://www.bgl-ev.de/fahrverbote-bgl/",
+      "checked": "2026-10-30",
+      "kind": "Branchekilde"
+    },
+    {
+      "id": "DE03",
+      "title": "Tyskland: lastbilmaut over 3,5 ton",
+      "publisher": "Toll Collect",
+      "url": "https://www.toll-collect.de/en/toll_collect/rund_um_die_maut/3_5_tonnen_maut/p1745_3_5_tonnen_maut.html",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "DE04",
+      "title": "Tyskland: CO₂-klasser ændret 1/7-2026",
+      "publisher": "Toll Collect",
+      "url": "https://www.toll-collect.de/en/toll_collect/rund_um_die_maut/meldungen/detailsseite_news_48128.html",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "FR01",
+      "title": "Frankrig: weekend- og helligdagsforbud",
+      "publisher": "Service Public / Frankrig",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F33698",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "FR02",
+      "title": "Frankrig: ekstra kørselsforbud 2026",
+      "publisher": "Bison Futé / Frankrig",
+      "url": "https://www2.bison-fute.gouv.fr/regime-general%2C10852.html",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "AT01",
+      "title": "Østrig: nat-, weekend- og helligdagsforbud",
+      "publisher": "USP / Østrig",
+      "url": "https://www.usp.gv.at/en/themen/betrieb-und-umwelt/transport-und-verkehr/lkw-fahrverbote.html",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "AT02",
+      "title": "Østrig: GO-Maut, regler (dansk)",
+      "publisher": "ASFINAG",
+      "url": "https://help.asfinag.at/da/vignetter-og-vejafgift/vignet/?lng=da",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "IT01",
+      "title": "Italien: kørselsforbud 2026",
+      "publisher": "Italiens transportministerium",
+      "url": "https://www.mit.gov.it/index.php/comunicazione/news/mezzi-pesanti-calendario-2026-dei-divieti-di-circolazione-stradale",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "PL01",
+      "title": "Polen: forbud over 12 ton",
+      "publisher": "GDDKiA / Polen",
+      "url": "https://www.gov.pl/web/gddkia/c-ograniczenia-w-ruchu-dla-pojazdow-powyzej-12-ton2",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "CZ01",
+      "title": "Tjekkiet: kørselsforbud",
+      "publisher": "Tjekkisk myndighedsportal",
+      "url": "https://portal.gov.cz/sluzby-vs/vyjimka-z-omezeni-jizdy-nekterych-vozidel-v-ramci-cele-cr-S551",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "SK01",
+      "title": "Slovakiet: færdselslov §39, gældende 01.10.2026",
+      "publisher": "Slov-Lex / Slovakiet",
+      "url": "https://static.slov-lex.sk/static/SK/ZZ/2009/8/20261001.print.html",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "CH01",
+      "title": "Schweiz: LSVA tungvognsafgift",
+      "publisher": "Bundesamt für Zoll und Grenzsicherheit",
+      "url": "https://www.bazg.admin.ch/en/hvc-lsva-overview",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "CH02",
+      "title": "Schweiz: nat- og søndagskørsel (vejledning)",
+      "publisher": "ASTRA / Schweiz",
+      "url": "https://www.astra.admin.ch/dam/astra/en/dokumente/abteilung_strassenverkehrallgemein/information-drivers-foreign-vehicles.download/Drivers%20of%20foreign%20heavy%20goods%20vehicles.information-drivers-foreign-vehicles",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "NO01",
+      "title": "Norge: AutoPASS-brikpligt",
+      "publisher": "AutoPASS / Norge",
+      "url": "https://www.autopass.no/en/user/compulsory-tag/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "BE01",
+      "title": "Belgien: Viapass kilometerafgift og OBU",
+      "publisher": "Viapass",
+      "url": "https://www.viapass.be/en/faqs-and-resources/eets-european-electronic-toll-services-in-belgium/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "BE02",
+      "title": "Belgien: CO₂ og afgiftsklasser",
+      "publisher": "Viapass",
+      "url": "https://www.viapass.be/en/rates/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "NL01",
+      "title": "Holland: lastbilafgift fra 1/7-2026",
+      "publisher": "RDW / Trucktoll",
+      "url": "https://www.vrachtwagenheffing.nl/en/vwh-news/2026/the-netherlands-introduces-truck-toll-on-1-july-2026",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "NL02",
+      "title": "Holland: Eurovignet ophørt 1/7-2026",
+      "publisher": "Belastingdienst / Holland",
+      "url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/berichten/nieuws/eurovignet-stopt-definitief-in-nederland-1-juli-2026",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "DK01",
+      "title": "Danmark: kilometerbaseret lastbilafgift",
+      "publisher": "Vejafgifter.dk",
+      "url": "https://www.vejafgifter.dk/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "SE01",
+      "title": "Sverige: vejbenyttelsesafgift / Eurovignet",
+      "publisher": "Transportstyrelsen",
+      "url": "https://www.transportstyrelsen.se/en/road/vehicles/taxes-and-fees/road-user-charging/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK01",
+      "title": "Storbritannien: HGV levy",
+      "publisher": "GOV.UK",
+      "url": "https://www.gov.uk/government/collections/hgv-road-user-levy",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK02",
+      "title": "Storbritannien: internationale tilladelser",
+      "publisher": "GOV.UK",
+      "url": "https://www.gov.uk/guidance/carry-out-international-road-haulage",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK03",
+      "title": "Storbritannien: internationale ECMT-tilladelser",
+      "publisher": "GOV.UK",
+      "url": "https://www.gov.uk/guidance/ecmt-international-road-haulage-permits",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK04",
+      "title": "London: HGV sikkerhedstilladelse over 12 t",
+      "publisher": "Transport for London",
+      "url": "https://tfl.gov.uk/modes/driving/pay-to-drive-in-london",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK05",
+      "title": "London: LEZ og ULEZ for tunge biler",
+      "publisher": "Transport for London",
+      "url": "https://tfl.gov.uk/modes/driving/ultra-low-emission-zone",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "SI01",
+      "title": "Slovenien: distancebaseret motorvejsafgift",
+      "publisher": "GOV.SI / Slovenien",
+      "url": "https://www.gov.si/en/topics/tolls/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU20",
+      "title": "EU: mobilitetspakke 2026, varebiler over 2,5 t",
+      "publisher": "European Labour Authority",
+      "url": "https://www.ela.europa.eu/en/news/driving-and-rest-rules-and-compulsory-tachographs-apply-light-commercial-vehicles-cross-border",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "EU21",
+      "title": "EU: gældende vægt og dimensioner (96/53/EF)",
+      "publisher": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu/legal-content/da/TXT/?uri=CELEX%3A31996L0053",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    }
+  ]
+}
