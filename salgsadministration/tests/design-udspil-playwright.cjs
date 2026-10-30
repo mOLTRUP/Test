@@ -58,4 +58,4 @@ const path=require('node:path');
  assert.equal(errors.length,0,'No uncaught JS errors: '+errors.join(' | '));
  await browser.close();
  console.log('PASS: roles, aggregated country pipeline, six-stage Kanban, drag, notes, close reason, lead creation, files, links, mobile.');
-})().catch(e=>{console.error(e);process.exitCode=1;});
+})().catch(e=>{console.error(e);process.exit(1);});
