@@ -521,6 +521,62 @@
       "url": "https://www.bta.bg/bg/news/1052259-api-pri-ofitsialni-praznitsi-prez-2026-g-v-pikovite-chasove-shte-se-ogranichav",
       "checked": "2026-10-30",
       "kind": "Officiel myndighedsudmelding via nationalt nyhedsbureau; original bekendtgørelse bør kontrolleres"
+    },
+    {
+      "id": "AT03",
+      "title": "Østrig: vinterdæk for lastbiler over 3,5 ton",
+      "publisher": "Østrigs føderale myndighedsportal",
+      "url": "https://www.oesterreich.gv.at/en/themen/mobilitaet/kfz/10/2/Seite.063100",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "AT04",
+      "title": "Østrig: pligt til at medbringe snekæder for lastbiler",
+      "publisher": "Østrigs føderale myndighedsportal",
+      "url": "https://www.oesterreich.gv.at/en/themen/mobilitaet/kfz/10/2/Seite.063200",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "NO02",
+      "title": "Norge: vinterdæk og mønsterdybde for tunge køretøjer",
+      "publisher": "Statens vegvesen",
+      "url": "https://www.vegvesen.no/en/vehicles/professional-transport/tyres-and-chains/tyres-on-heavy-vehicles/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "NO03",
+      "title": "Norge: snekæder til tunge køretøjer",
+      "publisher": "Statens vegvesen",
+      "url": "https://www.vegvesen.no/en/vehicles/professional-transport/tyres-and-chains/snow-chains-on-heavy-vehicles/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "SE02",
+      "title": "Sverige: vinterdæk for tunge lastbiler og påhængskøretøjer",
+      "publisher": "Transportstyrelsen",
+      "url": "https://www.transportstyrelsen.se/sv/vagtrafik/Fordon/Fordonsregler/Dack/vinterdack/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "SE03",
+      "title": "Sverige: vintervægt for toakslede lastbiler med påhæng",
+      "publisher": "Transportstyrelsen",
+      "url": "https://www.transportstyrelsen.se/sv/vagtrafik/Yrkestrafik/Gods-och-buss/Matt-och-vikt/viktbestammelser/sarskilda-bestammelse-for-tvaaxlade-lastbilar-med-slap/",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "PL05",
+      "title": "Polen: ny bekendtgørelse om uddannelse og eksamen af erhvervschauffører (2026/1355)",
+      "publisher": "Polens lovtidende (ELI)",
+      "url": "https://eli.gov.pl/eli/DU/2026/1355/ogl",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
     }
   ]
 }
