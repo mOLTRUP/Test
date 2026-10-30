@@ -47,3 +47,24 @@ Dette **økonomimodul er endnu ikke implementeret** i WordPress-betaen. Grafer o
 6. Først efter godkendelse og databeskyttelses-/sikkerhedsgennemgang kan data fra virkelige kunder anvendes.
 
 Denne prototype er placeret i en **ny undermappe** og ændrer ikke eksisterende version 1.3 af WordPress-koden.
+
+## Revideret 30.10.2026 – brugerens ti rettelser
+
+**Personas i designet:** Sælger, Landechef og Ledelse. Den tekniske WordPress-administrator holdes adskilt fra disse tre arbejdsflader.
+
+| Rettelse | Status i denne klikbare designprototype | Status i WordPress 1.3-beta |
+|---|---|---|
+| Sælger: landeoversigt med antal og status | Visuel landepipeline med aggregerede data | Aggregater findes allerede |
+| Sælger: landepipeline | Ny separat menu »Landepipeline« | Eksisterende landepipeline |
+| Filer og links pr. lead | Filvælger og HTTPS-link; **filnavne i browserhukommelse**, ikke serverupload | HTTPS-links; ingen binær filupload |
+| Opret/vælg kontor og kontakttelefon | Nyt redigerbart kontorfelt og kontakttelefon | Backend-felter findes; kontor-stamdata styres af admin |
+| Smartere pipeline med seks faser | Nyt Kanban-board inkl. Resultat; desktop drag-and-drop | Eksisterende pipeline er ikke ændret |
+| Fasenote | Egen note pr. fase i demonstrationssessionen | Kræver datamodel og API-udvidelse |
+| Sortering | Næste opfølgning, sandsynlighed og forventet værdi | Funktionalitet skal verificeres i WP |
+| I dag og kommende | Separate lister fra demoens faktiske opfølgningsdatoer | Opfølgningsoversigt findes |
+| Computer og mobil | Responsivt layout; mobil fasevælger og vandret faseoversigt | Eksisterende responsive WP-visning |
+| To produkter + afslutningskrav | To forskellige produkter på formular; Vundet/Tabt kræver årsag og dato | Flere produkter og afslutningsvalidering findes |
+
+**Vigtigt:** GitHub Pages er kun udviklings- og designmiljø; det håndterer ikke autentificerede kundeoplysninger. Designprototypen gemmer ikke til WordPress. Godkendte layoutændringer skal implementeres særskilt i `../plugin/` og godkendes med ACC-01–10, inden reel anvendelse.
+
+Browserens regressionskontrol ligger i `../tests/design-udspil-playwright.cjs` og bliver kørt af GitHub Actions' visuelle workflow.
