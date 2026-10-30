@@ -490,6 +490,38 @@ window.TRUCK_DB = {
       "url": "https://napportal.kozut.hu/en/",
       "checked": "2026-10-30",
       "kind": "Officiel kilde"
+    },
+    {
+      "id": "PL04",
+      "title": "Polen: kørselsforbud 31. oktober og 1. november 2026",
+      "publisher": "Wojewódzki Inspektorat Transportu Drogowego i Radom / Gov.pl",
+      "url": "https://www.gov.pl/web/witd-radom/zakazy-jazdy-dla-pojazdow-ciezarowych-w-okresie-wszystkich-swietych",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK08",
+      "title": "Storbritannien: midlertidig £1-registreringsafgift for HGV 2026–27",
+      "publisher": "DVLA / GOV.UK",
+      "url": "https://www.gov.uk/guidance/temporary-1-vehicle-tax-for-most-heavy-goods-vehicles-hgv",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde"
+    },
+    {
+      "id": "UK09",
+      "title": "Storbritannien: Budget 2026, foreslået HGV levy og VED for 2027–28",
+      "publisher": "HM Revenue & Customs / GOV.UK",
+      "url": "https://www.gov.uk/government/publications/budget-2026-overview-of-tax-legislation-and-rates-ootlar/budget-2026-overview-of-tax-legislation-and-rates-ootlar",
+      "checked": "2026-10-30",
+      "kind": "Officiel kilde – lovforslag/finanslovsudmelding"
+    },
+    {
+      "id": "BG01",
+      "title": "Bulgarien: vejmyndighedens helligdagsrestriktioner 2026 gengivet af BTA",
+      "publisher": "Bulgarsk vejmyndighed API, offentliggjort via Bulgariens nyhedsbureau BTA",
+      "url": "https://www.bta.bg/bg/news/1052259-api-pri-ofitsialni-praznitsi-prez-2026-g-v-pikovite-chasove-shte-se-ogranichav",
+      "checked": "2026-10-30",
+      "kind": "Officiel myndighedsudmelding via nationalt nyhedsbureau; original bekendtgørelse bør kontrolleres"
     }
   ],
   "topics": [
@@ -1817,14 +1849,14 @@ window.TRUCK_DB = {
       "country": "BG",
       "topic": "Forbud",
       "title": "Bulgarien: midlertidige helligdagsrestriktioner over 12 ton",
-      "summary": "Bulgarien har midlertidige kørselsrestriktioner for lastbiler over 12 ton i forbindelse med helligdage. Restriktionerne er knyttet til udvalgte tidspunkter og strækninger, ikke et generelt landsdækkende weekendforbud.",
-      "condition": "Kontrollér den konkrete dato, retning, vejstrækning og undtagelser. Den britiske myndighedsvejledning henviser til en særskilt bulgarsk restriktionsoversigt for 2026.",
+      "summary": "I 2026 gælder tids- og retningsbestemte helligdagsrestriktioner for lastbiler over 12 ton på udvalgte strækninger af AМ Trakia, Hemus, Struma og vej I-1. Næste planlagte datoer: 23., 24. og 28. december 2026.",
+      "condition": "23. december kl. 15–20, 24. december kl. 09–14 og 28. december kl. 12–20 (lokal tid). Hemus: Sofia–I-4 (ca. km 0–87); Struma og I-1: Simitli–Kresna (ca. km 376–402); Trakia: udvalgt motorvejsstrækning. På første/forudgående feriedage er retning mod Sofia undtaget; på sidste feriedag retning væk fra Sofia. ADR, letfordærvelige varer, dyr og andre undtagelser varierer efter vej. Kontrollér originalt påbud og lokale meddelelser før afgang.",
       "refs": [
-        "UK02"
+        "BG01"
       ],
       "weight": "over12",
       "urgency": "Kritisk",
-      "validFrom": "",
+      "validFrom": "2026-03-03",
       "checked": "2026-10-30"
     },
     {
@@ -1833,14 +1865,60 @@ window.TRUCK_DB = {
       "topic": "Forbud",
       "title": "Ungarn: transitvejnet skal kontrolleres før gennemkørsel",
       "summary": "Ungarn har indført ændringer i, hvilke veje tunge lastbiler må benytte ved transit. Gennemkørende transport skal planlægges efter det tilladte transitvejnet.",
-      "condition": "Gælder relevant transitkørsel, ikke nødvendigvis lokal distribution. Kontroller altid ruten i Ungarns officielle National Access Point; denne oversigt er ikke vejsegmentbaseret.",
+      "condition": "Gælder relevant transitkørsel, ikke nødvendigvis lokal distribution. Kontrollér den konkrete rute og eventuelle lastbilrestriktioner i Ungarns officielle National Access Point; oversigten er ikke vejsegmentbaseret.",
       "refs": [
-        "HU03",
-        "UK02"
+        "HU03"
       ],
       "weight": "over3.5",
       "urgency": "Kritisk",
       "validFrom": "",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R072",
+      "country": "PL",
+      "topic": "Forbud",
+      "title": "Polen: kørselsforbud 31. oktober og 1. november 2026",
+      "summary": "Lastbiler og vogntog med tilladt totalvægt over 12 ton er omfattet af kørselsforbud lørdag 31. oktober kl. 18.00–22.00 og søndag 1. november kl. 08.00–22.00 (polsk lokal tid).",
+      "condition": "Gælder på polske veje med de lovbestemte undtagelser. Busser og bl.a. køretøjer med medicin, letfordærvelige varer, brændstof eller levende dyr kan være undtaget. Undtagelser for grænsekrydsning og hjemkørsel skal kontrolleres i bekendtgørelsen.",
+      "refs": [
+        "PL04",
+        "PL01"
+      ],
+      "weight": "over12",
+      "urgency": "Kritisk",
+      "validFrom": "2026-10-31",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R073",
+      "country": "UK",
+      "topic": "Afgifter",
+      "title": "Storbritannien: midlertidig £1 VED for de fleste britisk registrerede HGV",
+      "summary": "De fleste britisk registrerede tunge lastbiler i bestemte DVLA-afgiftsklasser kan få en midlertidig Vehicle Excise Duty på £1 for en 12-måneders periode, når afgiften fornyes mellem 1. juli 2026 og 30. juni 2027.",
+      "condition": "Gælder bl.a. afgiftsklasserne 1, 2, 16, 23 og 57. Det er britisk registreringsafgift (VED), ikke fritagelse for HGV levy på udenlandske lastbiler. Fornyelser før 1. juli 2026 giver ikke tilbagebetaling. HGV levy opkræves fortsat, hvis den er relevant.",
+      "refs": [
+        "UK08"
+      ],
+      "weight": "over12",
+      "urgency": "Vigtig",
+      "validFrom": "2026-07-01",
+      "checked": "2026-10-30"
+    },
+    {
+      "id": "R074",
+      "country": "UK",
+      "topic": "Fremtid",
+      "title": "FREMTID / FORSLAG: britiske HGV-afgifter planlagt forhøjet fra april 2027",
+      "summary": "Den britiske regering annoncerede 28. oktober 2026 et lovforslag om at indeksregulere HGV Vehicle Excise Duty og HGV levy med detailprisindekset for afgiftsåret 2027–2028.",
+      "condition": "IKKE GÆLDENDE RET PR. 30. OKTOBER 2026. Ændringen kræver vedtagelse i Finance Bill 2026–27. Forventet virkning fra 1. april 2027. Brug gældende 2026-satser indtil vedtagelse og ikrafttræden er bekræftet.",
+      "refs": [
+        "UK09",
+        "UK06"
+      ],
+      "weight": "over12",
+      "urgency": "Vigtig",
+      "validFrom": "2027-04-01",
       "checked": "2026-10-30"
     }
   ]
