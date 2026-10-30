@@ -58,3 +58,6 @@ Tilføjet R066–R071 (6 opslag) om britiske afgiftssatser, britiske takografund
 
 ### Opdatering 30. oktober 2026 – vintersæson og chaufføruddannelse
 Tilføjet otte kildeunderbyggede opslag R075–R082 og syv officielle kilder AT03–AT04, NO02–NO03, SE02–SE03 og PL05. Omfatter vinterdæk og snekæder i Østrig og Norge, svenske vinterdæk- og vægtfordelingskrav samt polsk uddannelsesbekendtgørelse med ikrafttræden 3. november 2026. Regler med 2026/27-sæsonstart angiver start på den relevante sæson, ikke nødvendigvis den oprindelige lovs vedtagelsesdato. Kortet har endnu ikke verificerede vejsegment-geometrier for disse regler.
+
+### Opdatering 30. oktober 2026 – Frankrig og Slovenien
+Tilføjet fire opslag R083–R086 og fire officielle kilder FR03–FR04 og SI02–SI03. Frankrig: vinterudstyr i præfektudpegede bjergzoner 1. november–31. marts, med særskilt kædekrav til vogntog med påhæng. Slovenien: vinterudstyr 15. november–15. marts (og ved vinterføre uden for perioden), samt betinget kørselsforbud for vogntog, ADR og særtransporter på veje uden for motorveje og motortrafikveje ved vinterføre. De angivne 2026-datoer markerer sæsonstart, ikke oprindelig ikrafttrædelse. Kortet viser endnu ikke de præcise geografiske zoner eller live vejforhold. Kilder kontrolleret 30. oktober 2026.
