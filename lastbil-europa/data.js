@@ -730,6 +730,38 @@ window.TRUCK_DB = {
       "url": "https://www.transport.gov.mt/land/professional-transport-services/carriage-of-goods-and-dangerous-goods/carriage-of-goods-by-road-involving-non-eu-countries-ecmt-3732",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "FI01",
+      "title": "Finland: præcisering af cabotageregler og sanktioner 2026",
+      "publisher": "Traficom (Finlands transport- og kommunikationsmyndighed)",
+      "url": "https://www.traficom.fi/en/news/clarifications-national-cabotage-rules",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "FI02",
+      "title": "Finland: undtagelser fra køre-/hviletid og takograf for el- og gaskøretøjer",
+      "publisher": "Traficom (Finlands transport- og kommunikationsmyndighed)",
+      "url": "https://www.traficom.fi/fi/uutiset/tavarankuljetusten-ajo-ja-lepoaikasaantelyyn-seka-ajopiirturisaantelyyn-tarkennuksia-1552026-ja-172026-alkaen",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "FI03",
+      "title": "Finland: B-kørekort til alternativt drevne godskøretøjer op til 4.250 kg",
+      "publisher": "Traficom (Finlands transport- og kommunikationsmyndighed)",
+      "url": "https://www.traficom.fi/fi/uutiset/kuljetusalalle-muutoksia-1552026-alkaen-merkittavimmat-vaikutukset-tavaraliikenneluvan-alaisiin-kevyempiin-vaihtoehtoisella-kayttovoimalla-tehtaviin-tavarakuljetuksiin",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "FI04",
+      "title": "Finland: tilladelser til erhvervsmæssig godstransport",
+      "publisher": "Traficom (Finlands transport- og kommunikationsmyndighed)",
+      "url": "https://traficom.fi/en/commercial-transport/permits-transport-companies/apply-goods-transport-licence",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
     }
   ],
   "topics": [
@@ -2540,6 +2572,66 @@ window.TRUCK_DB = {
       ],
       "weight": "over3.5",
       "urgency": "Vigtig",
+      "validFrom": "",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R102",
+      "country": "FI",
+      "topic": "Cabotage",
+      "title": "Finland: cabotagekontrol og sanktioner fra 15. maj 2026",
+      "summary": "Finland kan pålægge en transportvirksomhed en sanktion på 6.000 euro for overtrædelse af cabotagereglerne. Ved godstransport kan manglende påkrævet chaufførattestation for en ansat tredjelandschauffør udløse yderligere 3.000 euro.",
+      "condition": "Gælder udenlandske vognmænd, der udfører indenrigsgodstransport (cabotage) i Finland. EU's begrænsninger for antal ture, frister og fire dages karens gælder fortsat. Kontrollen bygger bl.a. på smart takograf G2V2 og transportdokumentation; Finland anvender tilsvarende kontrol af relevante vejben i kombineret transport. Beløbene er mulige sanktioner, ikke automatiske gebyrer.",
+      "refs": [
+        "FI01"
+      ],
+      "weight": "all",
+      "urgency": "Kritisk",
+      "validFrom": "2026-05-15",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R103",
+      "country": "FI",
+      "topic": "Takograf",
+      "title": "Finland: undtagelse for el- og gasgodskøretøjer højst 4.250 kg inden for 100 km",
+      "summary": "Fra 15. maj 2026 er godskøretøjer eller vogntog med el- eller gasdrift og tilladt totalmasse på højst 4.250 kg undtaget fra EU's regler om køre-/hviletid og takograf ved kørsel højst 100 km fra virksomhedens hjemsted.",
+      "condition": "Den nationale undtagelse gælder kun de nævnte køretøjer, anvendelse til godstransport og afstandsgrænsen på 100 km. Nationale regler om chaufførens arbejdstid gælder fortsat. Undtagelsen må ikke forveksles med EU-kravene fra 1. juli 2026 til varebiler over 2,5 ton ved international godstransport.",
+      "refs": [
+        "FI02"
+      ],
+      "weight": "all",
+      "urgency": "Vigtig",
+      "validFrom": "2026-05-15",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R104",
+      "country": "FI",
+      "topic": "Chauffoer",
+      "title": "Finland: B-kørekort til visse alternativt drevne godskøretøjer på højst 4.250 kg",
+      "summary": "Fra 15. maj 2026 kan et B-kørekort, der har været gyldigt i mindst to år, anvendes til visse godskøretøjer med alternativt drivmiddel og tilladt totalmasse op til 4.250 kg.",
+      "condition": "Den finske særregel gælder erhvervsmæssig godstransport, der kræver godstransporttilladelse fra Traficom. Den gælder ikke automatisk enhver privat eller udenlandsk kørsel; kontrollér anerkendelse og øvrige førerretskrav ved grænseoverskridende kørsel. Myndigheden oplyser, at kørekortkravene for andre anvendelser først udvides i en senere fase fra 26. november 2027.",
+      "refs": [
+        "FI03"
+      ],
+      "weight": "all",
+      "urgency": "Vigtig",
+      "validFrom": "2026-05-15",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R105",
+      "country": "FI",
+      "topic": "Adgang",
+      "title": "Finland: godstransporttilladelse for erhvervsmæssige transporter",
+      "summary": "Finske transportvirksomheder skal som udgangspunkt have godstransporttilladelse ved erhvervsmæssig godstransport med køretøj eller vogntog over 3.500 kg. Ved international erhvervsgodstransport over 2.500 kg og højst 3.500 kg findes en særskilt let godstransporttilladelse.",
+      "condition": "Vedrører tilladelser udstedt til transportvirksomheder i Finland; udenlandske EU-vognmænd skal opfylde de relevante fællesskabs- og markedsadgangskrav, ikke søge finsk tilladelse alene for lovlig transit. Traficoms vejledning bekræfter vægtgrænserne, men ikke den oprindelige ikrafttrædelsesdato for hele tilladelsesordningen.",
+      "refs": [
+        "FI04"
+      ],
+      "weight": "all",
+      "urgency": "Kritisk",
       "validFrom": "",
       "checked": "2026-10-31"
     }
