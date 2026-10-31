@@ -1397,6 +1397,66 @@
       "urgency": "Kritisk",
       "validFrom": "",
       "checked": "2026-10-31"
+    },
+    {
+      "id": "R093",
+      "country": "UK",
+      "topic": "Told",
+      "title": "Storbritannien: GMR påkrævet ved havne med GVMS",
+      "summary": "Ved godstransport gennem britiske havne, der anvender Goods Vehicle Movement Service (GVMS), skal en gyldig Goods Movement Reference (GMR) være oprettet før ankomst til havnen. Uden GMR kan køretøjet blive afvist ved check-in.",
+      "condition": "Gælder kun bevægelser og havne omfattet af GVMS; import/eksport og Nordirland har forskellige procedurer og undtagelser. Kontroller havn, transportør, deklarationsreferencer og registreringsnumre før afgang. Eksisterende toldprocedure, ikke en ny ændring i oktober 2026.",
+      "refs": [
+        "UK10"
+      ],
+      "weight": "all",
+      "urgency": "Kritisk",
+      "validFrom": "2022-01-01",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R094",
+      "country": "UK",
+      "topic": "Adgang",
+      "title": "Britisk trailer over 750 kg skal registreres ved mange udlandsrejser",
+      "summary": "Britisk registrerede erhvervstrailere over 750 kg skal som hovedregel registreres særskilt før kørsel i eller gennem de europæiske lande, der er omfattet af ordningen. Traileren skal have sin egen nummerplade, og registreringsattesten skal kunne fremvises.",
+      "condition": "Gælder britiske trailere i relevante lande under Wienerkonventionen; bl.a. er Irland, Cypern, Malta og Spanien undtaget for direkte kørsel, men transit gennem andre omfattede lande udløser kravet. Ikke et generelt registreringskrav for danskregistrerede trailere. Eksisterende regel siden 28. marts 2019.",
+      "refs": [
+        "UK11"
+      ],
+      "weight": "all",
+      "urgency": "Kritisk",
+      "validFrom": "2019-03-28",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R095",
+      "country": "UK",
+      "topic": "Told",
+      "title": "Storbritannien: ENS ved import af varer fra EU",
+      "summary": "Fra 31. januar 2025 skal varer, der importeres fra EU til Storbritannien (England, Skotland og Wales), som udgangspunkt være dækket af en sikkerhedsdeklaration (Entry Summary Declaration, ENS) før ankomst.",
+      "condition": "Undtagelser findes for bestemte vare- og transporttyper. Transportøren har ansvaret for, at ENS er indgivet, men kan aftale indsendelse via tredjepart. ENS er adskilt fra toldangivelsen og en eventuel GMR. Gælder ikke automatisk samme procedurer for Nordirland.",
+      "refs": [
+        "UK12"
+      ],
+      "weight": "all",
+      "urgency": "Kritisk",
+      "validFrom": "2025-01-31",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R096",
+      "country": "EU",
+      "topic": "Cabotage",
+      "title": "Udstationerede chauffører: IMI-erklæring og dokumentation",
+      "summary": "Ved cabotage og relevante cross-trade-kørsler skal transportvirksomheden indsende en udstationeringserklæring via EU's fælles portal før udstationeringen. Chaufføren skal kunne fremvise kopi af erklæringen, dokumentation for transporten og takografregistreringer.",
+      "condition": "Gælder transportaktiviteter omfattet af direktiv (EU) 2020/1057; bilateral transport og ren transit er som hovedregel undtaget. Myndigheder kan efterfølgende anmode om løn- og ansættelsesdokumenter. Dette præciserer de administrative krav ud over den generelle udstationeringsregel R014.",
+      "refs": [
+        "EU06"
+      ],
+      "weight": "all",
+      "urgency": "Kritisk",
+      "validFrom": "2022-02-02",
+      "checked": "2026-10-31"
     }
   ]
 }
