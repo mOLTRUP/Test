@@ -30,9 +30,9 @@ Søgbar dansk prototype for lastbilkørsel i Europa: EU-fælles regler og et ind
 
 Et opslag er en **kort sammenfatning** af en regel, ikke den fulde lovtekst. `country=EU` betyder EU-regler. `country=EU+` viser EU/EØS/Schweiz-grundregler for køre-/hviletid og CMR i denne prototype; konkret retlig anvendelse kan afhænge af transportens art, destination og overenskomst. Øvrige lande har egen lande-id.
 
-`checked` dokumenterer kun, at kilden blev gennemgået i forbindelse med opbygning 30. oktober 2026. Det er **ikke** en garanti for, at forholdene fortsat gælder på enhver senere køredato.
+`checked` dokumenterer, hvornår den enkelte kilde blev gennemgået. Det er **ikke** en garanti for, at forholdene fortsat gælder på enhver senere køredato.
 
-**Dækningsgrad:** 92 opslag / 83 kilder / 44 lande, heraf 24 lande med mindst ét specifikt nationalt opslag. Lande uden opslag kan stadig have mange restriktioner.
+**Dækningsgrad:** 106 opslag / 97 kilder / 44 lande, heraf 26 lande med mindst ét specifikt nationalt opslag. Lande uden opslag kan stadig have mange restriktioner.
 
 ## Vigtige afgrænsninger
 
@@ -79,3 +79,6 @@ Tilføjet fire nationale opslag R098–R101 og to officielle myndighedskilder MT
 
 ### Opdatering 31. oktober 2026 – Finland
 Tilføjet fire dokumenterede finske opslag R102–R105 og fire officielle Traficom-kilder FI01–FI04: cabotagesanktioner fra 15. maj 2026; national undtagelse fra takograf og køre-/hviletid for el- og gasgodskøretøjer højst 4.250 kg inden for 100 km; begrænset B-kørekortadgang til visse alternativt drevne erhvervsgodskøretøjer op til 4.250 kg; samt finske tilladelseskrav til erhvervsgodstransport. De første tre er gældende ændringer fra maj 2026, ikke nye regler vedtaget i oktober. Oprindelig ikrafttrædelsesdato for den generelle tilladelsesordning er ikke fastslået og er ikke gættet. Kontrolleret 31. oktober 2026. Ingen kortgeometrier tilføjet.
+
+### Opdatering 31. oktober 2026 – ADR 2027 vedtaget til fremtidig ikrafttræden
+Tilføjet R106 som **vedtaget fremtidig regel** (ikke gældende 31. oktober 2026), med officiel dokumentation EU23–EU24 fra UNECE og FN's traktatregister samt den eksisterende EU14-kilde til ændringsdokumenterne. Depositarmeddelelse C.N.395.2026 af 9. oktober 2026 bekræfter accept af ændringerne til ADR-bilag A og B med ikrafttræden 1. januar 2027. Det omfatter bl.a. nye eller ændrede bestemmelser om batterier, brint, emballage, tanke og køretøjssikkerhed. Specifikke krav og overgangsordninger skal kontrolleres i ændringsdokumenterne ECE/TRANS/WP.15/274 med tillæg og rettelser. Kilder kontrolleret 31. oktober 2026. Dækningsgraden er ajourført.
