@@ -729,6 +729,38 @@
       "url": "https://www.transport.gov.mt/land/professional-transport-services/carriage-of-goods-and-dangerous-goods/carriage-of-goods-by-road-involving-non-eu-countries-ecmt-3732",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "FI01",
+      "title": "Finland: præcisering af cabotageregler og sanktioner 2026",
+      "publisher": "Traficom (Finlands transport- og kommunikationsmyndighed)",
+      "url": "https://www.traficom.fi/en/news/clarifications-national-cabotage-rules",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "FI02",
+      "title": "Finland: undtagelser fra køre-/hviletid og takograf for el- og gaskøretøjer",
+      "publisher": "Traficom (Finlands transport- og kommunikationsmyndighed)",
+      "url": "https://www.traficom.fi/fi/uutiset/tavarankuljetusten-ajo-ja-lepoaikasaantelyyn-seka-ajopiirturisaantelyyn-tarkennuksia-1552026-ja-172026-alkaen",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "FI03",
+      "title": "Finland: B-kørekort til alternativt drevne godskøretøjer op til 4.250 kg",
+      "publisher": "Traficom (Finlands transport- og kommunikationsmyndighed)",
+      "url": "https://www.traficom.fi/fi/uutiset/kuljetusalalle-muutoksia-1552026-alkaen-merkittavimmat-vaikutukset-tavaraliikenneluvan-alaisiin-kevyempiin-vaihtoehtoisella-kayttovoimalla-tehtaviin-tavarakuljetuksiin",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "FI04",
+      "title": "Finland: tilladelser til erhvervsmæssig godstransport",
+      "publisher": "Traficom (Finlands transport- og kommunikationsmyndighed)",
+      "url": "https://traficom.fi/en/commercial-transport/permits-transport-companies/apply-goods-transport-licence",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
     }
   ]
 }
