@@ -67,3 +67,6 @@ Tilføjet tre dokumenterede opslag R087–R089 og fire officielle myndighedskild
 
 ### Opdatering 31. oktober 2026 – Nederlandene
 Tilføjet R090–R092 og officielle kilder NL03–NL05. Kilometerafgiften er reduceret 22,3 % fra 1. september til 31. december 2026. Nulemissionszoner og Euro 6-overgangsordninger for lastbiler samt Euro 6-krav i lilla miljøzoner er registreret. Kommunale zonegrænser er ikke indtegnet på Europakortet; gyldighed og undtagelser afhænger af den enkelte kommune. Eksisterende regler og kilder er bevaret. Kilder kontrolleret 31. oktober 2026.
+
+### Opdatering 31. oktober 2026 – britiske grænsekrav og EU-udstationering
+Tilføjet R093–R096 og tre officielle kilder UK10–UK12; EU-reglen anvender eksisterende officielle EU06. GVMS/GMR ved udvalgte britiske havne, registrering af britiske erhvervstrailere ved international kørsel, ENS-sikkerhedsdeklarationer ved EU-import til Storbritannien og IMI-udstationeringserklæring med medbragte dokumenter. Alle er eksisterende regler, der nu er særskilt dokumenteret; de er ikke nye lovændringer i oktober 2026. Kilder kontrolleret 31. oktober 2026. Eksisterende opslag bevaret.
