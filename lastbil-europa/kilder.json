@@ -777,6 +777,33 @@
       "url": "https://treaties.un.org/doc/Publication/MTDSG/Volume%20I/Chapter%20XI/XI-B-14.en.xml",
       "checked": "2026-10-31",
       "kind": "Officiel traktatkilde"
+    },
+    {
+      "id": "IE01",
+      "title": "Irland: M50 betalingsvej og 2026-takster for tunge godskøretøjer",
+      "publisher": "Transport Infrastructure Ireland (TII)",
+      "url": "https://www.tii.ie/roads-tolling/tolling-information/toll-locations-and-charges/m50-barrier-free-tolling/",
+      "checked": "2026-10-31",
+      "checkedAt": "2026-10-31T06:40:13+01:00",
+      "kind": "Officiel vejmyndighedskilde"
+    },
+    {
+      "id": "IE02",
+      "title": "Irland: Dublin Port Tunnel – 2026-takster og fritagelse for tunge godskøretøjer",
+      "publisher": "Transport Infrastructure Ireland (TII)",
+      "url": "https://www.tii.ie/roads-tolling/tolling-information/toll-locations-and-charges/dublin-port-tunnel/",
+      "checked": "2026-10-31",
+      "checkedAt": "2026-10-31T06:40:13+01:00",
+      "kind": "Officiel vejmyndighedskilde"
+    },
+    {
+      "id": "IE03",
+      "title": "Irland: TII's godkendte vejafgifter fra 1. januar 2026",
+      "publisher": "Transport Infrastructure Ireland (TII)",
+      "url": "https://www.tii.ie/news/tii-news/toll-charge-increase-from-1st-january-2026/",
+      "checked": "2026-10-31",
+      "checkedAt": "2026-10-31T06:40:13+01:00",
+      "kind": "Officiel vejmyndighedskilde"
     }
   ]
 }
