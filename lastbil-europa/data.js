@@ -778,6 +778,33 @@ window.TRUCK_DB = {
       "url": "https://treaties.un.org/doc/Publication/MTDSG/Volume%20I/Chapter%20XI/XI-B-14.en.xml",
       "checked": "2026-10-31",
       "kind": "Officiel traktatkilde"
+    },
+    {
+      "id": "IE01",
+      "title": "Irland: M50 betalingsvej og 2026-takster for tunge godskøretøjer",
+      "publisher": "Transport Infrastructure Ireland (TII)",
+      "url": "https://www.tii.ie/roads-tolling/tolling-information/toll-locations-and-charges/m50-barrier-free-tolling/",
+      "checked": "2026-10-31",
+      "checkedAt": "2026-10-31T06:40:13+01:00",
+      "kind": "Officiel vejmyndighedskilde"
+    },
+    {
+      "id": "IE02",
+      "title": "Irland: Dublin Port Tunnel – 2026-takster og fritagelse for tunge godskøretøjer",
+      "publisher": "Transport Infrastructure Ireland (TII)",
+      "url": "https://www.tii.ie/roads-tolling/tolling-information/toll-locations-and-charges/dublin-port-tunnel/",
+      "checked": "2026-10-31",
+      "checkedAt": "2026-10-31T06:40:13+01:00",
+      "kind": "Officiel vejmyndighedskilde"
+    },
+    {
+      "id": "IE03",
+      "title": "Irland: TII's godkendte vejafgifter fra 1. januar 2026",
+      "publisher": "Transport Infrastructure Ireland (TII)",
+      "url": "https://www.tii.ie/news/tii-news/toll-charge-increase-from-1st-january-2026/",
+      "checked": "2026-10-31",
+      "checkedAt": "2026-10-31T06:40:13+01:00",
+      "kind": "Officiel vejmyndighedskilde"
     }
   ],
   "topics": [
@@ -2667,6 +2694,42 @@ window.TRUCK_DB = {
       "urgency": "Vigtig",
       "validFrom": "2027-01-01",
       "checked": "2026-10-31"
+    },
+    {
+      "id": "R107",
+      "country": "IE",
+      "topic": "Afgifter",
+      "title": "Irland: M50-afgift 2026 for lastbiler over 10 ton",
+      "summary": "På M50 mellem frakørsel 6 (N3 Blanchardstown) og 7 (N4 Lucan) koster passage i 2026 for godskøretøjer over 10.000 kg €6,50 med elektronisk tag, €7,20 med videokonto eller €7,80 uden registreret konto.",
+      "condition": "Afgiften gælder den angivne M50-strækning; ingen kontant betaling ved betalingspunktet. Uregistrerede køretøjer skal betale senest kl. 20 dagen efter passagen. Beløbene er 2026-takster; kontroller nye takster ved kørsel i 2027.",
+      "refs": [
+        "IE01",
+        "IE03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "2026-01-01",
+      "validTo": "2026-12-31",
+      "checked": "2026-10-31",
+      "checkedAt": "2026-10-31T06:40:13+01:00"
+    },
+    {
+      "id": "R108",
+      "country": "IE",
+      "topic": "Afgifter",
+      "title": "Irland: Dublin Port Tunnel – godskøretøjer over 3,5 ton fritaget for tunnelafgift i 2026",
+      "summary": "Godskøretøjer med tilladt totalvægt (design gross vehicle weight) over 3.500 kg er fritaget for tunnelafgift i Dublin Port Tunnel, som forbinder M1 med Dublins havneområde.",
+      "condition": "Gælder kun kvalificerende godskøretøjer over 3.500 kg og kun Dublin Port Tunnel. Andre køretøjer betaler de offentliggjorte 2026-takster; fritagelsen er ikke en generel fritagelse for irske betalingsveje. 2026 er den dokumenterede takstperiode, ikke nødvendigvis fritagelsens oprindelige ikrafttrædelsesår.",
+      "refs": [
+        "IE02",
+        "IE03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Vigtig",
+      "validFrom": "2026-01-01",
+      "validTo": "2026-12-31",
+      "checked": "2026-10-31",
+      "checkedAt": "2026-10-31T06:40:13+01:00"
     }
   ]
 };
