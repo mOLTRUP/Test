@@ -2493,7 +2493,7 @@ window.TRUCK_DB = {
       "refs": [
         "MT01"
       ],
-      "weight": "over3.5",
+      "weight": "all",
       "urgency": "Kritisk",
       "validFrom": "",
       "checked": "2026-10-31"
