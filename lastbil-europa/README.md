@@ -32,7 +32,7 @@ Et opslag er en **kort sammenfatning** af en regel, ikke den fulde lovtekst. `co
 
 `checked` dokumenterer, hvornår den enkelte kilde blev gennemgået. Det er **ikke** en garanti for, at forholdene fortsat gælder på enhver senere køredato.
 
-**Dækningsgrad:** 106 opslag / 97 kilder / 44 lande, heraf 26 lande med mindst ét specifikt nationalt opslag. Lande uden opslag kan stadig have mange restriktioner.
+**Dækningsgrad:** 108 opslag / 100 kilder / 44 lande, heraf 27 lande med mindst ét specifikt nationalt opslag. Lande uden opslag kan stadig have mange restriktioner.
 
 ## Vigtige afgrænsninger
 
@@ -82,3 +82,6 @@ Tilføjet fire dokumenterede finske opslag R102–R105 og fire officielle Trafic
 
 ### Opdatering 31. oktober 2026 – ADR 2027 vedtaget til fremtidig ikrafttræden
 Tilføjet R106 som **vedtaget fremtidig regel** (ikke gældende 31. oktober 2026), med officiel dokumentation EU23–EU24 fra UNECE og FN's traktatregister samt den eksisterende EU14-kilde til ændringsdokumenterne. Depositarmeddelelse C.N.395.2026 af 9. oktober 2026 bekræfter accept af ændringerne til ADR-bilag A og B med ikrafttræden 1. januar 2027. Det omfatter bl.a. nye eller ændrede bestemmelser om batterier, brint, emballage, tanke og køretøjssikkerhed. Specifikke krav og overgangsordninger skal kontrolleres i ændringsdokumenterne ECE/TRANS/WP.15/274 med tillæg og rettelser. Kilder kontrolleret 31. oktober 2026. Dækningsgraden er ajourført.
+
+### Opdatering 31. oktober 2026 – Irland (vejafgifter)
+Tilføjet R107–R108 og tre officielle TII-kilder IE01–IE03. M50 mellem afkørsel 6 og 7: 2026-priser for godskøretøjer over 10 ton er €6,50 med tag, €7,20 med videokonto og €7,80 uden registrering. Uregistrerede brugere skal betale senest kl. 20 dagen efter passage. Dublin Port Tunnel: godskøretøjer over 3.500 kg er fritaget for tunnelafgift efter TII's 2026-oplysninger. Det er dokumentation af gældende 2026-takster og en eksisterende fritagelse, ikke nye lovændringer vedtaget 31. oktober. Gyldighed i databasen er afgrænset til 2026-takstperioden; kontroller nye satser for 2027. Kontrolleret 2026-10-31T06:40:13+01:00. Kun lastbil-europa-projektet ændret.
