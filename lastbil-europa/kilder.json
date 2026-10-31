@@ -665,6 +665,30 @@
       "url": "https://business.gov.nl/regulations/environmental-zone/",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "UK10",
+      "title": "Storbritannien: GVMS og GMR ved toldpligtige havne",
+      "publisher": "HM Revenue & Customs / GOV.UK",
+      "url": "https://www.gov.uk/guidance/check-how-to-move-goods-through-ports-that-use-the-goods-vehicle-movement-service",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "UK11",
+      "title": "Storbritannien: registrering af britiske trailere ved udlandskørsel",
+      "publisher": "DVLA / GOV.UK",
+      "url": "https://www.gov.uk/guidance/trailer-registration",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "UK12",
+      "title": "Storbritannien: ENS-sikkerhedsdeklarationer ved import fra EU",
+      "publisher": "HM Revenue & Customs / GOV.UK",
+      "url": "https://www.gov.uk/guidance/safety-and-security-declarations/what-safety-and-security-declarations-are-and-why-we-have-them",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
     }
   ]
 }
