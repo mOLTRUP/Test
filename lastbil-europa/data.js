@@ -690,6 +690,30 @@ window.TRUCK_DB = {
       "url": "https://www.gov.uk/guidance/safety-and-security-declarations/what-safety-and-security-declarations-are-and-why-we-have-them",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "CH03",
+      "title": "Schweiz: nat- og søndagskørsel og særbevillinger",
+      "publisher": "Bundesamt für Strassen (ASTRA)",
+      "url": "https://www.astra.admin.ch/de/sonntags-und-nachtfahrten",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "CH04",
+      "title": "Schweiz: helligdage med tungtrafikforbud",
+      "publisher": "Bundesamt für Strassen (ASTRA)",
+      "url": "https://www.astra.admin.ch/de/feiertage-mit-fahrverbot",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "EU22",
+      "title": "EU: takografkrav for international varebiltransport fra juli 2026",
+      "publisher": "Europa-Kommissionen / DG MOVE",
+      "url": "https://transport.ec.europa.eu/transport-modes/road/tachograph_en",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
     }
   ],
   "topics": [
@@ -1336,17 +1360,18 @@ window.TRUCK_DB = {
     {
       "id": "R025",
       "country": "EU",
-      "topic": "Fremtid",
-      "title": "Varebiler over 2,5 ton omfattes internationalt",
-      "summary": "Fra 1. juli 2026 gælder køre-/hviletidsregler og takografkrav også for 2,5-3,5 tons varebiler i international godstransport for fremmed regning eller cabotage.",
-      "condition": "Medtaget som grænsetilfælde; portalens hovedmålgruppe er tunge lastbiler.",
+      "topic": "Takograf",
+      "title": "Gældende fra 1. juli 2026: takograf og køre-/hviletid for internationale varebiler over 2,5 ton",
+      "summary": "Siden 1. juli 2026 gælder EU's køre-/hviletidsregler og krav om smart takograf G2V2 for godskøretøjer med tilladt totalvægt over 2,5 ton og højst 3,5 ton i international godstransport og cabotage.",
+      "condition": "Gælder internationale godstransporter og cabotage i den angivne vægtklasse; ikke almindelig national kørsel. Undtagelser afhænger af transportens art og de konkrete EU-regler. Dette er gældende lovgivning og ikke en fremtidig regel.",
       "refs": [
-        "EU20"
+        "EU20",
+        "EU22"
       ],
       "weight": "2.5-3.5",
       "urgency": "Kritisk",
       "validFrom": "2026-07-01",
-      "checked": "2026-10-30"
+      "checked": "2026-10-31"
     },
     {
       "id": "R026",
@@ -1593,15 +1618,17 @@ window.TRUCK_DB = {
       "country": "CH",
       "topic": "Forbud",
       "title": "Nat- og søndagskørselsforbud",
-      "summary": "Schweiz har som udgangspunkt forbud mod tung lastbilkørsel om natten kl. 22–05 samt søn- og helligdage.",
-      "condition": "Reglen er dokumenteret i ældre officiel myndighedsvejledning; kontrollér aktuel kantonal praksis og undtagelser.",
+      "summary": "Schweiz har som hovedregel natkørselsforbud kl. 22.00–05.00 og søndagsforbud for lastbiler over 3,5 ton, sættevognstrækkere med tilladt vogntogsvægt over 5 ton samt køretøjer, der medfører påhængsvogn over 3,5 ton.",
+      "condition": "Forbuddet omfatter også udvalgte helligdage: nytårsdag, langfredag, anden påskedag, Kristi himmelfartsdag, anden pinsedag, 1. august og jul samt 26. december på de angivne betingelser. Kantonale undtagelser forekommer. Uundgåelig kørsel kan kræve særlig kantonal tilladelse; for indrejse fra udlandet er indrejsekantonen normalt ansvarlig.",
       "refs": [
-        "CH02"
+        "CH02",
+        "CH03",
+        "CH04"
       ],
       "weight": "over3.5",
       "urgency": "Kritisk",
       "validFrom": "",
-      "checked": "2026-10-30"
+      "checked": "2026-10-31"
     },
     {
       "id": "R043",
@@ -2423,6 +2450,21 @@ window.TRUCK_DB = {
       "weight": "all",
       "urgency": "Kritisk",
       "validFrom": "2022-02-02",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R097",
+      "country": "CH",
+      "topic": "Adgang",
+      "title": "Schweiz: kantonal særbevilling til uundgåelig nat- eller søndagskørsel",
+      "summary": "En transport, der ikke kan undgås i det schweiziske nat- eller søndagskørselsforbud, kan efter konkret vurdering få en særbevilling fra den kompetente kanton.",
+      "condition": "Gælder køretøjer omfattet af forbuddet. Ansøg i registreringskantonen eller i kantonen, hvor transporten begynder. Ved indrejse fra udlandet er indrejsekantonen normalt kompetent. Bevillingen er ikke automatisk og skal være udstedt inden kørsel. Den oprindelige ikrafttrædelsesdato er ikke fastslået.",
+      "refs": [
+        "CH03"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
       "checked": "2026-10-31"
     }
   ]
