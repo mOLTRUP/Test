@@ -762,6 +762,22 @@ window.TRUCK_DB = {
       "url": "https://traficom.fi/en/commercial-transport/permits-transport-companies/apply-goods-transport-licence",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "EU23",
+      "title": "UNECE: ADR 2027 – vedtagne ændringer og kommende ikrafttræden",
+      "publisher": "UNECE",
+      "url": "https://unece.org/transport/dangerous-goods",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "EU24",
+      "title": "FN's traktatregister: ADR-ændringer 2026, accept C.N.395.2026",
+      "publisher": "United Nations Treaty Collection",
+      "url": "https://treaties.un.org/doc/Publication/MTDSG/Volume%20I/Chapter%20XI/XI-B-14.en.xml",
+      "checked": "2026-10-31",
+      "kind": "Officiel traktatkilde"
     }
   ],
   "topics": [
@@ -2633,6 +2649,23 @@ window.TRUCK_DB = {
       "weight": "all",
       "urgency": "Kritisk",
       "validFrom": "",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R106",
+      "country": "EU+",
+      "topic": "Fremtid",
+      "title": "VEDTAGET FREMTID: ADR 2027 gælder fra 1. januar 2027",
+      "summary": "Ændringerne til ADR-bilag A og B er accepteret ifølge FN's depositarmeddelelse C.N.395.2026 af 9. oktober 2026 og træder i kraft 1. januar 2027. Opdateringen omfatter blandt andet regler for batterier, brinttransport, emballage, tanke og køretøjssikkerhed.",
+      "condition": "Gælder transport af farligt gods i ADR-kontraherende stater efter de relevante bestemmelser og nationale gennemførelsesregler. Dette er en vedtaget fremtidig ændring, IKKE et krav gældende 31. oktober 2026. Kontroller overgangsregler og konkrete UN-numre, køretøjstyper og undtagelser i de officielle ændringsdokumenter, før transporten planlægges.",
+      "refs": [
+        "EU23",
+        "EU24",
+        "EU14"
+      ],
+      "weight": "all",
+      "urgency": "Vigtig",
+      "validFrom": "2027-01-01",
       "checked": "2026-10-31"
     }
   ]
