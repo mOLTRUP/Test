@@ -713,6 +713,22 @@
       "url": "https://transport.ec.europa.eu/transport-modes/road/tachograph_en",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "MT01",
+      "title": "Malta: operatørtilladelser, økonomiske krav og chaufførattestationer",
+      "publisher": "Transport Malta",
+      "url": "https://www.transport.gov.mt/Land/Professional-Transport-Services/Carriage-of-Goods-and-Dangerous-Goods/Carriage-of-Goods-by-Road-within-the-European-Union-3740",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "MT02",
+      "title": "Malta: ECMT/CEMT-tilladelser til godstransport uden for EU",
+      "publisher": "Transport Malta",
+      "url": "https://www.transport.gov.mt/land/professional-transport-services/carriage-of-goods-and-dangerous-goods/carriage-of-goods-by-road-involving-non-eu-countries-ecmt-3732",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
     }
   ]
 }
