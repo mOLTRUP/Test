@@ -70,3 +70,6 @@ Tilføjet R090–R092 og officielle kilder NL03–NL05. Kilometerafgiften er red
 
 ### Opdatering 31. oktober 2026 – britiske grænsekrav og EU-udstationering
 Tilføjet R093–R096 og tre officielle kilder UK10–UK12; EU-reglen anvender eksisterende officielle EU06. GVMS/GMR ved udvalgte britiske havne, registrering af britiske erhvervstrailere ved international kørsel, ENS-sikkerhedsdeklarationer ved EU-import til Storbritannien og IMI-udstationeringserklæring med medbragte dokumenter. Alle er eksisterende regler, der nu er særskilt dokumenteret; de er ikke nye lovændringer i oktober 2026. Kilder kontrolleret 31. oktober 2026. Eksisterende opslag bevaret.
+
+### Opdatering 31. oktober 2026 – EU-takograf og Schweiz
+R025 er rettet fra Fremtid til gældende Takograf. EU-reglerne for international godstransport og cabotage med varebiler over 2,5 ton og højst 3,5 ton trådte i kraft 1. juli 2026. R042 er præciseret med vægtgrænser, nat- og søndagsforbud og helligdage. Nyt opslag R097 om kantonal særbevilling til uundgåelig nat- og søndagskørsel. Tre officielle kilder tilføjet: CH03, CH04 og EU22. Kontrolleret 31. oktober 2026. Ingen kortgeometrier indtegnet uden verificeret geografisk afgrænsning.
