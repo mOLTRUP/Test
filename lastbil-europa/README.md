@@ -76,3 +76,6 @@ R025 er rettet fra Fremtid til gældende Takograf. EU-reglerne for international
 
 ### Opdatering 31. oktober 2026 – Malta
 Tilføjet fire nationale opslag R098–R101 og to officielle myndighedskilder MT01–MT02. Dækker maltesisk vognmandstilladelse til national/EU-transport, dokumentationskrav til økonomisk grundlag, chaufførattestation for visse tredjelandschauffører og ECMT/CEMT-tilladelser ved kørsel til visse ikke-EU-lande. Reglerne er eksisterende og ikke nye lovændringer fra oktober 2026. Hvor oprindelig ikrafttrædelsesdato ikke kan dokumenteres, er validFrom bevidst tom. Kontrolleret 31. oktober 2026. Ingen geografiske restriktionszoner tilføjet.
+
+### Opdatering 31. oktober 2026 – Finland
+Tilføjet fire dokumenterede finske opslag R102–R105 og fire officielle Traficom-kilder FI01–FI04: cabotagesanktioner fra 15. maj 2026; national undtagelse fra takograf og køre-/hviletid for el- og gasgodskøretøjer højst 4.250 kg inden for 100 km; begrænset B-kørekortadgang til visse alternativt drevne erhvervsgodskøretøjer op til 4.250 kg; samt finske tilladelseskrav til erhvervsgodstransport. De første tre er gældende ændringer fra maj 2026, ikke nye regler vedtaget i oktober. Oprindelig ikrafttrædelsesdato for den generelle tilladelsesordning er ikke fastslået og er ikke gættet. Kontrolleret 31. oktober 2026. Ingen kortgeometrier tilføjet.
