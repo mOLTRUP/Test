@@ -761,6 +761,22 @@
       "url": "https://traficom.fi/en/commercial-transport/permits-transport-companies/apply-goods-transport-licence",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "EU23",
+      "title": "UNECE: ADR 2027 – vedtagne ændringer og kommende ikrafttræden",
+      "publisher": "UNECE",
+      "url": "https://unece.org/transport/dangerous-goods",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "EU24",
+      "title": "FN's traktatregister: ADR-ændringer 2026, accept C.N.395.2026",
+      "publisher": "United Nations Treaty Collection",
+      "url": "https://treaties.un.org/doc/Publication/MTDSG/Volume%20I/Chapter%20XI/XI-B-14.en.xml",
+      "checked": "2026-10-31",
+      "kind": "Officiel traktatkilde"
     }
   ]
 }
