@@ -689,6 +689,30 @@
       "url": "https://www.gov.uk/guidance/safety-and-security-declarations/what-safety-and-security-declarations-are-and-why-we-have-them",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "CH03",
+      "title": "Schweiz: nat- og søndagskørsel og særbevillinger",
+      "publisher": "Bundesamt für Strassen (ASTRA)",
+      "url": "https://www.astra.admin.ch/de/sonntags-und-nachtfahrten",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "CH04",
+      "title": "Schweiz: helligdage med tungtrafikforbud",
+      "publisher": "Bundesamt für Strassen (ASTRA)",
+      "url": "https://www.astra.admin.ch/de/feiertage-mit-fahrverbot",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "EU22",
+      "title": "EU: takografkrav for international varebiltransport fra juli 2026",
+      "publisher": "Europa-Kommissionen / DG MOVE",
+      "url": "https://transport.ec.europa.eu/transport-modes/road/tachograph_en",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
     }
   ]
 }
