@@ -73,3 +73,6 @@ Tilføjet R093–R096 og tre officielle kilder UK10–UK12; EU-reglen anvender e
 
 ### Opdatering 31. oktober 2026 – EU-takograf og Schweiz
 R025 er rettet fra Fremtid til gældende Takograf. EU-reglerne for international godstransport og cabotage med varebiler over 2,5 ton og højst 3,5 ton trådte i kraft 1. juli 2026. R042 er præciseret med vægtgrænser, nat- og søndagsforbud og helligdage. Nyt opslag R097 om kantonal særbevilling til uundgåelig nat- og søndagskørsel. Tre officielle kilder tilføjet: CH03, CH04 og EU22. Kontrolleret 31. oktober 2026. Ingen kortgeometrier indtegnet uden verificeret geografisk afgrænsning.
+
+### Opdatering 31. oktober 2026 – Malta
+Tilføjet fire nationale opslag R098–R101 og to officielle myndighedskilder MT01–MT02. Dækker maltesisk vognmandstilladelse til national/EU-transport, dokumentationskrav til økonomisk grundlag, chaufførattestation for visse tredjelandschauffører og ECMT/CEMT-tilladelser ved kørsel til visse ikke-EU-lande. Reglerne er eksisterende og ikke nye lovændringer fra oktober 2026. Hvor oprindelig ikrafttrædelsesdato ikke kan dokumenteres, er validFrom bevidst tom. Kontrolleret 31. oktober 2026. Ingen geografiske restriktionszoner tilføjet.
