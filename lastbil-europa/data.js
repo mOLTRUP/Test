@@ -714,6 +714,22 @@ window.TRUCK_DB = {
       "url": "https://transport.ec.europa.eu/transport-modes/road/tachograph_en",
       "checked": "2026-10-31",
       "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "MT01",
+      "title": "Malta: operatørtilladelser, økonomiske krav og chaufførattestationer",
+      "publisher": "Transport Malta",
+      "url": "https://www.transport.gov.mt/Land/Professional-Transport-Services/Carriage-of-Goods-and-Dangerous-Goods/Carriage-of-Goods-by-Road-within-the-European-Union-3740",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
+    },
+    {
+      "id": "MT02",
+      "title": "Malta: ECMT/CEMT-tilladelser til godstransport uden for EU",
+      "publisher": "Transport Malta",
+      "url": "https://www.transport.gov.mt/land/professional-transport-services/carriage-of-goods-and-dangerous-goods/carriage-of-goods-by-road-involving-non-eu-countries-ecmt-3732",
+      "checked": "2026-10-31",
+      "kind": "Officiel myndighedskilde"
     }
   ],
   "topics": [
@@ -2464,6 +2480,66 @@ window.TRUCK_DB = {
       ],
       "weight": "over3.5",
       "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R098",
+      "country": "MT",
+      "topic": "Adgang",
+      "title": "Malta: national eller EU-operatørtilladelse til erhvervsgodstransport",
+      "summary": "Maltesiske vognmænd, der udfører godstransport for fremmed regning, skal have en operatørtilladelse. Transport Malta udsteder nationale tilladelser (kun Malta) og europæiske tilladelser til EU-transport.",
+      "condition": "Gælder normalt lastbiler over 3,5 ton og siden 21. maj 2022 også international godstransport for fremmed regning med varebiler over 2,5 til og med 3,5 ton. Virksomheden skal bl.a. opfylde krav om etablering, god vandel, økonomi og transportleder. Reglen beskriver maltesisk udstedelse, ikke et ekstra krav til udenlandske EU-vognmænd med gyldig fællesskabstilladelse. Oprindelig ikrafttrædelsesdato for hele tilladelsesordningen er ikke fastslået.",
+      "refs": [
+        "MT01"
+      ],
+      "weight": "over3.5",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R099",
+      "country": "MT",
+      "topic": "Adgang",
+      "title": "Malta: økonomisk grundlag for vognmandstilladelse",
+      "summary": "Maltesiske transportvirksomheder med tunge lastbiler skal dokumentere mindst €9.000 for første tunge køretøj og €5.000 for hver yderligere tung lastbil. For yderligere lette erhvervskøretøjer er beløbet €900.",
+      "condition": "For maltesiske virksomheder, der alene driver international godstransport med lette erhvervskøretøjer over 2,5 til og med 3,5 ton, er minimum €1.800 for første køretøj og €900 for hvert yderligere. Dokumentation indsendes til Transport Malta (RHOL-Z1). Satser kontrolleret 31. oktober 2026; oprindelig ikrafttrædelsesdato ikke fastslået.",
+      "refs": [
+        "MT01"
+      ],
+      "weight": "all",
+      "urgency": "Vigtig",
+      "validFrom": "",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R100",
+      "country": "MT",
+      "topic": "Chauffoer",
+      "title": "Malta: chaufførattestation for tredjelandsstatsborgere i EU-godstransport",
+      "summary": "Maltesiske vognmænd, som anvender chauffører fra lande uden for EU uden status som fastboende EU-borgere, skal have en særskilt chaufførattestation fra Transport Malta for hver berørt chauffør.",
+      "condition": "Attestation udstedes ifølge Transport Malta til chauffører med opholdstilladelse udstedt på vegne af den ansættende vognmand. Ansøgning via RHOL-Z3. Attestationen udløber med opholdstilladelsen. Gælder maltesiske transportvirksomheder, der udfører de omfattede EU-transportopgaver; oprindelig ikrafttrædelsesdato ikke fastslået.",
+      "refs": [
+        "MT01"
+      ],
+      "weight": "all",
+      "urgency": "Kritisk",
+      "validFrom": "",
+      "checked": "2026-10-31"
+    },
+    {
+      "id": "R101",
+      "country": "MT",
+      "topic": "Adgang",
+      "title": "Malta: ECMT/CEMT-tilladelser ved godstransport til visse ikke-EU-lande",
+      "summary": "Maltesiske vognmænd kan søge ECMT/CEMT-tilladelse til international godstransport med lastbiler over 3,5 ton til visse lande uden for EU, herunder Albanien, Serbien, Tyrkiet og Ukraine.",
+      "condition": "Transport Malta udsteder efter ansøgning RHOL-E1 til virksomheder med maltesisk international vognmandstilladelse. Tilladelsen skal anvendes efter ECMT User Guide og Quality Charter, og den konkrete destination, transporttype, tilladelseskvote og eventuelle landebegrænsninger skal kontrolleres. Oprindelig ikrafttrædelsesdato ikke fastslået.",
+      "refs": [
+        "MT02"
+      ],
+      "weight": "over3.5",
+      "urgency": "Vigtig",
       "validFrom": "",
       "checked": "2026-10-31"
     }
