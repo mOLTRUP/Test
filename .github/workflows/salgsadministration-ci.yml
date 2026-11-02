@@ -31,6 +31,16 @@ jobs:
           unzip -p "$ZIP" salgsadministration/salgsadministration.php | cmp - salgsadministration/plugin/salgsadministration.php
           unzip -p "$ZIP" salgsadministration/assets/app.js | cmp - salgsadministration/plugin/assets/app.js
           unzip -p "$ZIP" salgsadministration/assets/app.css | cmp - salgsadministration/plugin/assets/app.css
+      - name: Kontroller låst WordPress-ledelsesdemo og offline-ZIP
+        run: |
+          php -l salgsadministration/ledelsesdemo-wordpress/itd-ledelsesdemo/itd-ledelsesdemo.php
+          php -l salgsadministration/ledelsesdemo-wordpress/itd-ledelsesdemo/templates/standalone.php
+          ZIP=salgsadministration/downloads/ITD_Salgsadministration_Ledelsesdemo_WordPress_OFFLINE_v1.zip
+          unzip -t "$ZIP"
+          unzip -p "$ZIP" itd-ledelsesdemo/itd-ledelsesdemo.php | cmp - salgsadministration/ledelsesdemo-wordpress/itd-ledelsesdemo/itd-ledelsesdemo.php
+          unzip -p "$ZIP" itd-ledelsesdemo/templates/standalone.php | cmp - salgsadministration/ledelsesdemo-wordpress/itd-ledelsesdemo/templates/standalone.php
+          unzip -p "$ZIP" itd-ledelsesdemo/presentation.html | cmp - salgsadministration/ledelsesdemo-laast-v1/index.html
+          unzip -p "$ZIP" itd-ledelsesdemo/readme.txt | cmp - salgsadministration/ledelsesdemo-wordpress/itd-ledelsesdemo/readme.txt
       - name: Kontroller at CSS ikke ændrer WordPress globalt
         run: |
           grep -q '^#sa-app{' salgsadministration/plugin/assets/app.css
